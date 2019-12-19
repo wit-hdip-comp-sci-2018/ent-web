@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Web App Authentication  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 09a Authentication techniques">
+          Lab 09a Authentication techniques
+        </a>
+      
+        <a class="item" data-tab="1-Passwords">
+          1-Passwords
+        </a>
+      
+        <a class="item" data-tab="2-Basic Auth">
+          2-Basic Auth
+        </a>
+      
+        <a class="item" data-tab="3-OAuth">
+          3-OAuth
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 09a Authentication techniques">
+            <h1>Objectives</h1>
+<p>In this lab, we will walk through some examples in class of how to add various authentication-related features to a web application.  You may adapt these for the purposes of your web application security assignment report. In particular we will examine:</p>
+<ol>
+<li>Password hashing &amp; salting</li>
+<li>HTTP Basic authentication</li>
+<li>Using OAuth</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="1-Passwords">
+            <h2>Password hashing &amp; salting</h2>
+<p>The <a href="https://www.npmjs.com/package/bcrypt">bcrypt</a> module provides password hashing and salting.</p>
+<p>When <em>registering</em> a new user or <em>changing</em> password, convert the supplied password to a hashed and salted version with <font face="Courier">bcrypt.hash</font>. We can do it using <em>async</em>:</p>
+<pre><code>saltRounds = 10    # this can be tuned to control time to hash
+hash = await bcrypt.hash(plaintextPassword, saltRounds);
+// Store hash in DB instead of password.</code></pre>
+<p>To <em>check</em> a password entered by a user against the stored value, read the stored value (called <strong>hash</strong> here) and compare with <font face="Courier">bcrypt.compare</font>. Again we can use async:</p>
+<pre><code>const isMatch = await bcrypt.compare(candidatePassword, this.password);
+// Check isMatch (boolean) and act accordingly</code></pre>
+<p>This <a href="archive/accounts.js">edited version of the accounts.js</a> <em>controller</em> from the final version of <a href="https://github.com/wit-hdip-comp-sci-2018/donation-web">donation-web</a> implements this for user registration.</p>
+<p>This <a href="archive/user.js">edited version of the user.js</a> <em>model</em> from the final version of <em>donation-web</em> implements this for authenticating the user (i.e. checking entered password).</p>
+<p>Note that any database initialisation you have will also need to be updated - see new version of <a href="archive/initdata.json">initdata.json</a>. These were populated with values created with an <a href="https://www.dailycred.com/article/bcrypt-calculator">online bcrypt calculator</a>.</p>
+<p>The lecture notes contain some background on password hashing and salting.</p>
+<p>You can get the final version of donation-web with the following command:</p>
+<pre><code>git clone https://github.com/wit-hdip-comp-sci-2018/donation-web.git</code></pre>
+<p>Then overwrite <em>app/controllers/accounts.js</em> with the version of <em>accounts.js</em> linked in <em>Resources</em> below.
+Likewise overwrite <em>app/models/user.js</em> with the version of <em>user.js</em> linked in <em>Resources</em> below.
+Likewise overwrite <em>app/models/initdata.json</em> with the version of <em>initdata.json</em> linked in <em>Resources</em> below.</p>
+<p>Start mongod in a new terminal</p>
+<pre><code>sudo mongod</code></pre>
+<p>Then you should be able to run the app and see hashed and salted passwords</p>
+<pre><code>cd donation-web
+npm install
+node index.js</code></pre>
+<p><br></p>
+<h2>Exercise</h2>
+<p>The donation app also allows passwords to be changed.  Edit <em>accounts.js</em> to do this properly using Bcrypt.
+Look for this line in <em>updateSettings</em>:</p>
+<pre><code>user.password = userEdit.password;           // EXERCISE -- change this to use bcrypt</code></pre>
+<p><br></p>
+<h2>Resources</h2>
+<ul>
+<li><a href="archive/accounts.js">accounts.js with password hashing and salting</a></li>
+<li><a href="archive/user.js">user.js with password hashing and salting</a></li>
+<li><a href="archive/initdata.json">initdata.json (updated with hashed and salted passwords)</a></li>
+<li><a href="https://www.dailycred.com/article/bcrypt-calculator">Online bcrypt calculator (for initialisation/testing)</a></li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="2-Basic Auth">
+            <h1>HTTP Basic Authentication demo</h1>
+<p>This code demonstrates HTTP Basic Authentication using the <em>hapi-auth-basic</em> module</p>
+<p>Required modules: hapi, bcrypt, hapi-auth-basic</p>
+<pre><code>const Bcrypt = require(&#39;bcrypt&#39;);
+const Hapi = require(&#39;hapi&#39;);
+
+const users = {
+  john: {
+    username: &#39;john&#39;,
+    password: &#39;$2a$10$iqJSHD.BGr0E2IxQwYgJmeP3NvhPrXAeLSaGCj6IR/XU5QtjVu5Tm&#39;,   // &#39;secret&#39;
+    name: &#39;John Doe&#39;,
+    id: &#39;2133d32a&#39;
+  }
+};
+
+const validate = async (request, username, password, h) =&gt; {
+
+  if (username === &#39;help&#39;) {
+    return { response: h.redirect(&#39;https://hapijs.com/help&#39;) };     // custom response
+  }
+
+  const user = users[username];
+  if (!user) {
+    return { credentials: null, isValid: false };
+  }
+
+  const isValid = await Bcrypt.compare(password, user.password);
+  const credentials = { id: user.id, name: user.name };
+
+  return { isValid, credentials };
+};
+
+const main = async () =&gt; {
+
+  const server = Hapi.server({ port: 3000 });
+
+  await server.register(require(&#39;hapi-auth-basic&#39;));
+
+  server.auth.strategy(&#39;simple&#39;, &#39;basic&#39;, { validate });
+  server.auth.default(&#39;simple&#39;);
+
+  server.route({
+    method: &#39;GET&#39;,
+    path: &#39;/&#39;,
+    handler: function (request, h) {
+
+      return &#39;welcome&#39;;
+    }
+  });
+
+  await server.start();
+
+  return server;
+};
+
+main()
+    .then((server) =&gt; console.log(`Server listening on ${server.info.uri}`))
+    .catch((err) =&gt; {
+
+      console.error(err);
+      process.exit(1);
+    });</code></pre>
+<p>To run this, save <a href="archive/basic.js">this program (basic.js)</a> to a new folder and run:</p>
+<pre>
+npm install hapi bcrypt hapi-auth-basic
+node basic.js
+</pre>
+
+<p>Now open a new browser tab and go to Developer Tools (right click and <strong>Inspect</strong> in Chrome). Select the <strong>Network</strong> tab and browse to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+<p>Observe that a <strong>WWW-Authenticate:Basic</strong> Response Header is set.
+<img src="img/basic1.png" alt="WWW-Authenticate:Basic Response Header"></p>
+<p>Entering the correct username and password (john/secret) sets an Authorization header in <em>all</em> requests to that domain until the browser is closed.  Note that this the username and password are just encoded and not encrypted.</p>
+<p><img src="img/basic2.png" alt="Base64-encoded Authorization header"></p>
+<p>Try any online Base64 decoder to find what <em>am9objpzZWNyZXQ</em> maps to.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="3-OAuth">
+            <h1>Using OAuth</h1>
+<p>This demo application uses the <a href="https://www.npmjs.com/package/bell">bell</a> plugin for OAuth to enable users of the app to get privileged access to their GitHub account.  This could be adapted for other supported services such as Facebook, Google, LinkedIn, Foursquare, etc.</p>
+<p>To try out the application, you need to do the following:</p>
+<ol>
+<li><p>Log into your GitHub account and go to the <a href="https://github.com/settings/profile">Settings page</a>.</p>
+</li>
+<li><p>Go to <em>Developer Settings</em> and <strong>Register a new application</strong>.</p>
+</li>
+<li><p>Complete the form to give the app a name and define Homepage and Callback URLs (which can be <a href="http://localhost:3000/">http://localhost:3000/</a> for example).
+<img src="img/register-oauth.png" alt="Register an OAuth app on GitHub"></p>
+</li>
+<li><p>Note the Client ID and Client Secret assigned to your app, You will need to insert these into the code at the designated placeholders.</p>
+</li>
+<li><p>Download the <a href="archive/oauth-github.zip">demo code and package.json file</a>, extract from the zip archive and go to that folder. The code is also shown at the bottom of this page.</p>
+<ul>
+<li>A full explanation of what is going on here is provided in <a href="https://www.sitepoint.com/oauth-integration-using-hapi/">this tutorial from Sitepoint</a>.</li>
+</ul>
+</li>
+<li><p>Start the server</p>
+<pre><code>npm install
+node oauth-github.js</code></pre>
+</li>
+<li><p>Now try to visit the app&#39;s <em>login</em> route:</p>
+<ul>
+<li><p><a href="http://localhost:3000/login">http://localhost:3000/login</a></p>
+<p>You will be redirected from your app to GitHub to authorise giving the web app access to your data. You will also need to authenticate to GitHub if you&#39;re not already logged in.
+<img src="img/authorisation.png" alt="Authorisation"></p>
+</li>
+</ul>
+</li>
+<li><p>Try the following routes and see what happens.  Experiment with logging out and subsequently trying to get access.</p>
+<ul>
+<li><a href="http://localhost:3000/account">http://localhost:3000/account</a></li>
+<li><a href="http://localhost:3000/userinfo">http://localhost:3000/userinfo</a></li>
+<li><a href="http://localhost:3000/">http://localhost:3000/</a></li>
+<li><a href="http://localhost:3000/logout">http://localhost:3000/logout</a></li>
+<li><a href="http://localhost:3000/">http://localhost:3000/</a></li>
+</ul>
+</li>
+</ol>
+<h2>oauth-github.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const os = require(&#39;os&#39;);
+os.tmpDir = os.tmpdir;
+
+const Hapi = require(&#39;hapi&#39;);
+const Bell = require(&#39;bell&#39;);
+const AuthCookie = require(&#39;hapi-auth-cookie&#39;);
+
+const main = async () =&gt; {
+
+  const server = Hapi.server({ port: 3000 });
+
+  // Register bell and hapi-auth-cookie with the server
+  await server.register([Bell, AuthCookie]);
+
+  var authCookieOptions = {
+    password: &#39;cookie-encryption-password-secure&#39;, // String used to encrypt auth cookie (min 32 chars)
+    cookie: &#39;demo-auth&#39;,   // Name of cookie to set
+    isSecure: false        // Should be &#39;true&#39; in production software (requires HTTPS)
+  };
+
+  server.auth.strategy(&#39;cookie-auth&#39;, &#39;cookie&#39;, authCookieOptions);
+
+  var bellAuthOptions = {
+    provider: &#39;github&#39;,
+    password: &#39;github-encryption-password-secure&#39;, // String used to encrypt temporary cookie
+    // used during authorisation steps only
+    clientId: &#39;ENTER CLIENT ID&#39;,          // *** Replace with your app Client Id ****
+    clientSecret: &#39;ENTER CLIENT SECRET&#39;,  // *** Replace with your app Client Secret ***
+    isSecure: false        // Should be &#39;true&#39; in production software (requires HTTPS)
+  };
+
+  server.auth.strategy(&#39;github-oauth&#39;, &#39;bell&#39;, bellAuthOptions);
+
+  server.auth.default(&#39;cookie-auth&#39;);
+
+  //Set up the routes
+  server.route([
+    {
+      method: &#39;GET&#39;,
+      path: &#39;/login&#39;,
+      config: {
+        auth: &#39;github-oauth&#39;,
+        handler: function (request, h) {
+          if (request.auth.isAuthenticated) {
+            request.cookieAuth.set(request.auth.credentials);
+            return (&#39;Hello &#39; + request.auth.credentials.profile.displayName);
+          }
+          return(&#39;Not logged in...&#39;);
+        }
+      }
+    }, {
+      method: &#39;GET&#39;,
+      path: &#39;/account&#39;,
+      config: {
+        auth: &#39;cookie-auth&#39;,
+        handler: function (request, h) {
+          if (request.auth.isAuthenticated) {
+            return(request.auth.credentials.profile);
+          }
+        }
+      }
+    }, {
+      method: &#39;GET&#39;,
+      path: &#39;/userinfo&#39;,
+      config: {
+        auth: &#39;cookie-auth&#39;,
+        handler: function (request, h) {
+          if (request.auth.isAuthenticated) {
+            return(&#39;&lt;h2&gt;From your GitHub profile&lt;/h2&gt;&#39;
+            + &#39;&lt;b&gt;User name:&lt;/b&gt; &#39; + request.auth.credentials.profile.username
+            + &#39;&lt;br&gt;&lt;b&gt;Display name:&lt;/b&gt; &#39; + request.auth.credentials.profile.displayName
+            + &#39;&lt;br&gt;&lt;b&gt;Email address:&lt;/b&gt; &#39; + request.auth.credentials.profile.email
+            + &#39;&lt;br&gt;&lt;b&gt;Affiliation:&lt;/b&gt; &#39; + request.auth.credentials.profile.raw.company);
+          }
+        }
+      }
+    }, {
+      method: &#39;GET&#39;,
+      path: &#39;/&#39;,
+      config: {
+        auth: {
+          mode: &#39;optional&#39;
+        },
+        handler: function (request, h) {
+          if (request.auth.isAuthenticated) {
+            return (&#39;Hello &#39; + request.auth.credentials.profile.displayName);
+          }
+          return(&#39;Hello stranger!&#39;);
+        }
+      }
+    }, {
+      method: &#39;GET&#39;,
+      path: &#39;/logout&#39;,
+      config: {
+        auth: false,
+        handler: function (request, h) {
+          request.cookieAuth.clear();
+          return(&#39;Logged out now!&#39;);
+        }
+      }
+    }
+  ]);
+
+  // Start the server
+  await server.start()
+
+  return server;
+};
+
+main()
+.then((server) =&gt; console.log(`Server listening on ${server.info.uri}`))
+.catch((err) =&gt; {
+  console.error(err);
+  process.exit(1);
+});</code></pre>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> 7: Sessions  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 03b Sessions">
+          Lab 03b Sessions
+        </a>
+      
+        <a class="item" data-tab="Solutions">
+          Solutions
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 03b Sessions">
+            <h1>Objectives</h1>
+<p>Incorporate sessions tracking into the app, defining a session strategy, protected and unprotected routes and cookie paramaters.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solutions">
+            <h1>Lab 6 Solutions</h1>
+<h2>Exercise 1: Register users:</h2>
+<p>Extend the server objects to include a user map:</p>
+<h2>index.js</h2>
+<pre><code>server.bind({
+  users: {},
+  donations: [],
+});</code></pre>
+<p>In signup, save the user details in the map:</p>
+<h2>app/controllers/accounts.js</h2>
+<pre><code>  signup: {
+    handler: function(request, h) {
+      const user = request.payload;
+      this.users[user.email] = user;
+      return h.redirect(&#39;/home&#39;);
+    }
+  },</code></pre>
+<p>In login, only let user in if previously signed up:</p>
+<pre><code>  login: {
+    handler: function(request, h) {
+      const user = request.payload;
+      if ((user.email in this.users) &amp;&amp; (user.password === this.users[user.email].password)) {
+        return h.redirect(&#39;/home&#39;);
+      }
+      return h.redirect(&#39;/&#39;);
+    }
+  },</code></pre>
+<h2>Exercise 2: Current User</h2>
+<p>Track the current user once signed in - and display donor on report.</p>
+<p>Include <code>currentUser</code> in server objects:</p>
+<h2>index.js</h2>
+<pre><code>server.bind({
+  users: {},
+  donations: [],
+  currentUser: {}
+});</code></pre>
+<p>Initialise in signup &amp; login:</p>
+<pre><code>  signup: {
+    handler: function(request, h) {
+      const user = request.payload;
+      this.users[user.email] = user;
+      this.currentUser = user;
+      return h.redirect(&#39;/home&#39;);
+    }
+  },
+  ...
+  login: {
+    handler: function(request, h) {
+      const user = request.payload;
+      if ((user.email in this.users) &amp;&amp; (user.password === this.users[user.email].password)) {
+        this.currentUser = this.users[user.email];
+        return h.redirect(&#39;/home&#39;);
+      }
+      return h.redirect(&#39;/&#39;);
+    }
+  },</code></pre>
+<p>In donate, store the donor details along each donation</p>
+<h2>app/controllers/donations.js</h2>
+<pre><code>exports.donate = {
+
+  handler: function (request, reply) {
+    let data = request.payload;
+    data.donor = this.currentUser;
+    this.donations.push(data);
+    reply.redirect(&#39;/report&#39;);
+  },
+
+};</code></pre>
+<h2>app/views/partials/donationlist.hbs</h2>
+<pre><code>...
+          &lt;tr&gt;
+            &lt;th&gt;Amount&lt;/th&gt;
+            &lt;th&gt;Method donated&lt;/th&gt;
+            &lt;th&gt;Donor&lt;/th&gt;
+          &lt;/tr&gt;
+...
+            &lt;tr&gt;
+              &lt;td&gt; {{amount}} &lt;/td&gt;
+              &lt;td&gt; {{method}} &lt;/td&gt;
+              &lt;td&gt; {{donor.firstName}} {{donor.lastName}} &lt;/td&gt;
+            &lt;/tr&gt;
+...</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Cookie Plugin Initialisation</h1>
+<p>The naive approach we have taken to tracking users us not really usable. The tracking mechanism is entirely bound within main memory, can can be easily subverted as soon as more than one connection is established to the service (try it!). We need a more robust mechanism - typically called <code>Session Management</code> - to track and follow individual users of our service.</p>
+<p>We do this using a conventional <code>cookie</code> based approach. Much of the complexity of this is handled via a plugin, which you can install now:</p>
+<pre><code>npm install hapi-auth-cookie</code></pre>
+<p>This is documented here:</p>
+<ul>
+<li><a href="https://github.com/hapijs/hapi-auth-cookie">https://github.com/hapijs/hapi-auth-cookie</a></li>
+</ul>
+<p>Our package.json should now be:</p>
+<h2>package.json</h2>
+<pre><code>{
+  &quot;name&quot;: &quot;donation-web&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;handlebars&quot;: &quot;^4.0.12&quot;,
+    &quot;hapi&quot;: &quot;^18.0.0&quot;,
+    &quot;hapi-auth-cookie&quot;: &quot;^9.1.0&quot;,
+    &quot;inert&quot;: &quot;^5.1.2&quot;,
+    &quot;vision&quot;: &quot;^5.4.4&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;prettier&quot;: &quot;^1.16.0&quot;
+  },
+  &quot;prettier&quot;: {
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 120
+  }
+}</code></pre>
+<h2>index.js</h2>
+<p>We will need to register the plugin:</p>
+<pre><code>  await server.register(require(&#39;hapi-auth-cookie&#39;));</code></pre>
+<p>... and also initialize it.</p>
+<pre><code>  server.auth.strategy(&#39;standard&#39;, &#39;cookie&#39;, {
+    password: &#39;secretpasswordnotrevealedtoanyone&#39;,
+    cookie: &#39;donation-cookie&#39;,
+    isSecure: false,
+    ttl: 24 * 60 * 60 * 1000,
+  });</code></pre>
+<p>Place the above just before the initialization of the routes.</p>
+<p>The parameters set a secure password for the cookie itself, a name for the cookie and a time to live (1 day). Additionally, it is set to work over non-secure connections.</p>
+<p>We have not engaged the security strategy yet, so there will be no effect on the app.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Default Strategy + open accounts routes</h1>
+<p>If we now set up this as the strategy for all routes:</p>
+<h2>index.js</h2>
+<pre><code>  server.auth.default({
+    mode: &#39;required&#39;,
+    strategy: &#39;standard&#39;,
+  });</code></pre>
+<p>Place the above just after the strategy is defined in index.</p>
+<p>Restart the application. Now try to visit the app in a browser in the usual way. This time the app will be disabled:</p>
+<pre><code>{
+  statusCode: 401,
+  error: &quot;Unauthorized&quot;,
+  message: &quot;Missing authentication&quot;
+}</code></pre>
+<p>.. as we have protected all routes with the <code>standard</code> security strategy.</p>
+<p>Clearly this is not what we intended. Lets reopen the <code>home</code> page, disabling the strategy for just that route:</p>
+<h2>accounts.js</h2>
+<pre><code>const Accounts = {
+  index: {
+    auth: false,
+    handler: function(request, h) {
+      return h.view(&#39;main&#39;, { title: &#39;Welcome to Donations&#39; });
+    }
+  },</code></pre>
+<p>Restart the app, and you should be able to visit the home page. However, the image on the home page will not be appearing. Check the browser - developer tools - to see what the problem is</p>
+<p><img src="img/03.png" alt=""></p>
+<p>We also need to disable authentication on the static routes:</p>
+<h2>routes.js</h2>
+<pre><code>  {
+    method: &#39;GET&#39;,
+    path: &#39;/{param*}&#39;,
+    handler: {
+      directory: {
+        path: &#39;./public&#39;
+      }
+    },
+    options: { auth: false }
+  }</code></pre>
+<p>All the other routes should still be protected however. </p>
+<p>Re start and verify that the image is appearing in the start page.</p>
+<p>Reopen all of the <code>accounts</code> routes now by adding</p>
+<pre><code>  auth: false,</code></pre>
+<p>...as shown above.</p>
+<p>Now try to log in. You should be able to get passed the signup view and onto login. However, when you log in the app will give you the unauthorised response again:</p>
+<pre><code>{
+  statusCode: 401,
+  error: &quot;Unauthorized&quot;,
+  message: &quot;Missing authentication&quot;
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Cookie Setting &amp; Clearing</h1>
+<p>We should now remove the <code>currentUser</code> server object:</p>
+<pre><code>server.bind({
+  users: {},
+  donations: [],
+});</code></pre>
+<p>as we will be using an alternative mechanism to track the user.</p>
+<h2>accounts.js</h2>
+<p>This is how we can set a session cookie:</p>
+<pre><code>      request.cookieAuth.set({ id: user.email });</code></pre>
+<p>Modify the <code>signup</code> and <code>login</code> routes to set a session cookie:</p>
+<pre><code>  signup: {
+    auth: false,
+    handler: function(request, h) {
+      const user = request.payload;
+      this.users[user.email] = user;
+      request.cookieAuth.set({ id: user.email });
+      return h.redirect(&#39;/home&#39;);
+    }
+  },
+
+...
+
+  login: {
+    auth: false,
+    handler: function(request, h) {
+      const user = request.payload;
+      if (user.email in this.users &amp;&amp; user.password === this.users[user.email].password) {
+        request.cookieAuth.set({ id: user.email });
+        return h.redirect(&#39;/home&#39;);
+      }
+      return h.redirect(&#39;/&#39;);
+    }
+  },</code></pre>
+<p>In the logout handler - we can clear the session:</p>
+<pre><code>  logout: {
+    handler: function(request, h) {
+      request.cookieAuth.clear();
+      return h.redirect(&#39;/&#39;);
+    }
+  }</code></pre>
+<p>Restart the app - and you should now be able to log in, make donations and view reports.</p>
+<p>However, the donor will not be visible on the report - as we have disabled that mechanism (see above).</p>
+<p>Before moving on to the next step - see if you can inspect the cookie using chrome developer tools. You might see something like this:</p>
+<p><img src="img/01.png" alt=""></p>
+<p>Note that you can delete the cookie here - this may be useful during development, particularly if you are modifying some of the cookie characteristics. The older version of the cookie might interfere with the refreshed one.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Cookie Retrieval</h1>
+<p>Our app now functions (after a fashion). However, we have lost the donor from the donations list. We can fix this now and use the cookie to recover the logged in user details</p>
+<h2>donations.js</h2>
+<p>Here is a revised version of the donate route:</p>
+<pre><code> donate: {
+    handler: function(request, h) {
+      const data = request.payload;
+      var donorEmail = request.auth.credentials.id;
+      data.donor = this.users[donorEmail];
+      this.donations.push(data);
+      return h.redirect(&#39;/report&#39;);
+    }
+  }</code></pre>
+<p>The key changes are here:</p>
+<pre><code>      var donorEmail = request.auth.credentials.id;
+      data.donor = this.users[donorEmail];</code></pre>
+<p>We recover the donor email from the cookie - and look up our local database of users to recover the users details. We store that with the donation as before.</p>
+<p>Restart the app now, sign up and log in. The donations should be listed with the donors details.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Redirect protected Routes to Login Page</h1>
+<p>Currently if we are not logged in, and we attempt to visit a guarded route, we get this response:</p>
+<pre><code>{
+  statusCode: 401,
+  error: &quot;Unauthorized&quot;,
+  message: &quot;Missing authentication&quot;
+}</code></pre>
+<p>Logout and try these routes:</p>
+<ul>
+<li><a href="http://localhost:3000/report">http://localhost:3000/report</a></li>
+<li><a href="http://localhost:3000/home">http://localhost:3000/home</a></li>
+</ul>
+<p>This will also be the response if the cookie expires, or is deleted. Try deleting the cookie (using chrome, after you have logged in) and see if this is in fact the case.</p>
+<p>A better user experience would be to redirect the user to the start page.</p>
+<h2>index.js</h2>
+<p>We can do this as an additional parameter when the strategy is being defined:</p>
+<pre><code>    redirectTo: &#39;/&#39;,</code></pre>
+<p>Place the above as an additional parameter:</p>
+<pre><code>  server.auth.strategy(&#39;standard&#39;, &#39;cookie&#39;, {
+    password: &#39;secretpasswordnotrevealedtoanyone&#39;,
+    cookie: &#39;donation-cookie&#39;,
+    isSecure: false,
+    ttl: 24 * 60 * 60 * 1000,
+    redirectTo: &#39;/&#39;
+  });</code></pre>
+<p>Restart the app now, and try to directly visit some of the protected routes:</p>
+<ul>
+<li><a href="http://localhost:3000/report">http://localhost:3000/report</a></li>
+<li><a href="http://localhost:3000/home">http://localhost:3000/home</a></li>
+</ul>
+<p>NB: If you did not log out before you restarted the app, then the above routes will seem to work - even if you did not log in! This is because the session may still be active. Delete the session using chrome web developer tools, restart the app and try the above routes again. This time you should be redirected to the login page.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>DRY - Active Menu Item Support</h1>
+<p>Unrelated to the sessions support we have been developing so far in this lab - we can do some minor improvements to the template, eliminating some duplication.</p>
+<p>Currently our <code>home</code> and <code>report</code> views contain some duplication:</p>
+<h2>home.hbs</h2>
+<pre><code>&lt;nav class=&quot;ui inverted menu&quot;&gt;
+  &lt;header class=&quot;header item&quot;&gt;&lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt;&lt;/header&gt;
+  &lt;div class=&quot;right menu&quot;&gt;
+    &lt;a class=&quot;active item&quot; href=&quot;/home&quot;&gt; Donate&lt;/a&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/report&quot;&gt; Report&lt;/a&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/logout&quot;&gt; Logout&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;section class=&quot;ui raised segment&quot;&gt;
+
+  {{&gt; donate }}
+
+  &lt;div class=&quot;ui  divider&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;ui teal progress&quot; data-percent=&quot;${progress}&quot; id=&quot;mainprogress&quot;&gt;
+    &lt;div class=&quot;bar&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/section&gt;</code></pre>
+<h2>report.hbs</h2>
+<pre><code>&lt;nav class=&quot;ui inverted menu&quot;&gt;
+  &lt;header class=&quot;header item&quot;&gt; &lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt; &lt;/header&gt;
+  &lt;div class=&quot;right menu&quot;&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/home&quot;&gt; Donate&lt;/a&gt;
+    &lt;a class=&quot;active item&quot; href=&quot;/report&quot;&gt;  Report&lt;/a&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/logout&quot;&gt;  Logout&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+{{&gt; donationlist }}</code></pre>
+<p>The duplicated element is the menu:</p>
+<pre><code>&lt;nav class=&quot;ui inverted menu&quot;&gt;
+  &lt;header class=&quot;header item&quot;&gt;&lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt;&lt;/header&gt;
+  &lt;div class=&quot;right menu&quot;&gt;
+    &lt;a class=&quot;active item&quot; href=&quot;/home&quot;&gt; Donate&lt;/a&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/report&quot;&gt; Report&lt;/a&gt;
+    &lt;a class=&quot;item&quot; href=&quot;/logout&quot;&gt; Logout&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+<p>The two versions are not quite the same, however - as the <code>active</code> item is different for each view. The active item is the one highlighted in the menu bar to indicate to the user which page they are currently on.</p>
+<p>To eliminate this duplication, we need to do the following:</p>
+<ul>
+<li>devise a partial to represent the menu, to be included in each view</li>
+<li>pass the active item as a parameter to the partial</li>
+<li>set the active item based on the parameter.</li>
+</ul>
+<p>Here is a new partial - to be included in the <code>partials</code> folder:</p>
+<h2>app/views/partials/mainmenu.hbs</h2>
+<pre><code>&lt;nav class=&quot;ui inverted menu&quot;&gt;
+  &lt;header class=&quot;header item&quot;&gt;&lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt;&lt;/header&gt;
+  &lt;div class=&quot;right menu&quot;&gt;
+    &lt;a id=&quot;home&quot;   class= &quot;item&quot; href=&quot;/home&quot;&gt; Donate&lt;/a&gt;
+    &lt;a id=&quot;report&quot; class= &quot;item&quot; href=&quot;/report&quot;&gt; Report&lt;/a&gt;
+    &lt;a id=&quot;logout&quot; class= &quot;item&quot; href=&quot;/logout&quot;&gt; Logout&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;script&gt;
+  $(&quot;#{{_id}}&quot;).addClass(&quot;active item&quot;);
+&lt;/script&gt;</code></pre>
+<p>In the above, we have included ids for each menuitem, and appended a JQuery script to set the active class for the menu item with the id <code>_id</code>.</p>
+<p>Can you make sense if the JQuery usage (based on our earlier JQuery lab)?</p>
+<p>Now, in each of our views we can just include this partial - with the appropriate parameter:</p>
+<h2>home.hbs</h2>
+<pre><code>{{&gt; mainmenu _id=&quot;home&quot; }}
+
+&lt;section class=&quot;ui raised segment&quot;&gt;
+
+  {{&gt; donate }}
+
+  &lt;div class=&quot;ui  divider&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;ui teal progress&quot; data-percent=&quot;${progress}&quot; id=&quot;mainprogress&quot;&gt;
+    &lt;div class=&quot;bar&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/section&gt;</code></pre>
+<h2>report.hbs</h2>
+<pre><code>{{&gt; mainmenu _id=&quot;report&quot;}}
+{{&gt; donationlist }}</code></pre>
+<p>Try this now - and verify that the active item works as expected.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercises</h1>
+<p>Archive of the project so far:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.03.end">https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.03.end</a></li>
+</ul>
+<h2>Exercise 1: Cookie private key</h2>
+<p>Currently we are storing the cookie private key in our source file:</p>
+<pre><code>  server.auth.strategy(&#39;standard&#39;, &#39;cookie&#39;, {
+    password: &#39;secretpasswordnotrevealedtoanyone&#39;,
+    cookie: &#39;donation-cookie&#39;,
+    isSecure: false,
+    ttl: 24 * 60 * 60 * 1000,
+    redirectTo: &#39;/&#39;
+  });</code></pre>
+<p>Using this module:</p>
+<ul>
+<li><a href="https://github.com/motdotla/dotenv#readme">https://github.com/motdotla/dotenv#readme</a></li>
+</ul>
+<p>Move this password to a .env file, and have it loaded when the application starts. You can see a demonstration of this in the solution to a previous lab:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/four-square-node/blob/master/fs.js">https://github.com/wit-hdip-comp-sci-2018/four-square-node/blob/master/fs.js</a></li>
+</ul>
+<h2>Exercise 2: Implement settings view</h2>
+<h2>Implement a new <code>Settings</code> view - available after a user has successfully logged in:</h2>
+<p><img src="img/02.png" alt=""></p>
+<p>It is to present the details of the current user + a <code>Save</code> button, which will update and details modified in the current form.</p>
+<h2>HINT: To get you started here is a settings view:</h2>
+<h2>settings.hbs</h2>
+<pre><code>{{&gt; mainmenu _id=&quot;settings&quot; }}
+
+&lt;section class=&quot;ui raised segment&quot;&gt;
+  &lt;div class=&quot;ui grid&quot;&gt;
+    &lt;div class=&quot;ui ten wide column&quot;&gt;
+      &lt;div class=&quot;ui stacked fluid form segment&quot;&gt;
+        &lt;form action=&quot;/settings&quot; method=&quot;POST&quot;&gt;
+          &lt;h3 class=&quot;ui header&quot;&gt;Register&lt;/h3&gt;
+          &lt;div class=&quot;two fields&quot;&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;First Name&lt;/label&gt;
+              &lt;input value=&quot;{{user.firstName}}&quot; type=&quot;text&quot; name=&quot;firstName&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Last Name&lt;/label&gt;
+              &lt;input value=&quot;{{user.lastName}}&quot; type=&quot;text&quot; name=&quot;lastName&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label&gt;Email&lt;/label&gt;
+            &lt;input value=&quot;{{user.email}}&quot; type=&quot;text&quot; name=&quot;email&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label&gt;Password&lt;/label&gt;
+            &lt;input value=&quot;{{user.password}}&quot; type=&quot;password&quot; name=&quot;password&quot;&gt;
+          &lt;/div&gt;
+          &lt;button class=&quot;ui blue submit button&quot;&gt;Save&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;aside class=&quot;ui five wide column&quot;&gt;
+      &lt;img src=&quot;images/homer3.png&quot; class=&quot;ui medium image&quot;&gt;
+    &lt;/aside&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

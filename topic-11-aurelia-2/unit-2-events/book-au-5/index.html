@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Events  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 11c Aurelia Event Aggregator">
+          Lab 11c Aurelia Event Aggregator
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 11c Aurelia Event Aggregator">
+            <h1>Objectives</h1>
+<p>Introduce the Event Aggregator</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Exercise Solutions</h1>
+<h2>Exercise 1</h2>
+<p>This is the current DonationService class:</p>
+<h2>src/services/donation-service.ts</h2>
+<pre><code>import {Candidate} from &quot;./donation-types&quot;;
+
+export class DonationService {
+  candidates : Candidate[] = []
+}</code></pre>
+<p>All candidates are maintained here - and any Component or Custom Element that needs access to candidates will reach for them in here via the Aurelia dependency injection.</p>
+<p>Do the same now for the donations and payment methods data structures. These are currently defined in the Donate component:</p>
+<h2>src/views/donate.ts</h2>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import {Candidate, Donation} from &quot;../services/donation-types&quot;;
+import {DonationService} from &quot;../services/donation-service&quot;;
+
+@inject(DonationService)
+export class Donate {
+  donations: Donation[] = [];
+  paymentMethods = [&#39;Cash&#39;, &#39;Paypal&#39;];
+  candidates: Candidate[];
+
+  constructor(private ds: DonationService) {
+    this.candidates = ds.candidates;
+  }
+}</code></pre>
+<p>I.e. Following the pattern established in this lab with the candidates array, move:</p>
+<ul>
+<li>donations</li>
+<li>paymentMethids</li>
+</ul>
+<p>to DonationService.</p>
+<h2>Solution</h2>
+<h2>src/services/donation-services.ts</h2>
+<pre><code>import { Candidate, Donation } from &#39;./donation-types&#39;;
+
+export class DonationService {
+  candidates: Candidate[] = [];
+  donations: Donation[] = [];
+  paymentMethods = [&#39;Cash&#39;, &#39;Paypal&#39;];
+}</code></pre>
+<h2>src/views/donate.ts</h2>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import { Candidate, Donation } from &#39;../services/donation-types&#39;;
+import { DonationService } from &#39;../services/donation-service&#39;;
+
+@inject(DonationService)
+export class Donate {
+  donations: Donation[];
+  paymentMethods: string[];
+  candidates: Candidate[];
+
+  constructor(private ds: DonationService) {
+    this.candidates = ds.candidates;
+    this.donations = ds.donations;
+    this.paymentMethods = ds.paymentMethods;
+  }
+}</code></pre>
+<p>Running the application now:</p>
+<p><img src="img/02.png" alt=""></p>
+<p>If you make donations - the Total Donated component will not be updated. We will fix this in the next step.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>HttpClient</h1>
+<p>We can start the journey now of integrating the Aurelia SPA application with the Donation-Service HAPI application we have been building.</p>
+<p>The first step will be to install a HttpClient library in our SPA. the <code>aurelia-http-client</code> library is a good place to start. First install it:</p>
+<pre><code>yarn add aurelia-http-client</code></pre>
+<p>Our initial usage will be to retrieve simple json data. Create a new file in our SPA project, containing some sample candidates:</p>
+<h2>src/static/api/candidates.json</h2>
+<pre><code>[
+  {
+    &quot;firstName&quot;: &quot;Bart&quot;,
+    &quot;lastName&quot;: &quot;Simpson&quot;,
+    &quot;office&quot;: &quot;President&quot;
+  },
+  {
+    &quot;firstName&quot;: &quot;Marge&quot;,
+    &quot;lastName&quot;: &quot;Simpson&quot;,
+    &quot;office&quot;: &quot;President&quot;
+  }
+]</code></pre>
+<p>We rework DonationService now to acquire this component (via dependency injection), and then request this json data via a <code>getCandidates()</code> method we call in the constructor:</p>
+<h2>src/services/donation-service.ts</h2>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import { Candidate, Donation } from &#39;./donation-types&#39;;
+import { HttpClient } from &#39;aurelia-http-client&#39;;
+
+@inject(HttpClient)
+export class DonationService {
+  candidates: Candidate[] = [];
+  donations: Donation[] = [];
+  paymentMethods = [&#39;Cash&#39;, &#39;Paypal&#39;];
+
+  constructor(private httpClient: HttpClient) {
+    httpClient.configure(http =&gt; {
+      http.withBaseUrl(&#39;http://localhost:8080&#39;);
+    });
+    this.getCandidates();
+  }
+
+  async getCandidates() {
+    const response = await this.httpClient.get(&#39;/api/candidates.json&#39;);
+    this.candidates = await response.content;
+    console.log (this.candidates);
+  }
+}</code></pre>
+<p>Restart the application now - and you should see the two candidates preloaded:</p>
+<p><img src="img/01.png" alt=""></p>
+<p>Looking carefully at this - first we inject the http client:</p>
+<pre><code>@inject(HttpClient)</code></pre>
+<p>Then, we initialise the http client with the url of our (SPA) application:</p>
+<pre><code>  constructor(private httpClient: HttpClient) {
+    httpClient.configure(http =&gt; {
+      http.withBaseUrl(&#39;http://localhost:8080&#39;);
+    });
+    this.getCandidates();
+  }</code></pre>
+<p>Finally, in getCandidates we generate the http request:</p>
+<pre><code>    const response = await this.httpClient.get(&#39;/api/candidates.json&#39;);</code></pre>
+<p>Remember, our SPA is running in a browser (on the client), but the SPA itself will have been downloaded from a server. This is the server we are requesting the json data from - not the Donation-Web hapi application (for the moment). We will take that step in the next lab.</p>
+<p>For the moment we will continue with effectively a simulation of the server - integrated into our own application as simple json data.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>DonationService</h1>
+<p>The DonationService class can now be enhanced to also include a new <code>donate()</code> method:</p>
+<h2>src/services/donation-service.ts</h2>
+<pre><code>...
+
+  total = 0;
+
+...
+  async donate(amount: number, method: string, candidate: Candidate) {
+    const donation = {
+      amount: amount,
+      method: method,
+      candidate : candidate
+    };
+    this.donations.push(donation);
+    this.total = this.total + amount;
+    console.log(&#39;Total so far &#39; + this.total);
+  }
+...</code></pre>
+<p>This is the complete class:</p>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import { Candidate, Donation } from &#39;./donation-types&#39;;
+import { HttpClient } from &#39;aurelia-http-client&#39;;
+
+@inject(HttpClient)
+export class DonationService {
+  candidates: Candidate[] = [];
+  donations: Donation[] = [];
+  paymentMethods = [&#39;Cash&#39;, &#39;Paypal&#39;];
+  total = 0;
+
+  constructor(private httpClient: HttpClient) {
+    httpClient.configure(http =&gt; {
+      http.withBaseUrl(&#39;http://localhost:8080&#39;);
+    });
+    this.getCandidates();
+  }
+
+  async getCandidates() {
+    const response = await this.httpClient.get(&#39;/api/candidates.json&#39;);
+    this.candidates = await response.content;
+    console.log (this.candidates);
+  }
+
+  async donate(amount: number, method: string, candidate: Candidate) {
+    const donation = {
+      amount: amount,
+      method: method,
+      candidate : candidate
+    };
+    this.donations.push(donation);
+    this.total = this.total + amount;
+    console.log(&#39;Total so far &#39; + this.total);
+  }
+}</code></pre>
+<p>This centralises the donate feature, simplifying the custom-element:</p>
+<h2>src/resources/elements/donate-form.ts</h2>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import { bindable } from &#39;aurelia-framework&#39;;
+import { Candidate, Donation } from &#39;../../services/donation-types&#39;;
+import {DonationService} from &quot;../../services/donation-service&quot;;
+
+@inject(DonationService)
+export class DonateForm {
+  @bindable
+  paymentMethods: string[];
+  @bindable
+  candidates: Candidate[];
+
+  amount = &#39;0&#39;;
+  selectedMethod = &#39;&#39;;
+  selectedCandidate : Candidate = null;
+
+  constructor (private ds: DonationService) {}
+
+  makeDonation() {
+    this.ds.donate(parseInt(this.amount), this.selectedMethod, this.selectedCandidate);
+  }
+}</code></pre>
+<p>In the DonateFom ViewModel above, we have removed the donations[] array binding completely - and we should also remove the binding from the view:</p>
+<h2>src/views/donate.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;require from=&quot;../resources/elements/donations-list&quot;&gt;&lt;/require&gt;
+  &lt;require from=&quot;../resources/elements/donate-form&quot;&gt;&lt;/require&gt;
+
+  &lt;div class=&quot;ui stackable two column grid&quot;&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;donate-form payment-methods.bind=&quot;paymentMethods&quot; candidates.bind=&quot;candidates&quot;&gt;&lt;/donate-form&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;donations-list donations.bind=&quot;donations&quot;&gt;&lt;/donations-list&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>total-donated Component</h1>
+<p>Introduce a very simple component to represent to total donated so far. First the ViewModel:</p>
+<h2>src/resources/elements/total-donated.ts</h2>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import { DonationService } from &#39;../../services/donation-service&#39;;
+import { bindable } from &#39;aurelia-framework&#39;;
+
+@inject(DonationService)
+export class TotalDonated {
+  @bindable
+  total = 0;
+
+  constructor(private ds: DonationService) {}
+}</code></pre>
+<p>Notice that the is marked <code>@gindable</code>. Now the View:</p>
+<h2>src/resources/elements/total-donated.html</h2>
+<pre><code>&lt;template&gt;
+
+  &lt;section class=&quot;ui stacked statistic segment&quot;&gt;
+    &lt;div class=&quot;value&quot;&gt;
+      ${total}
+    &lt;/div&gt;
+    &lt;div class=&quot;label&quot;&gt;
+      Donated
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+&lt;/template&gt;</code></pre>
+<p>We can rework the donate View component to include this new custom element:</p>
+<h2>src/views/donate.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;require from=&quot;../resources/elements/donations-list&quot;&gt;&lt;/require&gt;
+  &lt;require from=&quot;../resources/elements/donate-form&quot;&gt;&lt;/require&gt;
+  &lt;require from=&quot;../resources/elements/total-donated&quot;&gt;&lt;/require&gt;
+
+  &lt;div class=&quot;ui stackable grid&quot;&gt;
+    &lt;div class=&quot;seven wide column&quot;&gt;
+      &lt;donate-form payment-methods.bind=&quot;paymentMethods&quot; candidates.bind=&quot;candidates&quot;&gt;&lt;/donate-form&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;two wide column&quot;&gt;
+      &lt;total-donated total.bind=&quot;total&quot;&gt;&lt;/total-donated&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;seven wide column&quot;&gt;
+      &lt;donations-list donations.bind=&quot;donations&quot;&gt;&lt;/donations-list&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>.. and finally, in the ViewModel we attach the total to the total defined in DonationService:</p>
+<h2>src/views/donate.ts</h2>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import { Candidate, Donation } from &#39;../services/donation-types&#39;;
+import { DonationService } from &#39;../services/donation-service&#39;;
+
+@inject(DonationService)
+export class Donate {
+  donations: Donation[];
+  paymentMethods: string[];
+  candidates: Candidate[];
+  total = 0;
+
+  constructor(private ds: DonationService) {
+    this.candidates = ds.candidates;
+    this.donations = ds.donations;
+    this.paymentMethods = ds.paymentMethods;
+    this.total = ds.total;
+  }
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Event Aggregator - Publish</h1>
+<p>The Aurelia Event Aggregator is a simple way of facilitating communication between different components. It relies on message types - defined by the application. Once these message types are defined Components can then be either publishers or subscribers to these messages.</p>
+<p>Here is a message type to encapsulate a Total Update event:</p>
+<h2>src/services/messages.ts</h2>
+<pre><code>export class TotalUpdate {
+  total: number;
+  constructor(total: number) {
+    this.total = total;
+  }
+}</code></pre>
+<p>Because we have centralised the donate feature in the DonationService class - we can refactor it to generate these events when a donation is made:</p>
+<h2>src/services/donation-service.ts</h2>
+<pre><code>
+@inject(HttpClient, EventAggregator)
+export class DonationService {
+
+  total = 0;
+
+  constructor(private httpClient: HttpClient, private ea: EventAggregator) {
+    ...
+  }
+
+  ...
+
+  async donate(amount: number, method: string, candidate: Candidate) {
+    ...
+    this.ea.publish(new TotalUpdate(this.total));
+  }
+}</code></pre>
+<p>Once we have access to the Event Aggregator (this.ea), we broadcast the new total:</p>
+<pre><code>    this.ea.publish(new TotalUpdate(this.total));</code></pre>
+<p>Here is the complete DonationService class at this stage:</p>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import { Candidate, Donation } from &#39;./donation-types&#39;;
+import { HttpClient } from &#39;aurelia-http-client&#39;;
+import { EventAggregator } from &#39;aurelia-event-aggregator&#39;;
+import {TotalUpdate} from &quot;./messages&quot;;
+
+@inject(HttpClient, EventAggregator)
+export class DonationService {
+  candidates: Candidate[] = [];
+  donations: Donation[] = [];
+  paymentMethods = [&#39;Cash&#39;, &#39;Paypal&#39;];
+  total = 0;
+
+  constructor(private httpClient: HttpClient, private ea: EventAggregator) {
+    httpClient.configure(http =&gt; {
+      http.withBaseUrl(&#39;http://localhost:8080&#39;);
+    });
+    this.getCandidates();
+  }
+
+  async getCandidates() {
+    const response = await this.httpClient.get(&#39;/api/candidates.json&#39;);
+    this.candidates = await response.content;
+    console.log(this.candidates);
+  }
+
+  async donate(amount: number, method: string, candidate: Candidate) {
+    const donation = {
+      amount: amount,
+      method: method,
+      candidate: candidate
+    };
+    this.donations.push(donation);
+    this.total = this.total + amount;
+    this.ea.publish(new TotalUpdate(this.total));
+    console.log(&#39;Total so far &#39; + this.total);
+  }
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Event Aggregator - Subscribe</h1>
+<p>The TotalDonated component can new be refactored to be a subscriber to TotalUpdate event:</p>
+<h2>src/resources/elements/total-donated.ts</h2>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import { DonationService } from &#39;../../services/donation-service&#39;;
+import { bindable } from &#39;aurelia-framework&#39;;
+import { TotalUpdate } from &#39;../../services/messages&#39;;
+import { EventAggregator } from &#39;aurelia-event-aggregator&#39;;
+
+@inject(DonationService, EventAggregator)
+export class TotalDonated {
+  total = 0;
+
+  constructor(private ds: DonationService, private ea: EventAggregator) {
+    this.total = ds.total;
+    ea.subscribe(TotalUpdate, msg =&gt; {
+      this.total = msg.total;
+    });
+  }
+}</code></pre>
+<p>The subscription is carried out here:</p>
+<pre><code>    ea.subscribe(TotalUpdate, msg =&gt; {
+      this.total = msg.total;
+    });</code></pre>
+<p>We have removed the<code>@bindable</code> from the donation - as it was not really working. We can also demo the bind attribute from the donate view:</p>
+<h2>src/views/donate.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;require from=&quot;../resources/elements/donations-list&quot;&gt;&lt;/require&gt;
+  &lt;require from=&quot;../resources/elements/donate-form&quot;&gt;&lt;/require&gt;
+  &lt;require from=&quot;../resources/elements/total-donated&quot;&gt;&lt;/require&gt;
+
+  &lt;div class=&quot;ui stackable grid&quot;&gt;
+    &lt;div class=&quot;seven wide column&quot;&gt;
+      &lt;donate-form payment-methods.bind=&quot;paymentMethods&quot; candidates.bind=&quot;candidates&quot;&gt;&lt;/donate-form&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;two wide column&quot;&gt;
+      &lt;total-donated&gt;&lt;/total-donated&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;seven wide column&quot;&gt;
+      &lt;donations-list donations.bind=&quot;donations&quot;&gt;&lt;/donations-list&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>Run the app now - and the total should update dynamically.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Solution</h1>
+<h1>Solution</h1>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-au/releases/tag/donation.au.05.end">https://github.com/wit-hdip-comp-sci-2018/donation-au/releases/tag/donation.au.05.end</a></li>
+</ul>
+<h2>Exercise</h2>
+<p>Place a total-donated component on the candidates view.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

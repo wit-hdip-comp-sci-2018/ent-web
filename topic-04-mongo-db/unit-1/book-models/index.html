@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Models I  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 04a Models I">
+          Lab 04a Models I
+        </a>
+      
+        <a class="item" data-tab="Solutions">
+          Solutions
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 04a Models I">
+            <h1>Objectives</h1>
+<p>Replace the simple user and donation tracking with a database implementation - Mongo DB. Use the Mongoose ODM to create User + Donation models.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solutions">
+            <h1>Lab 7 Solutions</h1>
+<h2>Exercise 1: Cookie private key</h2>
+<p>Move the cookie password to a .env file, and have it loaded when the application starts.</p>
+<h2>Solution</h2>
+<p>Install the dotenv module:</p>
+<pre><code>npm install dotenv</code></pre>
+<p>-<a href="https://github.com/motdotla/dotenv">https://github.com/motdotla/dotenv</a></p>
+<h2>index.js</h2>
+<p>Import the module:</p>
+<pre><code>require(&#39;dotenv&#39;).config();</code></pre>
+<p>Revise the cookie initialisation to read from an env file:</p>
+<pre><code>  server.auth.strategy(&#39;standard&#39;, &#39;cookie&#39;, {
+    password: process.env.cookie_password,
+    cookie: process.env.cookie_name,
+    isSecure: false,
+    ttl: 24 * 60 * 60 * 1000,
+    redirectTo: &#39;/&#39;
+  });</code></pre>
+<p>This is how the .env is defined:</p>
+<h2>.env</h2>
+<pre><code>cookie_name=donation-web
+cookie_password=secretpasswordnotrevealedtoanyone</code></pre>
+<p>Finally, make sure the .env file is excluded from git:</p>
+<h2>.gitignore</h2>
+<pre><code>.idea
+node_modules
+.env</code></pre>
+<h2>Exercise 2: Implement settings view</h2>
+<p>Additional menu option:</p>
+<h2>app/views/partials/mainmenu.hbs</h2>
+<pre><code>    &lt;a id=&quot;settings&quot; class= &quot;item&quot; href=&quot;/settings&quot;&gt; Settings&lt;/a&gt;</code></pre>
+<p>Additional route:</p>
+<h2>routes.js</h2>
+<pre><code>  { method: &#39;GET&#39;, path: &#39;/settings&#39;, config: Accounts.showSettings },
+  { method: &#39;POST&#39;, path: &#39;/settings&#39;, config: Accounts.updateSettings },</code></pre>
+<p>Handlers:</p>
+<h2>app/controllers/accounts.js</h2>
+<pre><code>  showSettings: {
+    handler: function(request, h) {
+      var donorEmail = request.auth.credentials.id;
+      const userDetails = this.users[donorEmail];
+      return h.view(&#39;settings&#39;, { title: &#39;Donation Settings&#39;, user: userDetails });
+    }
+  },
+  updateSettings: {
+    handler: function(request, h) {
+      const user = request.payload;
+      this.users[user.email] = user;
+      return h.redirect(&#39;/settings&#39;);
+    }
+  },</code></pre>
+<h2>app/views/settings.hbs</h2>
+<pre><code>{{&gt; mainmenu _id=&quot;settings&quot; }}
+
+&lt;section class=&quot;ui raised segment&quot;&gt;
+  &lt;div class=&quot;ui grid&quot;&gt;
+    &lt;div class=&quot;ui ten wide column&quot;&gt;
+      &lt;div class=&quot;ui stacked fluid form segment&quot;&gt;
+        &lt;form action=&quot;/settings&quot; method=&quot;POST&quot;&gt;
+          &lt;h3 class=&quot;ui header&quot;&gt;Register&lt;/h3&gt;
+          &lt;div class=&quot;two fields&quot;&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;First Name&lt;/label&gt;
+              &lt;input value=&quot;{{user.firstName}}&quot; type=&quot;text&quot; name=&quot;firstName&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Last Name&lt;/label&gt;
+              &lt;input value=&quot;{{user.lastName}}&quot; type=&quot;text&quot; name=&quot;lastName&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label&gt;Email&lt;/label&gt;
+            &lt;input value=&quot;{{user.email}}&quot; type=&quot;text&quot; name=&quot;email&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label&gt;Password&lt;/label&gt;
+            &lt;input value=&quot;{{user.password}}&quot; type=&quot;password&quot; name=&quot;password&quot;&gt;
+          &lt;/div&gt;
+          &lt;button class=&quot;ui blue submit button&quot;&gt;Save&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;aside class=&quot;ui five wide column&quot;&gt;
+      &lt;img src=&quot;images/homer3.png&quot; class=&quot;ui medium image&quot;&gt;
+    &lt;/aside&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Mongo + Mongoose install</h1>
+<p>Visit the following site, locate the installation for your platform and install the MongoDB application:</p>
+<ul>
+<li><a href="https://www.mongodb.org">https://www.mongodb.org</a></li>
+</ul>
+<p>A suitable distribution from here should suffice:</p>
+<ul>
+<li><a href="https://www.mongodb.com/download-center#community">https://www.mongodb.com/download-center#community</a></li>
+</ul>
+<p>Additionally, install a UX for Mongo:</p>
+<ul>
+<li><a href="https://robomongo.org">https://robomongo.org</a></li>
+</ul>
+<p>The produce you want here is the free Robo 3T application (not the studio) </p>
+<p>Typically, to launch the mongodb database service on your platform, first create a directory somewhere to store the database itself:</p>
+<pre><code>mkdir db</code></pre>
+<p>Then enter the following command to launch the service:</p>
+<pre><code>mongod -dbpath db</code></pre>
+<p>Now launch Robo 3T and select <code>File-&gt;Connect</code>:</p>
+<p><img src="img/01x.png" alt=""></p>
+<p>Press <code>Create</code> - and the accept the defaults:</p>
+<p><img src="img/02x.png" alt=""></p>
+<p>This will establish a default connection to the service you just started:</p>
+<p><img src="img/03x.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Connect to Mongo via Mongoose</h1>
+<p>Back within our project, we will be using the Mongoose library to interact with mongo:</p>
+<ul>
+<li><a href="http://mongoosejs.com/">http://mongoosejs.com/</a></li>
+</ul>
+<p>To install the framework - run the following command in our project:</p>
+<pre><code>npm install mongoose</code></pre>
+<h2>package.json</h2>
+<pre><code>{
+  &quot;name&quot;: &quot;donation-web&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;dotenv&quot;: &quot;^6.2.0&quot;,
+    &quot;handlebars&quot;: &quot;^4.0.12&quot;,
+    &quot;hapi&quot;: &quot;^18.0.0&quot;,
+    &quot;hapi-auth-cookie&quot;: &quot;^9.1.0&quot;,
+    &quot;inert&quot;: &quot;^5.1.2&quot;,
+    &quot;mongoose&quot;: &quot;^5.4.7&quot;,
+    &quot;vision&quot;: &quot;^5.4.4&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;prettier&quot;: &quot;^1.16.0&quot;
+  },
+  &quot;prettier&quot;: {
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 120
+  }
+}</code></pre>
+<p>We need to define our mongo connection string in our private .env file:</p>
+<h2>.env</h2>
+<pre><code>...
+db=mongodb://localhost/donation</code></pre>
+<p>Introduce a new folder called <code>models</code> into the app folder, and create the following file:</p>
+<h2>app/models/db.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+require(&#39;dotenv&#39;).config();
+
+const Mongoose = require(&#39;mongoose&#39;);
+
+Mongoose.connect(process.env.db);
+const db = Mongoose.connection;
+
+db.on(&#39;error&#39;, function(err) {
+  console.log(`database connection error: ${err}`);
+});
+
+db.on(&#39;disconnected&#39;, function() {
+  console.log(&#39;database disconnected&#39;);
+});
+
+db.once(&#39;open&#39;, function() {
+  console.log(`database connected to ${this.name} on ${this.host}`);
+})</code></pre>
+<p>This will establish a connection to the database.</p>
+<h2>index.js</h2>
+<p>In index.js, we can delete the existing server objects:</p>
+<pre><code>server.bind({
+  users: {},
+  donations: [],
+});</code></pre>
+<p>include this below </p>
+<pre><code>require(&#39;./app/models/db&#39;);</code></pre>
+<p>Restart the app now - and we should see the following message on the console:</p>
+<pre><code>database connected to donation on localhost</code></pre>
+<p>If you can see the mongod service - it should report a new connection when you run the app:</p>
+<pre><code>2019-01-29T09:54:57.906+0000 I NETWORK  [listener] connection accepted from 127.0.0.1:54425 #1 (1 connection now open)
+2019-01-29T09:55:00.351+0000 I NETWORK  [conn1] end connection 127.0.0.1:54425 (0 connections now open)
+2019-01-29T09:55:02.449+0000 I NETWORK  [listener] connection accepted from 127.0.0.1:54443 #2 (1 connection now open)
+2019-01-29T09:55:02.455+0000 I NETWORK  [conn2] received client metadata from 127.0.0.1:54443 conn2: { driver: { name: &quot;nodejs&quot;, version: &quot;3.1.10&quot; }, os: { type: &quot;Darwin&quot;, name: &quot;darwin&quot;, architecture: &quot;x64&quot;, version: &quot;18.2.0&quot; }, platform: &quot;Node.js v10.15.0, LE, mongodb-core: 3.1.9&quot; }</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Signup</h1>
+<h2>User Model</h2>
+<p>Introducing models into an application is a key step in may the application perform some useful function. We already have a <code>models</code> folder in our app - create a new module to represent a Schema for a User model:</p>
+<h2>app/models/user.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const Mongoose = require(&#39;mongoose&#39;);
+const Schema = Mongoose.Schema;
+
+const userSchema = new Schema({
+  firstName: String,
+  lastName: String,
+  email: String,
+  password: String
+});
+
+module.exports = Mongoose.model(&#39;User&#39;, userSchema);</code></pre>
+<h2>Signup Handler</h2>
+<p>The accounts controller can now require this model:</p>
+<h2>app/controllers/accounts.js</h2>
+<pre><code>const User = require(&#39;../models/user&#39;);</code></pre>
+<p>.. and in register we can save new users as they are registered:</p>
+<pre><code>  signup: {
+    auth: false,
+    handler: async function(request, h) {
+      const payload = request.payload;
+      const newUser = new User({
+        firstName: payload.firstName,
+        lastName: payload.lastName,
+        email: payload.email,
+        password: payload.password
+      });
+      const user = await newUser.save();
+      request.cookieAuth.set({ id: user.id });
+      return h.redirect(&#39;/home&#39;);
+    }
+  },</code></pre>
+<p>Notice we are using the user ID in the cookie instead of the email. This id is generated by mongo.</p>
+<p>Run the app now and register a new user. In Robo 3T, make sure you can browse to the collection we have just created (you may need to refresh the view to see the updates)</p>
+<p><img src="img/03.png" alt=""></p>
+<p>Create a few more users and make sure you can see them in Robo 3T.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Login</h1>
+<h1>User Model</h1>
+<p>To support login, we introduce some additional convenience methods into the User model:</p>
+<h2>user.js</h2>
+<pre><code>userSchema.statics.findByEmail = function(email) {
+  return this.findOne({ email : email});
+};
+
+userSchema.methods.comparePassword = function(candidatePassword) {
+  const isMatch = this.password === candidatePassword;
+  return isMatch;
+};</code></pre>
+<p>Place these above last line.</p>
+<p>The login method will also need to be updated to consult the database when validating a user:</p>
+<pre><code>  login: {
+    auth: false,
+    handler: async function(request, h) {
+      const { email, password } = request.payload
+      let user = await User.findByEmail(email)
+      if(!user) {
+        return h.redirect(&#39;/&#39;);
+      }
+      if (user.comparePassword(password)) {
+        request.cookieAuth.set({ id: user.id })
+        return h.redirect(&#39;/home&#39;);
+      }
+      return h.redirect(&#39;/&#39;);
+    }
+  },</code></pre>
+<p>Try this now, testing for:</p>
+<ul>
+<li>unknown user</li>
+<li>valid user, incorrect password</li>
+<li>valid user + password</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Error Handling</h1>
+<p>Currently we do not report any of the errors above to the user in any meaningful manner. First, lets bring in a new partial:</p>
+<h2>views/partials/error.hbs</h2>
+<pre><code>{{#if errors}}
+  &lt;div class=&quot;ui negative message transition&quot;&gt;
+    &lt;i class=&quot;close icon&quot;&gt;&lt;/i&gt;
+    &lt;div class=&quot;header&quot;&gt;
+      There was a problem...
+    &lt;/div&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+      {{#each errors}}
+        &lt;li&gt;{{message}}&lt;/li&gt;
+      {{/each}}
+    &lt;/ul&gt;
+  &lt;/div&gt;
+{{/if}}</code></pre>
+<p>This can be included in the login view:</p>
+<h2>views/login.hbs</h2>
+<pre><code>        &lt;/form&gt;
+        {{&gt; error }}
+      &lt;/div&gt;</code></pre>
+<p>Finally, this semantic ui feature needs to be initialised in layout.hbs:</p>
+<h2>views/layouts/layout.hbs</h2>
+<pre><code>    &lt;script&gt;
+      $(document).ready(function () {
+        $(&#39;.ui.dropdown&#39;).dropdown({on: &#39;hover&#39;});
+      });
+      $(&#39;.message .close&#39;).on(&#39;click&#39;, function () {
+        $(this).closest(&#39;.message&#39;).transition(&#39;fade&#39;);
+      });
+    &lt;/script&gt;</code></pre>
+<p>These features will display errors if an error object is passed to the view. If no errors are sent, there will be no change.</p>
+<h2>Boom</h2>
+<p>Next, we install a general purpose error utility:</p>
+<pre><code>npm boom</code></pre>
+<ul>
+<li><a href="https://github.com/hapijs/boom#readme">https://github.com/hapijs/boom#readme</a></li>
+</ul>
+<p>Here is a revised version of our check password method in the user model:</p>
+<h2>user.js</h2>
+<pre><code>userSchema.methods.comparePassword = function(candidatePassword) {
+  const isMatch = this.password === candidatePassword;
+  if (!isMatch) {
+    throw new Boom(&#39;Password mismatch&#39;);
+  }
+  return this;
+};</code></pre>
+<p>Notice that if there is no match, we throw an exception as opposed to returning true/false. Also, we are returning the user object.</p>
+<p>This is a revised login handler - using exceptions to report two types of error:</p>
+<ul>
+<li>unknown user</li>
+<li>invalid password</li>
+</ul>
+<pre><code>  login: {
+    auth: false,
+    handler: async function(request, h) {
+      const { email, password } = request.payload;
+      try {
+        let user = await User.findByEmail(email);
+        if (!user) {
+          const message = &#39;Email address is not registered&#39;;
+          throw new Boom(message);
+        }
+        user.comparePassword(password);
+        request.cookieAuth.set({ id: user.id });
+        return h.redirect(&#39;/home&#39;);
+      } catch (err) {
+        return h.view(&#39;login&#39;, { errors: [{ message: err.message }] });
+      }
+    }
+  },</code></pre>
+<p>Try this now and verify that these different errors occur.</p>
+<p>Also, try this experiment:</p>
+<ul>
+<li>launch the application</li>
+<li>terminate the mongodb service (Ctrl-C in console)</li>
+<li>try to log in.</li>
+</ul>
+<p>You may need to way 20 or 30 seconds - but eventually a database error should appear.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercise</h1>
+<p>Archive of the project so far:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.04.end">https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.04.end</a></li>
+</ul>
+<h2>Exercise 1: Settings</h2>
+<p>The settings view is currently not functioning, as it is still tied to an earlier mechanism for tracking users:</p>
+<pre><code>  showSettings: {
+    handler: function(request, h) {
+      var donorEmail = request.auth.credentials.id;
+      const userDetails = this.users[donorEmail];
+      return h.view(&#39;settings&#39;, { title: &#39;Donation Settings&#39;, user: userDetails });
+    }
+  },
+  updateSettings: {
+    handler: function(request, h) {
+      const user = request.payload;
+      this.users[user.email] = user;
+      return h.redirect(&#39;/settings&#39;);
+    }
+  },</code></pre>
+<h2>Hints</h2>
+<p>This line no longer makes sense:</p>
+<pre><code>    var currentUserDetails = this.users[userEmail];</code></pre>
+<p>Instead, we need to read from the database to get the user details - this code fragment will do a read:</p>
+<pre><code>        const id = request.auth.credentials.id;
+        const user = await User.findById(id);</code></pre>
+<p>See if you can figure out the rest.</p>
+<h2>Exercise 2: Signup - duplicate users</h2>
+<p>This is the current signup handler:</p>
+<pre><code>  signup: {
+    auth: false,
+    handler: async function(request, h) {
+      const payload = request.payload;
+      const newUser = new User({
+        firstName: payload.firstName,
+        lastName: payload.lastName,
+        email: payload.email,
+        password: payload.password
+      });
+      const user = await newUser.save();
+      request.cookieAuth.set({ id: user.id });
+      return h.redirect(&#39;/home&#39;);
+    }
+  },</code></pre>
+<p>What happens if the user attempts to sign up with an email already in use? See if you can introduce the error mechanism in the login handler to solve this.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

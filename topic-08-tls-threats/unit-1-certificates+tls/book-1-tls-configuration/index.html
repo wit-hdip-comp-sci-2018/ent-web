@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Digital Certificates & TLS  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 08a TLS">
+          Lab 08a TLS
+        </a>
+      
+        <a class="item" data-tab="Introduction">
+          Introduction
+        </a>
+      
+        <a class="item" data-tab="A. Create Certificate">
+          A. Create Certificate
+        </a>
+      
+        <a class="item" data-tab="B. TLS on Hapi">
+          B. TLS on Hapi
+        </a>
+      
+        <a class="item" data-tab="C. TLS on Apache">
+          C. TLS on Apache
+        </a>
+      
+        <a class="item" data-tab="D. Cipher Suites">
+          D. Cipher Suites
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 08a TLS">
+            <h1>Objectives</h1>
+<p>The objective of this lab is to learn about configuring TLS on web servers.</p>
+<p>In this exercise, you will:</p>
+<ul>
+<li><p>Set yourself up as a Certificate Authority (Part A)</p>
+<ul>
+<li>Create private key and certificate request for yourself as a CA</li>
+<li>Create and install CA self-signed certificate (effectively a root certificate)<br><br></li>
+</ul>
+</li>
+<li><p>Configure web server security (Parts B &amp; C)</p>
+<ul>
+<li>Install server private key and server (public key) certificate</li>
+<li>Configure both Apache and Node.js for TLS
+<br><br></li>
+</ul>
+</li>
+<li>Optionally have a look at TLS algorithms and settings - known as <em>cipher suites</em> (Part D)</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Introduction">
+            <h2>Certificate Authorities</h2>
+<p>The term <em>Certificate Authority (CA)</em> refers to anyone who issues (i.e. signs) digital certificates.
+As we&#39;ll see below, anyone (even you!) can be a CA, though certain CAs are widely trusted on the Internet and their certificates are accepted by browsers that support them.</p>
+<p>Most widely-recognised certificate authorities charge a fee for issuing certificates. Examples are Comodo GoDaddy, DigiCert and GlobalSign. Some have free trial certificates with short validity period (e.g. 30 days).  There are also some free services, including <a href="https://letsencrypt.org/">Let&#39;s Encrypt</a>.
+In practice, this is where you would get a certificate for a production server.  For the purposes of this lab, however, we will generate our own.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="A. Create Certificate">
+            <h1>Getting a signed certificate</h1>
+<h2>Become a Certificate Authority (CA) yourself</h2>
+<p>To be a CA, you create a public/private key pair and issue yourself with a certificate containing this public key.  This cert will be self-signed, meaning you&#39;ll be signing it with your private key.</p>
+<ul>
+<li><p>Launch Linux or other environment that has OpenSSL installed and start a terminal session.  You can use a local Linux machine or you can create an AWS EC2 instance and connect to it using SSH.</p>
+</li>
+<li><p>We first create a 2048-bit RSA private key for the CA</p>
+<pre><code>openssl genrsa -out myca.key 2048</code></pre>
+<p>The key is created in PEM format, which is printable:</p>
+<pre><code>cat myca.key</code></pre>
+</li>
+<li><p>Now use this to create a certificate signing request (CSR) for the certificate authority (so the CA can sign its own key):</p>
+<pre><code>openssl req -new -key myca.key -out myca.csr</code></pre>
+<p>You will be prompted for identification data for the subject of this signing request. Make up an identity for your &quot;pretend&quot; CA (e.g. Highly Secure Certificates Ltd, or suchlike). Don&#39;t enter any challenge passwords, etc.<br><br></p>
+</li>
+<li><p>Now, as CA, use your private key to issue a (self-)signed certificate based on the CSR:</p>
+<pre><code>openssl x509 -req -trustout -signkey myca.key -sha256 -in myca.csr -out myca.crt</code></pre>
+<p>The resulting certificate is valid for just 30 days (default). If you would like it to last longer (e.g. a year), run again with the additional option <em>-days 365</em></p>
+</li>
+</ul>
+<h2>Create keys and a certificate signing request for an application (e.g. web server)</h2>
+<ul>
+<li>We now create a 2048-bit RSA private key for the web server<pre><code>openssl genrsa -out webserver.key 2048</code></pre>
+</li>
+<li>Now use this to create a certificate signing request for the web server:<pre><code>openssl req -new -key webserver.key -out webserver.csr</code></pre>
+You&#39;ll be prompted for identification data for the subject of the signing request. Make up an identity for your web server here.</li>
+</ul>
+<h2>Get your own CA to create and sign the web server certificate</h2>
+<ul>
+<li><p>Get the CA, using its private key, to sign the server’s CSR file:</p>
+<pre><code>openssl x509 -req -CA myca.crt -CAkey myca.key -sha256 -CAcreateserial -in webserver.csr -out webserver.crt</code></pre>
+<p>You now have a web server public key, signed by a third party (the CA), in the file <em>webserver.crt</em>. You also have the web server&#39;s private key in the file <em>webserver.key</em> that you generated above.<br><br></p>
+</li>
+<li><p>(Optional) You could alternatively have got your web server to self-sign its certificate. The command for this is:</p>
+<pre><code>openssl x509 -req -in webserver.csr -signkey webserver.key -sha256 -out webserver_self.crt</code></pre>
+<p>The next step is to configure your web server to be able to locate these keys. We will do this with two different web servers.</p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="B. TLS on Hapi">
+            <h1>Hapi/Node TLS Configuration</h1>
+<p>We will use hapi.js to deploy a basic &quot;Hello world&quot; web application that is secured using our newly-created keys.</p>
+<ul>
+<li><p>(Optional) If you&#39;d like to do this on an AWS EC2 instance, ensure that your instance is launched into a security group that allows inbound traffic to TCP ports 22, 80, 443, 3000 and 3443.  The following commands will install a recent version of node.js, npm, and hapi on Amazon Linux 2.</p>
+<pre><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install 10.15.3
+npm install hapi</code></pre>
+</li>
+<li><p>Make a folder (called <em>private</em>, for example) in a Hapi application and copy your <em>webserver.key</em> and <em>webserver.crt</em> files there. You may use an application you are working on, the &quot;donation&quot; demo app, or download the very basic application provided <a href="archive/hapi_example.js">here</a>.<br><br></p>
+</li>
+<li><p>Edit the code for server creation to use a different port and specify the locations of the key file and the certificate file respectively:</p>
+<pre>
+const fs = require('fs');
+const server = Hapi.server({
+port: 3443,
+tls: {
+      key: fs.readFileSync('private/webserver.key'),
+      cert: fs.readFileSync('private/webserver.crt')
+}
+});
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li><p>Next start the server (this assumes we&#39;ve saved the edited file as <em>hapi_tls_example.js</em>)</p>
+<pre><code>node hapi_tls_example.js</code></pre>
+</li>
+<li><p>Test that it’s working by pointing a web browser to <a href="https://localhost:3443"><a href="https://localhost:3443">https://localhost:3443</a></a> (replace <em>localhost</em> if published elsewhere).<br><br></p>
+</li>
+<li><p>Replace the reference to webserver.crt with <em>webserver_self.crt</em> as created in step 2, restart node and browse again to <a href="https://localhost:4443"><a href="https://localhost:4443">https://localhost:4443</a></a>. Have a look at the certificate trust chain and see the difference.</p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="C. TLS on Apache">
+            <h1>Apache TLS Configuration (e.g. on AWS EC2 instance)</h1>
+<p>Here, we similarly configure an Apache server to listen for HTTPS connections.</p>
+<h2>Create an Apache web server</h2>
+<ul>
+<li><p>Create an EC2 instance and connect to it with SSH.</p>
+</li>
+<li><p>Install apache, enable at startup, and start service.</p>
+<pre><code>sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl enable httpd
+sudo service httpd start</code></pre>
+<p>You should now be able to browse to the public IP address of your instance and see the Apache test page.</p>
+</li>
+<li><p>Have a look at the log files created at <em>/var/log/httpd/</em> (need to use sudo to see them).  These logs are particularly useful for finding configuration errors, especially with TLS.</p>
+</li>
+</ul>
+<h2>Configure TLS on Apache</h2>
+<ul>
+<li>Install the Apache SSL module with the command.<pre><code>sudo yum install mod_ssl -y</code></pre>
+</li>
+<li><p>Copy your server certificate and private key to a suitable location – e.g. <em>/etc/pki/tls/certs</em> and <em>/etc/pki/tls/</em>private</p>
+<pre><code>sudo cp webserver.crt /etc/pki/tls/certs
+sudo cp webserver.key /etc/pki/tls/private</code></pre>
+</li>
+<li><p>Now edit the Apache SSL configuration file <em>/etc/httpd/conf.d/ssl.conf</em> with nano or any text editor</p>
+<pre><code>sudo nano /etc/httpd/conf.d/ssl.conf</code></pre>
+</li>
+<li><p>Look down through the file for <strong><em>SSLCertificateFile</em></strong> and point it to where you put <em>webserver.crt</em>. Likewise see <strong><em>SSLCertificateKeyFile</em></strong> and point it to <em>webserver.key</em><br><br></p>
+</li>
+<li><p>You may wish to change the document root to something different from the HTTP site.  If you leave it unchanged then the HTTP and HTTPS versions will point to the same content.<br><br></p>
+</li>
+<li><p>Finally, restart apache:</p>
+<pre><code>sudo service httpd restart</code></pre>
+</li>
+</ul>
+<h2>Test it</h2>
+<ul>
+<li><p>Edit your instance&#39;s security group to allow incoming connections to port 443.<br><br></p>
+</li>
+<li><p>Enter the following in a web browser:
+<pre><a href="https://ip_address">https://ip_address</a></pre>    (replacing <em>ip_address</em> with your instance’s public IP address)<br><br></p>
+</li>
+<li><p>You&#39;ll get a warning as your certificate is signed by a CA that your browser doesn&#39;t trust.  You should be able to view the certificate and verify that it&#39;s the one that you created.</p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="D. Cipher Suites">
+            <h1>(Optional) Cipher suites</h1>
+<ul>
+<li><p>Using <a href="https://www.wireshark.org/">Wireshark</a> or equivalent, capture the setup of a TLS session from a browser to a web server. It should start with a &quot;Client Hello&quot; message, something like that shown here: <img src="img/tls_wireshark.png" alt="Tracing establishment of TLS connection"></p>
+</li>
+<li><p>Trace the TLS handshake. What TLS version is used? What Cipher Suite does the browser prefer?  Does the server match this?  Try a variety of browsers and web servers and see if you can find examples where they don&#39;t match.</p>
+</li>
+<li><p>You can also force browsers to only use an up to date version and/or cipher – e.g. TLSv1.3.  Are there any disadvantages in doing this?  There are various test suites available that allow you to try old browser versions – e.g. <a href="https://crossbrowsertesting.com"><a href="https://crossbrowsertesting.com">https://crossbrowsertesting.com</a></a> or <a href="https://www.browserling.com"><a href="https://www.browserling.com">https://www.browserling.com</a></a></p>
+</li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

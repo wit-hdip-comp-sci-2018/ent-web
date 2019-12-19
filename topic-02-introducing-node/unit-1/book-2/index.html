@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> APIs & Node  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 02b FoureSquare JS">
+          Lab 02b FoureSquare JS
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="08">
+          08
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 02b FoureSquare JS">
+            <h1>Foursquare API in Node</h1>
+<p>Write a javascript program to retrieve FourseSquare venue information.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Setup</h1>
+<h2>Install Node.js</h2>
+<p>Install the latest <code>LTS</code> release of node on your workstation:</p>
+<ul>
+<li><a href="https://nodejs.org/en/">https://nodejs.org/en/</a></li>
+</ul>
+<p>From a command prompt, go to a suitable project folder, and enter the following:</p>
+<h2>Create a node app</h2>
+<pre><code>mkdir four-square-prj
+cd four-square-prj
+npm init</code></pre>
+<p>When the last command above is entered, you will be asked to enter a range of values. Accept all defaults - which should let you proceed as follows:</p>
+<pre><code>npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install &lt;pkg&gt;` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (four-square-prj)
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+About to write to /Users/edeleastar/repos/modules/wit-hdip-comp-sci/ent-web-prj/four-square-prj/package.json:
+
+{
+  &quot;name&quot;: &quot;four-square-prj&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}
+
+
+Is this OK? (yes)</code></pre>
+<p>This will create a single file in the folder:</p>
+<h2>package.json</h2>
+<pre><code>{
+  &quot;name&quot;: &quot;four-square-prj&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}</code></pre>
+<p>You may also like to host the project on git - you should use this .gitignore file:</p>
+<h2>.gitignore</h2>
+<pre><code>.idea
+node_modules</code></pre>
+<p>Finally, in Webstorm, open this folder as a project:</p>
+<p><img src="img/00.png" alt=""></p>
+<p>Web storm may have invited you to run &#39;npm install&#39; when you first load the project. You can allow this to run at this stage.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h2>Webstorm</h2>
+<p>In your WebStorm project, create the following file:</p>
+<h2>fs.js</h2>
+<pre><code>const fsConfig = {
+  base_url: &#39;https://api.foursquare.com/v2/venues/explore?&#39;,
+  client_id: &#39;Your ID&#39;,
+  client_secret: &#39;Your Secret&#39;
+};
+
+console.log(fsConfig);</code></pre>
+<p>Run the program now by selecting the js file, right click and select <code>Run</code></p>
+<p><img src="./img/05.png" alt=""></p>
+<p>Run it again by pressing the green arrow on the toolbar.</p>
+<p>Set a breakpoint on the console.log statement by double clicking in the margin:</p>
+<p>Then press the green &#39;bug&#39; icon. The program should stop and you should be able to inspect the fsConfig object.</p>
+<p><img src="./img/06.png" alt=""></p>
+<p>In the above, we are paused in the execution of the program, and we are inspecting the data structures in scope at this time. This is approximately analogous to the chrome debug experiments we conducted earlier - but this time we are within the WebStorm debugger.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h2>Query in Javascript</h2>
+<p>Now insert your client id &amp; secret into the fsConfig object, and extend your programming with the following:</p>
+<pre><code>const fsCredentials = &#39;&amp;client_id=&#39; + fsConfig.client_id + &#39;&amp;client_secret=&#39; + fsConfig.client_secret + &#39;&amp;v=20190101&#39;;
+
+console.log(fsConfig.base_url + &#39;near=Waterford,IE&#39; + fsCredentials);</code></pre>
+<p>Now run the program, and the url we manually generated in the last step will be printed to the console:</p>
+<p><img src="img/05.png" alt=""></p>
+<p>From within the WebStorm log you should be able to click on the link and view the list of venues.</p>
+<p>Now we will do this programatically (in the next step)</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h2>Axios</h2>
+<p>To make an http API call, we could use this library here:</p>
+<ul>
+<li><a href="https://github.com/axios/axios">https://github.com/axios/axios</a></li>
+</ul>
+<p>This is a kind of swiss army knife for making http requests - it can be used both in a browser, and in a node application.</p>
+<p>To use it in our app, run a shell/command prompt, and navigate to the project folder. Enter the following:</p>
+<pre><code>npm install axios --save</code></pre>
+<p>Once completed, the primary difference you may notice in your app is a modification to package.json:</p>
+<pre><code>{
+  &quot;name&quot;: &quot;four-square-prj&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;axios&quot;: &quot;^0.18.0&quot;
+  }
+}</code></pre>
+<p>We have a new dependency - which has been downloaded in installed inside the <code>node_modules</code> folder in our project:</p>
+<p><img src="img/01.png" alt=""></p>
+<p>This folder is now populated with the source of the axios library + any dependencies it may need. You are not expected to interact with this folder, and it will not be committed to git. </p>
+<p>Consider it is more or less the equivalent of jar files in a java project.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h2>Http Request</h2>
+<p>In our fs.js file, at the top introduce this line:</p>
+<h2>fs.js</h2>
+<pre><code>const axios = require(&quot;axios&quot;);</code></pre>
+<p>This is how we &#39;import&#39; libraries in node applications.</p>
+<p>Append the following to the end of the file:</p>
+<pre><code>axios.get(fsConfig.base_url + &#39;near=Waterford,IE&#39; + fsCredentials).then(function(response) {
+  console.log(response);
+});</code></pre>
+<p>Run the program - and inspect the logged output. The call should succeed - but the output will be challenging to decipher.</p>
+<p>Try debugging - and set a breakpoint where we are logging the response:</p>
+<p><img src="img/02.png" alt=""></p>
+<p>In the above - we are examining the response in detail. The venues are nested considerably inside the response.</p>
+<p>Rewrite the request - this time only logging the venue details:</p>
+<pre><code>axios.get(fsConfig.base_url + &#39;near=Waterford,IE&#39; + fsCredentials).then(function(response) {
+  var venues = response.data.response.groups[0].items;
+  console.log(venues);
+});</code></pre>
+<p>This should now log just the venues themselves.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Parsing the data</h1>
+<p>Try this version of our request:</p>
+<pre><code>axios.get(fsConfig.base_url + &#39;near=Waterford,IE&#39; + fsCredentials).then(function(response) {
+  var venues = response.data.response.groups[0].items;
+  const venueCollection = [];
+  for (let i = 0; i &lt; venues.length; i++) {
+    const singleVenue = venues[i].venue;
+    const venue = {
+      name: singleVenue.name,
+    };
+    venueCollection.push(venue);
+  }
+  console.log(venueCollection);
+});</code></pre>
+<p>In this version, we extract just the venue name into an object, and populate an array with all of the venues we recovered.</p>
+<p>Run the program now - we should get a simpler list:</p>
+<pre><code class="lang-text">  { name: &#39;Bodega!&#39; },
+  { name: &#39;Geoff\&#39;s Café Bar&#39; },
+  { name: &#39;Carter\&#39;s Chocolate Cafe&#39; },
+  { name: &#39;Emilianos&#39; },
+  { name: &#39;House of Waterford Crystal&#39; },
+  { name: &#39;Clock Tower&#39; },
+  { name: &#39;Jack Meades&#39; },
+  { name: &#39;Tower Hotel &amp; Leisure Centre&#39; },
+  { name: &#39;Faithlegg House Hotel&#39; },
+  { name: &#39;McLeary\&#39;s&#39; },
+  { name: &#39;Medieval Museum&#39; },
+  { name: &#39;Oskars&#39; },
+  { name: &#39;Phil Grimes&#39; },
+  { name: &#39;The Munster Bar&#39; },
+  { name: &#39;Granville Hotel&#39; },
+  { name: &#39;The Book Centre&#39; },
+  { name: &#39;Momo&#39; },
+  { name: &#39;Loko&#39; },
+  { name: &#39;Ardkeen Quality Food Store&#39; },
+  { name: &#39;Burzza&#39; },
+  { name: &#39;The People\&#39;s Park&#39; },
+  { name: &#39;Theatre Royal&#39; },
+  { name: &#39;La Bohème&#39; },
+  { name: &#39;Waterford Plunkett Railway Station&#39; },
+  { name: &#39;Caulfield\&#39;s SuperValu&#39; },
+  { name: &#39;The Reg&#39; },
+  { name: &#39;Bishop\&#39;s Palace&#39; },
+  { name: &#39;Waterford Castle Hotel and Golf Resort&#39; },
+  { name: &#39;Kingfisher Club&#39; },
+  { name: &#39;Curry Garden Indian Take Away &amp; Kebab House&#39; } ]</code></pre>
+<p>Set a breakpoint in the function, and explore the response in detail:</p>
+<p><img src="img/03.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>loadVenues()</h1>
+<p>Try this alternative version of the script:</p>
+<pre><code>const axios = require(&#39;axios&#39;);
+require(&#39;dotenv&#39;).config();
+
+const fsConfig = {
+  base_url: &#39;https://api.foursquare.com/v2/venues/explore?&#39;,
+  client_id: process.env.CLIENT_ID,
+  client_secret: process.env.CLIENT_SECRET
+};
+
+const fsCredentials = &#39;&amp;client_id=&#39; + fsConfig.client_id + &#39;&amp;client_secret=&#39; + fsConfig.client_secret + &#39;&amp;v=20190101&#39;;
+
+function loadVenues(location) {
+  console.log(`Searching ${location}...`);
+  axios.get(fsConfig.base_url + location + fsCredentials).then(function(response) {
+    var venues = response.data.response.groups[0].items;
+    const venueCollection = [];
+    for (let i = 0; i &lt; venues.length; i++) {
+      const singleVenue = venues[i].venue;
+      const venue = {
+        name: singleVenue.name
+      };
+      venueCollection.push(venue);
+    }
+    console.log(venueCollection);
+  });
+}
+
+loadVenues(&#39;near=Waterford,IE&#39;);</code></pre>
+<p>It is identical to the previous version - except the request has been encapsulated in function, and the function can take the location as a parameter.</p>
+<p>Now extend the script to search a few more locations:</p>
+<pre><code>loadVenues(&#39;near=Waterford,IE&#39;);
+loadVenues(&#39;near=Tramore,IE&#39;);
+loadVenues(&#39;near=Dungarvan,IE&#39;);</code></pre>
+<p>Run the program now - and expect the results:</p>
+<pre><code class="lang-text">Searching near=Waterford,IE...
+Searching near=Tramore,IE...
+Searching near=Dungarvan,IE...
+[ { name: &#39;Tramore Beach&#39; },
+  { name: &#39;Victoria House (The Vic)&#39; },
+  { name: &#39;Moe\&#39;s Café&#39; },
+  { name: &#39;Raglan Road&#39; },
+  { name: &#39;Dooly\&#39;s&#39; },
+  { name: &#39;Lidl&#39; },
+  { name: &#39;Tramore Amusement Park&#39; },
+  { name: &#39;O\&#39;Shea\&#39;s Hotel&#39; },
+  { name: &#39;Quish\&#39;s SuperValu&#39; },
+  { name: &#39;Tesco&#39; },
+  { name: &#39;T-Bay Café&#39; },
+  { name: &#39;Croke\&#39;s&#39; },
+  { name: &#39;Coastguard Cultural Centre&#39; },
+  { name: &#39;Tramore Service Station&#39; } ]
+[ { name: &#39;The Moorings&#39; },
+  { name: &#39;Merry\&#39;s Bar&#39; },
+  { name: &#39;The Tannery&#39; },
+  { name: &#39;Clonea Strand Beach&#39; },
+  { name: &#39;Meades Cafe&#39; },
+  { name: &#39;The Anchor&#39; },
+  { name: &#39;Dungarvan Shopping Centre&#39; },
+  { name: &#39;The Lady Belle&#39; },
+  { name: &#39;Interlude&#39; },
+  { name: &#39;Lidl&#39; },
+  { name: &#39;The Park Hotel &amp; Leisure Centre&#39; },
+  { name: &#39;McDonald\&#39;s&#39; },
+  { name: &#39;Gold Coast Golf Resort&#39; },
+  { name: &#39;The Local&#39; },
+  { name: &#39;Ormond\&#39;s Café &amp; Restaurant&#39; },
+  { name: &#39;Walton Park&#39; },
+  { name: &#39;Lawlor\&#39;s Hotel&#39; },
+  { name: &#39;SGC Cinema&#39; },
+  { name: &#39;Dungarvan Harbour&#39; },
+  { name: &#39;Bayview Caravan Park&#39; },
+  { name: &#39;Grattan Square&#39; },
+  { name: &#39;Gold Coast Golf Club&#39; },
+  { name: &#39;Dunnes Stores&#39; },
+  { name: &#39;Clonea Strand Hotel&#39; },
+  { name: &#39;Indian Ocean&#39; },
+  { name: &#39;Garvey\&#39;s SuperValu&#39; } ]
+[ { name: &#39;Bodega!&#39; },
+  { name: &#39;Geoff\&#39;s Café Bar&#39; },
+  { name: &#39;Carter\&#39;s Chocolate Cafe&#39; },
+  { name: &#39;Emilianos&#39; },
+  { name: &#39;House of Waterford Crystal&#39; },
+  { name: &#39;Clock Tower&#39; },
+  { name: &#39;Jack Meades&#39; },
+  { name: &#39;Tower Hotel &amp; Leisure Centre&#39; },
+  { name: &#39;Faithlegg House Hotel&#39; },
+  { name: &#39;McLeary\&#39;s&#39; },
+  { name: &#39;Medieval Museum&#39; },
+  { name: &#39;Oskars&#39; },
+  { name: &#39;Phil Grimes&#39; },
+  { name: &#39;The Munster Bar&#39; },
+  { name: &#39;Granville Hotel&#39; },
+  { name: &#39;The Book Centre&#39; },
+  { name: &#39;Momo&#39; },
+  { name: &#39;Loko&#39; },
+  { name: &#39;Ardkeen Quality Food Store&#39; },
+  { name: &#39;Burzza&#39; },
+  { name: &#39;The People\&#39;s Park&#39; },
+  { name: &#39;Theatre Royal&#39; },
+  { name: &#39;La Bohème&#39; },
+  { name: &#39;Waterford Plunkett Railway Station&#39; },
+  { name: &#39;Caulfield\&#39;s SuperValu&#39; },
+  { name: &#39;The Reg&#39; },
+  { name: &#39;Bishop\&#39;s Palace&#39; },
+  { name: &#39;Waterford Castle Hotel and Golf Resort&#39; },
+  { name: &#39;Kingfisher Club&#39; },
+  { name: &#39;Curry Garden Indian Take Away &amp; Kebab House&#39; } ]</code></pre>
+<p>Notice that the <code>Searching near</code> strings appear collected at the top - and then the venue locations appear out of sequence (from the loadVenue() call sequence).</p>
+<p>Why is this?</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="08">
+            <h2>async</h2>
+<p>Here is a revised version of loadVenues()</p>
+<pre><code>function loadVenues(location) {
+  console.log(`Searching ${location}...`);
+  const response = axios.get(fsConfig.base_url + location + fsCredentials);
+  var venues = response.data.response.groups[0].items;
+  const venueCollection = [];
+  for (let i = 0; i &lt; venues.length; i++) {
+    const singleVenue = venues[i].venue;
+    const venue = {
+      name: singleVenue.name
+    };
+    venueCollection.push(venue);
+  }
+  console.log(venueCollection);
+}</code></pre>
+<p>Have a close look at this function - note the completely different syntax for invoking axios.get()</p>
+<pre><code>  const response = axios.get(fsConfig.base_url + location + fsCredentials);</code></pre>
+<p>This does not use the callback/promise syntax - but a new syntax that is more like a conventional function call. If you run it, however, it will fail. We need the following adjustments:</p>
+<pre><code>  const response = await axios.get(fsConfig.base_url + location + fsCredentials);</code></pre>
+<p>This will also require the function definition to be adjusted:</p>
+<pre><code>async function loadVenues(location) {</code></pre>
+<p>This is a relatively new syntax - async/await - in Javascript.</p>
+<p>Run the program now - and it should work:</p>
+<pre><code class="lang-text">Searching near=Waterford,IE...
+Searching near=Tramore,IE...
+Searching near=Dungarvan,IE...
+[ { name: &#39;Tramore Beach&#39; },
+  { name: &#39;Victoria House (The Vic)&#39; },
+  { name: &#39;Moe\&#39;s Café&#39; },
+  { name: &#39;Raglan Road&#39; },
+  { name: &#39;Dooly\&#39;s&#39; },
+  { name: &#39;Lidl&#39; },
+  { name: &#39;Tramore Amusement Park&#39; },
+  { name: &#39;O\&#39;Shea\&#39;s Hotel&#39; },
+  { name: &#39;Quish\&#39;s SuperValu&#39; },
+  { name: &#39;Tesco&#39; },
+  { name: &#39;T-Bay Café&#39; },
+  { name: &#39;Croke\&#39;s&#39; },
+  { name: &#39;Coastguard Cultural Centre&#39; },
+  { name: &#39;Tramore Service Station&#39; } ]
+[ { name: &#39;The Moorings&#39; },
+  { name: &#39;Merry\&#39;s Bar&#39; },
+  { name: &#39;The Tannery&#39; },
+  { name: &#39;Clonea Strand Beach&#39; },
+  { name: &#39;Meades Cafe&#39; },
+  { name: &#39;The Anchor&#39; },
+  { name: &#39;Dungarvan Shopping Centre&#39; },
+  { name: &#39;The Lady Belle&#39; },
+  { name: &#39;Interlude&#39; },
+  { name: &#39;Lidl&#39; },
+  { name: &#39;The Park Hotel &amp; Leisure Centre&#39; },
+  { name: &#39;McDonald\&#39;s&#39; },
+  { name: &#39;Gold Coast Golf Resort&#39; },
+  { name: &#39;The Local&#39; },
+  { name: &#39;Ormond\&#39;s Café &amp; Restaurant&#39; },
+  { name: &#39;Walton Park&#39; },
+  { name: &#39;Lawlor\&#39;s Hotel&#39; },
+  { name: &#39;SGC Cinema&#39; },
+  { name: &#39;Dungarvan Harbour&#39; },
+  { name: &#39;Bayview Caravan Park&#39; },
+  { name: &#39;Grattan Square&#39; },
+  { name: &#39;Gold Coast Golf Club&#39; },
+  { name: &#39;Dunnes Stores&#39; },
+  { name: &#39;Clonea Strand Hotel&#39; },
+  { name: &#39;Indian Ocean&#39; },
+  { name: &#39;Garvey\&#39;s SuperValu&#39; } ]
+[ { name: &#39;Bodega!&#39; },
+  { name: &#39;Geoff\&#39;s Café Bar&#39; },
+  { name: &#39;Carter\&#39;s Chocolate Cafe&#39; },
+  { name: &#39;Emilianos&#39; },
+  { name: &#39;House of Waterford Crystal&#39; },
+  { name: &#39;Clock Tower&#39; },
+  { name: &#39;Jack Meades&#39; },
+  { name: &#39;Tower Hotel &amp; Leisure Centre&#39; },
+  { name: &#39;Faithlegg House Hotel&#39; },
+  { name: &#39;McLeary\&#39;s&#39; },
+  { name: &#39;Medieval Museum&#39; },
+  { name: &#39;Oskars&#39; },
+  { name: &#39;Phil Grimes&#39; },
+  { name: &#39;The Munster Bar&#39; },
+  { name: &#39;Granville Hotel&#39; },
+  { name: &#39;The Book Centre&#39; },
+  { name: &#39;Momo&#39; },
+  { name: &#39;Loko&#39; },
+  { name: &#39;Ardkeen Quality Food Store&#39; },
+  { name: &#39;Burzza&#39; },
+  { name: &#39;The People\&#39;s Park&#39; },
+  { name: &#39;Theatre Royal&#39; },
+  { name: &#39;La Bohème&#39; },
+  { name: &#39;Waterford Plunkett Railway Station&#39; },
+  { name: &#39;Caulfield\&#39;s SuperValu&#39; },
+  { name: &#39;The Reg&#39; },
+  { name: &#39;Bishop\&#39;s Palace&#39; },
+  { name: &#39;Waterford Castle Hotel and Golf Resort&#39; },
+  { name: &#39;Kingfisher Club&#39; },
+  { name: &#39;Curry Garden Indian Take Away &amp; Kebab House&#39; } ]</code></pre>
+<p>Note, however, the location report is still out of sync with the report. To correct this, change the order of these two methods:</p>
+<pre><code>  console.log(`Searching ${location}...`);
+  const response = await axios.get(fsConfig.base_url + location + fsCredentials);</code></pre>
+<p>to</p>
+<pre><code>  const response = await axios.get(fsConfig.base_url + location + fsCredentials);
+  console.log(`Searching ${location}...`);</code></pre>
+<p>Run the script again - and the sequencing is more logical:</p>
+<pre><code class="lang-text">Searching near=Tramore,IE...
+[ { name: &#39;Tramore Beach&#39; },
+  { name: &#39;Victoria House (The Vic)&#39; },
+  { name: &#39;Moe\&#39;s Café&#39; },
+  { name: &#39;Raglan Road&#39; },
+  { name: &#39;Dooly\&#39;s&#39; },
+  { name: &#39;Lidl&#39; },
+  { name: &#39;Tramore Amusement Park&#39; },
+  { name: &#39;O\&#39;Shea\&#39;s Hotel&#39; },
+  { name: &#39;Quish\&#39;s SuperValu&#39; },
+  { name: &#39;Tesco&#39; },
+  { name: &#39;T-Bay Café&#39; },
+  { name: &#39;Croke\&#39;s&#39; },
+  { name: &#39;Coastguard Cultural Centre&#39; },
+  { name: &#39;Tramore Service Station&#39; } ]
+Searching near=Waterford,IE...
+[ { name: &#39;Bodega!&#39; },
+  { name: &#39;Geoff\&#39;s Café Bar&#39; },
+  { name: &#39;Carter\&#39;s Chocolate Cafe&#39; },
+  { name: &#39;Emilianos&#39; },
+  { name: &#39;House of Waterford Crystal&#39; },
+  { name: &#39;Clock Tower&#39; },
+  { name: &#39;Jack Meades&#39; },
+  { name: &#39;Tower Hotel &amp; Leisure Centre&#39; },
+  { name: &#39;Faithlegg House Hotel&#39; },
+  { name: &#39;McLeary\&#39;s&#39; },
+  { name: &#39;Medieval Museum&#39; },
+  { name: &#39;Oskars&#39; },
+  { name: &#39;Phil Grimes&#39; },
+  { name: &#39;The Munster Bar&#39; },
+  { name: &#39;Granville Hotel&#39; },
+  { name: &#39;The Book Centre&#39; },
+  { name: &#39;Momo&#39; },
+  { name: &#39;Loko&#39; },
+  { name: &#39;Ardkeen Quality Food Store&#39; },
+  { name: &#39;Burzza&#39; },
+  { name: &#39;The People\&#39;s Park&#39; },
+  { name: &#39;Theatre Royal&#39; },
+  { name: &#39;La Bohème&#39; },
+  { name: &#39;Waterford Plunkett Railway Station&#39; },
+  { name: &#39;Caulfield\&#39;s SuperValu&#39; },
+  { name: &#39;The Reg&#39; },
+  { name: &#39;Bishop\&#39;s Palace&#39; },
+  { name: &#39;Waterford Castle Hotel and Golf Resort&#39; },
+  { name: &#39;Kingfisher Club&#39; },
+  { name: &#39;Curry Garden Indian Take Away &amp; Kebab House&#39; } ]
+Searching near=Dungarvan,IE...
+[ { name: &#39;The Moorings&#39; },
+  { name: &#39;Merry\&#39;s Bar&#39; },
+  { name: &#39;The Tannery&#39; },
+  { name: &#39;Clonea Strand Beach&#39; },
+  { name: &#39;Meades Cafe&#39; },
+  { name: &#39;The Anchor&#39; },
+  { name: &#39;Dungarvan Shopping Centre&#39; },
+  { name: &#39;The Lady Belle&#39; },
+  { name: &#39;Interlude&#39; },
+  { name: &#39;Lidl&#39; },
+  { name: &#39;The Park Hotel &amp; Leisure Centre&#39; },
+  { name: &#39;McDonald\&#39;s&#39; },
+  { name: &#39;Gold Coast Golf Resort&#39; },
+  { name: &#39;The Local&#39; },
+  { name: &#39;Ormond\&#39;s Café &amp; Restaurant&#39; },
+  { name: &#39;Walton Park&#39; },
+  { name: &#39;Lawlor\&#39;s Hotel&#39; },
+  { name: &#39;SGC Cinema&#39; },
+  { name: &#39;Dungarvan Harbour&#39; },
+  { name: &#39;Bayview Caravan Park&#39; },
+  { name: &#39;Grattan Square&#39; },
+  { name: &#39;Gold Coast Golf Club&#39; },
+  { name: &#39;Dunnes Stores&#39; },
+  { name: &#39;Clonea Strand Hotel&#39; },
+  { name: &#39;Indian Ocean&#39; },
+  { name: &#39;Garvey\&#39;s SuperValu&#39; } ]</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercises</h1>
+<p>Archive of project:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/four-square-node/releases/tag/lab.end">https://github.com/wit-hdip-comp-sci-2018/four-square-node/releases/tag/lab.end</a></li>
+</ul>
+<h2>Exercise 1: Additional Fields</h2>
+<p>Explore the API documentation again:</p>
+<ul>
+<li><a href="https://developer.foursquare.com/docs/">https://developer.foursquare.com/docs/</a></li>
+</ul>
+<p>In the above, locate the <code>/venues/explore</code> endpoint - the one we have been interrogating:</p>
+<ul>
+<li><a href="https://developer.foursquare.com/docs/venues/explore">https://developer.foursquare.com/docs/venues/explore</a></li>
+</ul>
+<p>Scrolling down here are some example responses. Use these to extend the program to show additional information:</p>
+<ul>
+<li>address</li>
+<li>lat/lng</li>
+<li>category</li>
+</ul>
+<p>To illustrate the range of data available, we can always just visit the foursqure site itself:</p>
+<ul>
+<li><a href="https://foursquare.com/explore?mode=url&amp;near=Waterford%2C%20Co%20Waterford%2C%20Ireland&amp;nearGeoId=72057594040888928">https://foursquare.com/explore?mode=url&amp;near=Waterford%2C%20Co%20Waterford%2C%20Ireland&amp;nearGeoId=72057594040888928</a></li>
+</ul>
+<h2>Exercise 2: Web Version</h2>
+<p>Using the repo-lister project as an example, </p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/repo-lister">https://github.com/wit-hdip-comp-sci-2018/repo-lister</a></li>
+</ul>
+<p>write a web version of this application</p>
+<h2>Exercise 3: Node Github Access</h2>
+<p>Do the opposite of Exercise 2: i.e. using this project as an example, rewrite repo-lister as a simple node application instead of a web page.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

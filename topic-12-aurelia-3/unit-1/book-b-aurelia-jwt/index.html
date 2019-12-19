@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> JWT  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-12b Aurelia JWT">
+          Lab-12b Aurelia JWT
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="Solution">
+          Solution
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-12b Aurelia JWT">
+            <h1>Objectives</h1>
+<p>Complete JWT in donation-web + incorporate into donation-client</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h2>Securing and Testing donations endpoints</h2>
+<h2>app/api/donations.js</h2>
+<p>Replace all:</p>
+<pre><code>    auth: false,</code></pre>
+<p>With the jwt strategy:</p>
+<pre><code>    auth: {
+      strategy: &#39;jwt&#39;,
+    },</code></pre>
+<h2>test/donationapitest</h2>
+<p>New methods to initialize and clear the token:</p>
+<pre><code>  suiteSetup(async function() {
+    await donationService.deleteAllUsers();
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function() {
+    await donationService.deleteAllUsers();
+    donationService.clearAuth();
+  });</code></pre>
+<p>All tests should work now. This is the complete donationapitest :</p>
+<pre><code>&#39;use strict&#39;;
+
+const assert = require(&#39;chai&#39;).assert;
+const DonationService = require(&#39;./donation-service&#39;);
+const fixtures = require(&#39;./fixtures.json&#39;);
+const _ = require(&#39;lodash&#39;);
+
+suite(&#39;Donation API tests&#39;, function() {
+  let donations = fixtures.donations;
+  let newCandidate = fixtures.newCandidate;
+  let newUser = fixtures.newUser;
+
+  const donationService = new DonationService(fixtures.donationService);
+
+  suiteSetup(async function() {
+    await donationService.deleteAllUsers();
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function() {
+    await donationService.deleteAllUsers();
+    donationService.clearAuth();
+  });
+
+  setup(async function() {
+    await donationService.deleteAllDonations();
+  });
+
+  teardown(async function() {
+    await donationService.deleteAllDonations();
+  });
+
+  test(&#39;create a donation&#39;, async function() {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    await donationService.makeDonation(returnedCandidate._id, donations[0]);
+    const returnedDonations = await donationService.getDonations(returnedCandidate._id);
+    assert.equal(returnedDonations.length, 1);
+    assert(_.some([returnedDonations[0]], donations[0]), &#39;returned donation must be a superset of donation&#39;);
+  });
+
+  test(&#39;create multiple donations&#39;, async function() {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    for (var i = 0; i &lt; donations.length; i++) {
+      await donationService.makeDonation(returnedCandidate._id, donations[i]);
+    }
+
+    const returnedDonations = await donationService.getDonations(returnedCandidate._id);
+    assert.equal(returnedDonations.length, donations.length);
+    for (var i = 0; i &lt; donations.length; i++) {
+      assert(_.some([returnedDonations[i]], donations[i]), &#39;returned donation must be a superset of donation&#39;);
+    }
+  });
+
+  test(&#39;delete all donations&#39;, async function() {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    for (var i = 0; i &lt; donations.length; i++) {
+      await donationService.makeDonation(returnedCandidate._id, donations[i]);
+    }
+
+    const d1 = await donationService.getDonations(returnedCandidate._id);
+    assert.equal(d1.length, donations.length);
+    await donationService.deleteAllDonations();
+    const d2 = await donationService.getDonations(returnedCandidate._id);
+    assert.equal(d2.length, 0);
+  });
+
+  test(&#39;delete donations&#39;, async function() {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    for (var i = 0; i &lt; donations.length; i++) {
+      await donationService.makeDonation(returnedCandidate._id, donations[i]);
+    }
+
+    await donationService.deleteDonations(returnedCandidate._id);
+    const d = await donationService.getDonations(returnedCandidate._id);
+    console.log(d);
+    assert.equal(d.length, 0);
+  });
+});</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h2>Securing and Testing users endpoints</h2>
+<p>Apart from the <code>authenticate</code> and <code>create</code> methods, replace the remaining handlers :</p>
+<pre><code>    auth: false,</code></pre>
+<p>... with the jwt strategy:</p>
+<pre><code>    auth: {
+      strategy: &#39;jwt&#39;,
+    },</code></pre>
+<p>This is a revised users test:</p>
+<h2>test/usersapitest.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const assert = require(&#39;chai&#39;).assert;
+const DonationService = require(&#39;./donation-service&#39;);
+const fixtures = require(&#39;./fixtures.json&#39;);
+const _ = require(&#39;lodash&#39;);
+
+suite(&#39;User API tests&#39;, function() {
+  let users = fixtures.users;
+  let newUser = fixtures.newUser;
+
+  const donationService = new DonationService(fixtures.donationService);
+
+  suiteSetup(async function() {
+    await donationService.deleteAllUsers();
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function() {
+    await donationService.deleteAllUsers();
+    donationService.clearAuth();
+  });
+
+  test(&#39;create a user&#39;, async function() {
+    const returnedUser = await donationService.createUser(newUser);
+    assert(_.some([returnedUser], newUser), &#39;returnedUser must be a superset of newUser&#39;);
+    assert.isDefined(returnedUser._id);
+  });
+
+  test(&#39;get user&#39;, async function() {
+    const u1 = await donationService.createUser(newUser);
+    const u2 = await donationService.getUser(u1._id);
+    assert.deepEqual(u1, u2);
+  });
+
+  test(&#39;get invalid user&#39;, async function() {
+    const u1 = await donationService.getUser(&#39;1234&#39;);
+    assert.isNull(u1);
+    const u2 = await donationService.getUser(&#39;012345678901234567890123&#39;);
+    assert.isNull(u2);
+  });
+
+  test(&#39;delete a user&#39;, async function() {
+    let u = await donationService.createUser(newUser);
+    assert(u._id != null);
+    await donationService.deleteOneUser(u._id);
+    u = await donationService.getUser(u._id);
+    assert(u == null);
+  });
+
+  test(&#39;get all users&#39;, async function() {
+    await donationService.deleteAllUsers();
+    await donationService.createUser(newUser);
+    await donationService.authenticate(newUser);
+    for (let u of users) {
+      await donationService.createUser(u);
+    }
+
+    const allUsers = await donationService.getUsers();
+    assert.equal(allUsers.length, users.length + 1);
+  });
+
+  test(&#39;get users detail&#39;, async function() {
+    await donationService.deleteAllUsers();
+    const user = await donationService.createUser(newUser);
+    await donationService.authenticate(newUser);
+    for (let u of users) {
+      await donationService.createUser(u);
+    }
+
+    const testUser = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password
+    };
+    users.unshift(testUser);
+    const allUsers = await donationService.getUsers();
+    for (var i = 0; i &lt; users.length; i++) {
+      assert(_.some([allUsers[i]], users[i]), &#39;returnedUser must be a superset of newUser&#39;);
+    }
+  });
+
+  test(&#39;get all users empty&#39;, async function() {
+    await donationService.deleteAllUsers();
+    const user = await donationService.createUser(newUser);
+    await donationService.authenticate(newUser);
+    const allUsers = await donationService.getUsers();
+    assert.equal(allUsers.length, 1);
+  });
+});</code></pre>
+<p>This test is a little fragile - but all tests should pass.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Donor Support in API</h1>
+<p>Currently we do not record the donor when we make a donation using the api:</p>
+<h2>app/api/donations.js</h2>
+<pre><code>  makeDonation: {
+    auth: {
+      strategy: &#39;jwt&#39;,
+    },
+    handler: async function(request, h) {
+      let donation = new Donation(request.payload);
+      const candidate = await Candidate.findOne({ _id: request.params.id });
+      if (!candidate) {
+        return Boom.notFound(&#39;No Candidate with this id&#39;);
+      }
+      donation.candidate = candidate._id;
+      donation = await donation.save();
+      donation.donor = userId;
+      return donation;
+    }
+  },</code></pre>
+<p>Because the routes are authenticated, we should be able to recover the user id from the token. This is a new utility method:</p>
+<h2>app/api/utils.js</h2>
+<pre><code>exports.getUserIdFromRequest = function(request) {
+  var userId = null;
+  try {
+    const authorization = request.headers.authorization;
+    var token = authorization.split(&#39; &#39;)[1];
+    var decodedToken = jwt.verify(token, &#39;secretpasswordnotrevealedtoanyone&#39;);
+    userId = decodedToken.id;
+  } catch (e) {
+    userId = null;
+  }
+  return userId;
+};</code></pre>
+<p>Now we can revise makeDonation to include the donor id in the donation:</p>
+<pre><code>const utils = require(&#39;./utils.js&#39;);
+
+...
+
+  makeDonation: {
+    auth: {
+      strategy: &#39;jwt&#39;,
+    },
+    handler: async function(request, h) {
+      const userId = utils.getUserIdFromRequest(request);
+      let donation = new Donation(request.payload);
+      const candidate = await Candidate.findOne({ _id: request.params.id });
+      if (!candidate) {
+        return Boom.notFound(&#39;No Candidate with this id&#39;);
+      }
+      donation.candidate = candidate._id;
+      donation.donor = userId;
+      donation = await donation.save();
+      return donation;
+    }
+  },</code></pre>
+<p>To test this - bring in a new test in donationapitest:</p>
+<h2>test/donationapitest.js</h2>
+<pre><code>  test(&#39;create a donation and check donor&#39;, async function() {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    await donationService.makeDonation(returnedCandidate._id, donations[0]);
+    const returnedDonations = await donationService.getDonations(returnedCandidate._id);
+    assert.isDefined(returnedDonations[0].donor);
+  });</code></pre>
+<p>This test should pass. We can frim up the tests to check if the id is correct.</p>
+<pre><code>  test(&#39;create a donation and check donor&#39;, async function() {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    await donationService.makeDonation(returnedCandidate._id, donations[0]);
+    const returnedDonations = await donationService.getDonations(returnedCandidate._id);
+    assert.isDefined(returnedDonations[0].donor);
+
+    const users = await donationService.getUsers();
+    assert(_.some([users[0]], newUser), &#39;returnedUser must be a superset of newUser&#39;);
+  });</code></pre>
+<p>This is the complete project at this stage:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.13.end">https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.13.end</a></li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Aurelia Login</h1>
+<p>We can now turn our attention to the client application - and incorporate JWT support into Aurelia.</p>
+<p>Because of how we have structured out client application, all changes can be restricted to the <code>DonationService</code> class.</p>
+<p>This is the current constructor for DonationService:</p>
+<h2>src/services/donation-service.ts</h2>
+<pre><code>  constructor(
+    private httpClient: HttpClient,
+    private ea: EventAggregator,
+    private au: Aurelia,
+    private router: Router
+  ) {
+    httpClient.configure(http =&gt; {
+      http.withBaseUrl(&#39;http://localhost:3000&#39;);
+    });
+    this.getCandidates();
+    this.getUsers();
+    this.getDonations();
+  }</code></pre>
+<p>We are retrieving all users, candidate and donations when the application launches. As all of these routes are now secured, so launching the app will fail at this point.</p>
+<p>We can see this in the developer tools:</p>
+<p><img src="img/01.png" alt=""></p>
+<p>We are getting a &quot;401 (Unauthorized)&quot; on all these routes. Our strategy should be to:</p>
+<ul>
+<li>Authorize using JWT when the user attempt to log</li>
+<li>If authorized, retrieve candidates, users + donations</li>
+</ul>
+<p>So, start be simplifying the constructor - remove these calls:</p>
+<pre><code>  constructor(
+    private httpClient: HttpClient,
+    private ea: EventAggregator,
+    private au: Aurelia,
+    private router: Router
+  ) {
+    httpClient.configure(http =&gt; {
+      http.withBaseUrl(&#39;http://localhost:3000&#39;);
+    });
+  }</code></pre>
+<p>We can then rework the login method:</p>
+<pre><code>  async login(email: string, password: string) {
+    const response = await this.httpClient.post(&#39;/api/users/authenticate&#39;, {
+      email: email,
+      password: password
+    });
+    const status = await response.content;
+    if (status.success) {
+      this.httpClient.configure(configuration =&gt; {
+        configuration.withHeader(&#39;Authorization&#39;, &#39;bearer &#39; + status.token);
+      });
+      await this.getCandidates();
+      await this.getUsers();
+      await this.getDonations();
+      this.changeRouter(PLATFORM.moduleName(&#39;app&#39;));
+      return true;
+    } else {
+      return false;
+    }
+  }</code></pre>
+<p>The simple change we are making is to retrieve and remember the token if we have authenticated successfully:</p>
+<pre><code>    if (status.success) {
+      this.httpClient.configure(configuration =&gt; {
+        configuration.withHeader(&#39;Authorization&#39;, &#39;bearer &#39; + status.token);
+      });</code></pre>
+<p>.. and the including this header in all subsequent requests.</p>
+<p>Restart both applications now - and you should be able to log in and make donations.</p>
+<p>Logging out is just matter of clearing this token:</p>
+<pre><code>  logout() {
+    this.httpClient.configure(configuration =&gt; {
+      configuration.withHeader(&#39;Authorization&#39;, &#39;&#39;);
+    });
+    this.changeRouter(PLATFORM.moduleName(&#39;start&#39;));
+  }</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Simplify DonationService</h1>
+<p>Currently we are retrieving all donations + users when the user logs in, including an attempt to rebuild the donation list to contain references to a client copy of the donations:</p>
+<pre><code>  async getDonations() {
+    const response = await this.httpClient.get(&#39;/api/donations&#39;);
+    const rawDonations: RawDonation[] = await response.content;
+    rawDonations.forEach(rawDonation =&gt; {
+      const donation = {
+        amount: rawDonation.amount,
+        method: rawDonation.method,
+        candidate: this.candidates.find(candidate =&gt; rawDonation.candidate == candidate._id),
+        donor: this.usersById.get(rawDonation.donor)
+      };
+      this.donations.push(donation);
+    });
+  }</code></pre>
+<p>This is getting a little too complex to manage. For the moment, we will remove all local user management and also disable the retrieval of donations. Here is a simpler version of DonationService:</p>
+<pre><code>import { inject, Aurelia } from &#39;aurelia-framework&#39;;
+import { Router } from &#39;aurelia-router&#39;;
+import { PLATFORM } from &#39;aurelia-pal&#39;;
+import { Candidate, Donation } from &#39;./donation-types&#39;;
+import { HttpClient } from &#39;aurelia-http-client&#39;;
+import { EventAggregator } from &#39;aurelia-event-aggregator&#39;;
+import { TotalUpdate } from &#39;./messages&#39;;
+
+@inject(HttpClient, EventAggregator, Aurelia, Router)
+export class DonationService {
+  candidates: Candidate[] = [];
+  donations: Donation[] = [];
+  paymentMethods = [&#39;Cash&#39;, &#39;Paypal&#39;];
+  total = 0;
+
+  constructor(
+    private httpClient: HttpClient,
+    private ea: EventAggregator,
+    private au: Aurelia,
+    private router: Router
+  ) {
+    httpClient.configure(http =&gt; {
+      http.withBaseUrl(&#39;http://localhost:3000&#39;);
+    });
+  }
+
+  async getCandidates() {
+    const response = await this.httpClient.get(&#39;/api/candidates&#39;);
+    this.candidates = await response.content;
+    console.log(this.candidates);
+  }
+
+  async createCandidate(firstName: string, lastName: string, office: string) {
+    const candidate = {
+      firstName: firstName,
+      lastName: lastName,
+      office: office
+    };
+    const response = await this.httpClient.post(&#39;/api/candidates&#39;, candidate);
+    const newCandidate = await response.content;
+    this.candidates.push(newCandidate);
+  }
+
+  async donate(amount: number, method: string, candidate: Candidate) {
+    const donation = {
+      amount: amount,
+      method: method,
+      candidate: candidate
+    };
+    const response = await this.httpClient.post(&#39;/api/candidates/&#39; + candidate._id + &#39;/donations&#39;, donation);
+    this.donations.push(donation);
+    this.total = this.total + amount;
+    this.ea.publish(new TotalUpdate(this.total));
+    console.log(&#39;Total so far &#39; + this.total);
+  }
+
+  async signup(firstName: string, lastName: string, email: string, password: string) {
+    const user = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password
+    };
+    const response = await this.httpClient.post(&#39;/api/users&#39;, user);
+    const newUser = await response.content;
+    this.changeRouter(PLATFORM.moduleName(&#39;app&#39;));
+    return false;
+  }
+
+  async login(email: string, password: string) {
+    const response = await this.httpClient.post(&#39;/api/users/authenticate&#39;, {
+      email: email,
+      password: password
+    });
+    const status = await response.content;
+    if (status.success) {
+      this.httpClient.configure(configuration =&gt; {
+        configuration.withHeader(&#39;Authorization&#39;, &#39;bearer &#39; + status.token);
+      });
+      await this.getCandidates();
+      this.changeRouter(PLATFORM.moduleName(&#39;app&#39;));
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  logout() {
+    this.httpClient.configure(configuration =&gt; {
+      configuration.withHeader(&#39;Authorization&#39;, &#39;&#39;);
+    });
+    this.changeRouter(PLATFORM.moduleName(&#39;start&#39;));
+  }
+
+  changeRouter(module: string) {
+    this.router.navigate(&#39;/&#39;, { replace: true, trigger: false });
+    this.router.reset();
+    this.au.setRoot(PLATFORM.moduleName(module));
+  }
+}</code></pre>
+<p>And this is a simplified set of types:</p>
+<h2>src/services/donation-types.ts</h2>
+<pre><code>export interface Candidate {
+  firstName: string;
+  lastName: string;
+  office: string;
+  _id : string;
+}
+
+export interface Donation {
+  amount: number;
+  method: string;
+  candidate: Candidate;
+}
+
+export interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  _id: string;
+}</code></pre>
+<p>We will also remove donor from the donation-list:</p>
+<h2>src/resources/elements/donation-list.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;ui stacked segment&quot;&gt;
+    &lt;h3 class=&quot;ui dividing header&quot;&gt; Donations to Date &lt;/h3&gt;
+    &lt;table class=&quot;ui celled table segment&quot;&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Amount&lt;/th&gt;
+          &lt;th&gt;Payment Method&lt;/th&gt;
+          &lt;th&gt;Candidate&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr repeat.for=&quot;donation of donations&quot;&gt;
+          &lt;td&gt; ${donation.amount}&lt;/td&gt;
+          &lt;td&gt; ${donation.method}&lt;/td&gt;
+          &lt;td&gt; ${donation.candidate.lastName}, ${donation.candidate.firstName}&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>Incorporate and this this version now.</p>
+<p>We will also remove </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Token Management.</h1>
+<p>In the client application, having logged in refresh the donation page in the browser. You will notice that you have to log in again, as all local state (including the token we have just retrieved) has been lost.</p>
+<p>A common pattern in SPA development is to cache these tokens in the browser - so that if a refresh is triggered, we can recover the token from the cache and remain logged in. </p>
+<p>This is analogous to they way cookies work, except instead of using browser cookies, we use a similar feature in the browser called LocalStorage:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Local_storage">https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Local_storage</a></li>
+</ul>
+<p>The API is very simple to use.</p>
+<p>First, when a user successfully logs in we can store the token in LocalStorage:</p>
+<h2>src/services/donation-service.ts</h2>
+<pre><code>  async login(email: string, password: string) {
+    ...
+    if (status.success) {
+      this.httpClient.configure(configuration =&gt; {
+        configuration.withHeader(&#39;Authorization&#39;, &#39;bearer &#39; + status.token);
+      });
+      localStorage.donation = JSON.stringify(response.content);
+      await this.getCandidates();
+    ...  
+  }</code></pre>
+<p>Just a single line has been added:</p>
+<pre><code>      localStorage.donation = JSON.stringify(response.content)</code></pre>
+<p>Refresh the application now again and log in. In developer tools you should be able to see the local storage for the app and the token:</p>
+<p><img src="img/02.png" alt=""></p>
+<p>If the user explicitly requests to log out, then we should clear this field:</p>
+<pre><code>  logout() {
+    localStorage.donation = null;
+    this.httpClient.configure(configuration =&gt; {
+      configuration.withHeader(&#39;Authorization&#39;, &#39;&#39;);
+    });
+    this.changeRouter(PLATFORM.moduleName(&#39;start&#39;));
+  }</code></pre>
+<p>Try this now, and verify in Chrome developer tools that token is being created and deleted as expected.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>Detect LocalStorage at Start</h1>
+<p>We can introduce a new method into DonationService to check for the presence of this token, and if found set it has a header (similar to the log in procedure):</p>
+<pre><code>  checkIsAuthenticated() {
+    let authenticated = false;
+    if (localStorage.donation !== &#39;null&#39;) {
+      authenticated = true;
+      this.httpClient.configure(http =&gt; {
+        const auth = JSON.parse(localStorage.donation);
+        http.withHeader(&#39;Authorization&#39;, &#39;bearer &#39; + auth.token);
+      });
+      this.changeRouter(PLATFORM.moduleName(&#39;app&#39;));
+    }
+  }</code></pre>
+<p>This will change the router to the logged in route - it a valid token was found.</p>
+<p>This method will need to be called when the application starts up - and if it detects the token it will bypass the log in screen and take us to the donate page. One way of doing this is to rework the start.ts module:</p>
+<h2>src/start.ts</h2>
+<pre><code>import { inject } from &#39;aurelia-framework&#39;;
+import { RouterConfiguration, Router } from &#39;aurelia-router&#39;;
+import { PLATFORM } from &#39;aurelia-pal&#39;;
+import { DonationService } from &#39;./services/donation-service&#39;;
+
+@inject(DonationService)
+export class Start {
+  router: Router;
+  constructor(private ds: DonationService) {}
+
+  configureRouter(config: RouterConfiguration, router: Router) {
+    config.map([
+      {
+        route: [&#39;&#39;, &#39;login&#39;],
+        name: &#39;Login&#39;,
+        moduleId: PLATFORM.moduleName(&#39;views/login&#39;),
+        nav: true,
+        title: &#39;Login&#39;
+      },
+      {
+        route: &#39;signup&#39;,
+        name: &#39;signup&#39;,
+        moduleId: PLATFORM.moduleName(&#39;views/signup&#39;),
+        nav: true,
+        title: &#39;Signup&#39;
+      }
+    ]);
+    this.router = router;
+  }
+
+  attached() {
+    this.ds.checkIsAuthenticated();
+  }
+}</code></pre>
+<p>In this version, we are locating the DonationService when we start - and calling the checkIsAuthenticated() method.</p>
+<p>Try this now - log in and make a donation. Then, refresh the page. You should be back on the donate page each time (unless you log out).</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solution">
+            <h1>Solution</h1>
+<p>The project at the end of this lab:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-au/releases/tag/donation.au.08.end">https://github.com/wit-hdip-comp-sci-2018/donation-au/releases/tag/donation.au.08.end</a></li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

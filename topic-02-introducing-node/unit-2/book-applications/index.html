@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Node Applications  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 02b Applications">
+          Lab 02b Applications
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 02b Applications">
+            <h1>Objectives</h1>
+<p>Create a new simple node/HAPI project to serve a simple set of static views. </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Exercise Solutions</h1>
+<h2>Exercise 1: Additional Fields</h2>
+<p>Explore the API documentation, extend the program to show additional information:</p>
+<ul>
+<li>address</li>
+<li>lat/lng</li>
+<li>category</li>
+</ul>
+<h2>Exercise 1 Solution</h2>
+<pre><code>    const singleVenue = venues[i].venue;
+    const venueDetails = await axios.get(fsConfig.venue_url + singleVenue.id + &#39;?&#39; + fsCredentials);
+    const venue = {
+      name: singleVenue.name,
+      category: singleVenue.categories[0].name,
+      address: singleVenue.location,
+    };</code></pre>
+<h2>Exercise 2: Web Version</h2>
+<p>Using the repo-lister project as an example, </p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/repo-lister">https://github.com/wit-hdip-comp-sci-2018/repo-lister</a></li>
+</ul>
+<p>write a web version of this application</p>
+<h2>Exercise 2: Solution</h2>
+<p>First a web page to host the application:</p>
+<h2>index.html</h2>
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Github Repo Lister&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css&quot;&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;ui container&quot;&gt;
+      &lt;div class=&quot;ui segment&quot;&gt;
+        &lt;h1 class=&quot;ui header&quot;&gt;Repository Lister&lt;/h1&gt;
+        &lt;div class=&quot;ui grid&quot;&gt;
+          &lt;div class=&quot;ui six wide column&quot;&gt;
+            &lt;div class=&quot;ui form&quot;&gt;
+              &lt;div class=&quot;field&quot;&gt;
+                &lt;input id=&quot;github-id&quot; type=&quot;text&quot; placeholder=&quot;Location...&quot;&gt;
+              &lt;/div&gt;
+              &lt;button id=&quot;fetch-btn&quot; class=&quot;ui primary button&quot;&gt;Fetch&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;ui basic segment&quot;&gt;
+              &lt;p id=&quot;result-msg&quot;&gt;&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;ui ten wide column&quot;&gt;
+            &lt;table class=&quot;ui celled table&quot; id=&quot;repo-table&quot;&gt;
+              &lt;thead&gt;
+                &lt;tr&gt;
+                  &lt;th&gt;Venue&lt;/th&gt;
+                  &lt;th&gt;Category&lt;/th&gt;
+                &lt;/tr&gt;
+              &lt;/thead&gt;
+              &lt;tbody&gt;
+              &lt;/tbody&gt;
+            &lt;/table&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;fs-lister.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>The source file &#39;fs-lister.js&#39; included in the above:</p>
+<pre><code>const fsConfig = {
+  base_url: &#39;https://api.foursquare.com/v2/venues/explore?&#39;,
+  client_id: &#39;YOUR_ID&#39;,
+  client_secret: &#39;YOUR_SECRET&#39;
+};
+
+const fsCredentials = &#39;&amp;client_id=&#39; + fsConfig.client_id + &#39;&amp;client_secret=&#39; + fsConfig.client_secret + &#39;&amp;v=20190101&#39;;
+
+function populateTable(venues) {
+  $(&quot;#repo-table tbody&quot;).empty();
+  for (let i = 0; i &lt; venues.length; i++) {
+    $(&quot;#repo-table tbody&quot;).append(`
+      &lt;tr&gt; 
+        &lt;td&gt;  ${venues[i].name} &lt;/td&gt;
+        &lt;td&gt;  ${venues[i].category} &lt;/td&gt;
+      &lt;/tr&gt;`);
+  }
+}
+
+async function loadVenues(location) {
+  const response = await axios.get(fsConfig.base_url + location + fsCredentials);
+  console.log(`Searching ${location}...`);
+  var venues = response.data.response.groups[0].items;
+  const venueCollection = [];
+  for (let i = 0; i &lt; venues.length; i++) {
+    const singleVenue = venues[i].venue;
+    const venue = {
+      name: singleVenue.name,
+      category: singleVenue.categories[0].name,
+      address: singleVenue.category
+    };
+    venueCollection.push(venue);
+  }
+  console.log(venueCollection);
+  populateTable(venueCollection)
+}
+
+$(&#39;#fetch-btn&#39;).click(function() {
+  var location = $(&#39;#github-id&#39;).val();
+  loadVenues(&#39;near=&#39; + location);
+});</code></pre>
+<p>Solution Project:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/four-square-node/releases/tag/lab.exercises">https://github.com/wit-hdip-comp-sci-2018/four-square-node/releases/tag/lab.exercises</a></li>
+</ul>
+<h2>Exercise 3: Node Github Access</h2>
+<p>Do the opposite of Exercise 2: i.e. using the foursquare project as an example, rewrite github repo-lister web client app as a simple node application instead of a web page.</p>
+<h2>Solution:</h2>
+<p>A new node script to fetch the repo:</p>
+<h2>repo-list.js</h2>
+<p>To create a node module in place, enter the following inside the repo-lister project:</p>
+<pre><code>npm init</code></pre>
+<p>Then install axios:</p>
+<pre><code>npm install axios</code></pre>
+<p>Finally, this program should work:</p>
+<pre><code>const axios = require(&#39;axios&#39;);
+
+async function loadRepos(githubId) {
+  const response = await axios.get(`https://api.github.com/users/${githubId}/repos`);
+  console.log(`Searching ${githubId}...`);
+  console.log (response.data)
+}
+
+loadRepos(&#39;hapijs&#39;);</code></pre>
+<p>Running the project should echo the repos to the console</p>
+<p>If you are keeping in git, then extend the .gitignore:</p>
+<pre><code>.idea
+node_module</code></pre>
+<h2>Solution Project:</h2>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/repo-lister/releases/tag/lab.node.version">https://github.com/wit-hdip-comp-sci-2018/repo-lister/releases/tag/lab.node.version</a></li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Initial Empty Project</h1>
+<p>Make sure the latest version of node.js is installed on your workstation:</p>
+<ul>
+<li><a href="https://nodejs.org">https://nodejs.org</a></li>
+</ul>
+<p>Open a command line shell in a suitable location, and enter the following commands:</p>
+<pre><code>mkdir donation-web
+$ cd donation-web
+$ npm init</code></pre>
+<p>The last command above: <code>npm init</code> - is a utility to create a new node module. Apart from a suitable description, you can accept the defaults for all properties:</p>
+<pre><code>This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install &lt;pkg&gt; --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+name: (donation-web)
+version: (1.0.0)
+description: an application to host donations for candidates
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+About to write to /Users/edeleastar/repos/modules/web-2/web-app-2016/prj/donation-web/package.json:
+
+{
+  &quot;name&quot;: &quot;donation-web&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;an application to host donations for candidates&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}
+
+
+Is this ok? (yes) yes</code></pre>
+<p>When completed, the utility will have generated the following file:</p>
+<h2>package.json</h2>
+<pre><code>{
+  &quot;name&quot;: &quot;donation-web&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;an application to host donations for candidates&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}</code></pre>
+<p>If you are commiting the application to git, then you should create this .gitignore file:</p>
+<h2>.gitignore</h2>
+<pre><code>.idea
+node_modules</code></pre>
+<p>If you are using webstorm, then opening the project it should look like this now:</p>
+<h2>Webstorm</h2>
+<p><img src="img/01.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Setup &amp; Configuration</h1>
+<p>Using the same command line shell (inside the <code>donation-web</code> folder), enter the following command:</p>
+<pre><code>npm install hapi</code></pre>
+<p>Notice that the <code>package.json</code> file will be extended to include a new dependency:</p>
+<pre><code>...
+  &quot;dependencies&quot;: {
+    &quot;hapi&quot;: &quot;^18.0.0&quot;
+  }
+...</code></pre>
+<p>Also, node_modules will be populated, and a package-lock.json will be generated.</p>
+<p>Before proceeding any further, we are going to starting using a code formatter called Prettier.js in our project:</p>
+<ul>
+<li><a href="https://prettier.io/">https://prettier.io/</a></li>
+</ul>
+<pre><code>npm install prettier --save-dev</code></pre>
+<p>This will include some extra &#39;development&#39; dependencies in our package.json:</p>
+<pre><code>  &quot;devDependencies&quot;: {
+    &quot;prettier&quot;: &quot;^1.16.0&quot;
+  }</code></pre>
+<p>We are going to customize some of the prettier rules by placing them in the package.json file:</p>
+<pre><code>  &quot;prettier&quot;: {
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 120
+  }</code></pre>
+<p>This is the complete file at this stage:</p>
+<h2>package.json</h2>
+<pre><code>{
+  &quot;name&quot;: &quot;donation-web&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;hapi&quot;: &quot;^18.0.0&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;prettier&quot;: &quot;^1.16.0&quot;
+  },
+  &quot;prettier&quot;: {
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 120
+  }
+}</code></pre>
+<p>Prettier should be configured in Webstorm:</p>
+<p><img src="img/01x.png" alt=""></p>
+<p>You may need to check if the keystroke to trigger prettier is set up:</p>
+<p><img src="img/02x.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>index.js</h1>
+<p>Create the following file in your project:</p>
+<h2>index.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const Hapi = require(&#39;hapi&#39;);
+
+const server = Hapi.server({
+  port: 3000,
+  host: &#39;localhost&#39;
+});
+
+async function init() {
+  await server.start();
+  console.log(`Server running at: ${server.info.uri}`);
+}
+
+process.on(&#39;unhandledRejection&#39;, err =&gt; {
+  console.log(err);
+  process.exit(1);
+});
+
+init();</code></pre>
+<p>In Webstorm, we should be able to run the application via the context menus:</p>
+<p><img src="img/02.png" alt=""></p>
+<p>The application is being served on port 4000 on localhost:</p>
+<ul>
+<li><a href="http://localhost:3000">http://localhost:3000</a></li>
+</ul>
+<p><img src="img/03.png" alt=""></p>
+<p>Your browser may not present the response as neatly as above. Here we are using Chrome + a plugin called JSONView.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>First Route + Controller</h1>
+<p>Create the following two files in the project:</p>
+<h2>controller.js</h2>
+<pre><code>exports.index = {
+  handler: function(request, reply) {
+    return &#39;Hello!&#39;;
+  }
+};</code></pre>
+<h2>routes.js</h2>
+<pre><code>const Controller = require(&#39;./controller.js&#39;);
+
+module.exports = [{ method: &#39;GET&#39;, path: &#39;/&#39;, config: Controller.index }];</code></pre>
+<p>The project will now look like this in Webstorm:</p>
+<p><img src="img/05.png" alt=""></p>
+<h2>index.js</h2>
+<p>Now modify <code>index.js</code> to load the route:</p>
+<pre><code>server.route(require(&#39;./routes&#39;));</code></pre>
+<p>This is placed just before the server is started:</p>
+<pre><code>&#39;use strict&#39;;
+
+const Hapi = require(&#39;hapi&#39;);
+
+const server = Hapi.server({
+  port: 3000,
+  host: &#39;localhost&#39;
+});
+
+server.route(require(&#39;./routes&#39;));
+
+async function init() {
+  await server.start();
+  console.log(`Server running at: ${server.info.uri}`);
+}
+
+process.on(&#39;unhandledRejection&#39;, err =&gt; {
+  console.log(err);
+  process.exit(1);
+});
+
+init();</code></pre>
+<p>Run the application again (restart it if already running) - and browse to:</p>
+<ul>
+<li><a href="http://localhost:3000">http://localhost:3000</a></li>
+</ul>
+<p>You should see a simple greeting.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Revised Project Structure + First Simple View (using inert)</h1>
+<p>We would like the application to render some simple HTML views. Out of the box, HAPI doesn&#39;t have a simple mechanism to do this, it is delegated to appropriate plugins to the framework.</p>
+<p>We will use this plugin here:</p>
+<ul>
+<li><a href="https://github.com/hapijs/inert">https://github.com/hapijs/inert</a></li>
+</ul>
+<p>We install it into our app be running this command (from within our project folder):</p>
+<pre><code>npm install inert</code></pre>
+<p>This will download and install the module into our project. Check <code>package.json</code> to make sure it has been added:</p>
+<h2>package.json</h2>
+<pre><code>{
+  &quot;name&quot;: &quot;donation-web&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;hapi&quot;: &quot;^18.0.0&quot;,
+    &quot;inert&quot;: &quot;^5.1.2&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;prettier&quot;: &quot;^1.16.0&quot;
+  },
+  &quot;prettier&quot;: {
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 120
+  }
+}</code></pre>
+<p>We modify <code>index.js</code> to register the plugin - only proceeding to start the server if the plugin is successfully loaded:</p>
+<pre><code>  await server.register(require(&#39;inert&#39;));</code></pre>
+<p>This is inserted as the first statement in the init function():</p>
+<h2>index.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const Hapi = require(&#39;hapi&#39;);
+
+const server = Hapi.server({
+  port: 3000,
+  host: &#39;localhost&#39;
+});
+
+server.route(require(&#39;./routes&#39;));
+
+async function init() {
+  await server.register(require(&#39;inert&#39;));
+  await server.start();
+  console.log(`Server running at: ${server.info.uri}`);
+}
+
+process.on(&#39;unhandledRejection&#39;, err =&gt; {
+  console.log(err);
+  process.exit(1);
+});
+
+init();</code></pre>
+<p>Delete the existing <code>controller.js</code> as we will replace it with a revised structure.</p>
+<p>Create a new folder called <code>app</code>. Inside this, create two subfolders: <code>controllers</code> and <code>views</code>. </p>
+<p><img src="img/04x.png" alt=""></p>
+<p>Now create these two new files in this structure:</p>
+<h2>app/controllers/donations.js</h2>
+<pre><code>const Donations = {
+  index: {
+    handler: function(request, h) {
+      return h.file(&#39;./app/views/main.html&#39;);
+    }
+  }
+}
+
+module.exports = Donations;</code></pre>
+<h2>app/views/main.html</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Donations&lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section class=&quot;ui container&quot;&gt;
+      &lt;section class=&quot;ui stacked segment&quot;&gt;
+        &lt;div class=&quot;ui grid&quot;&gt;
+          &lt;aside class=&quot;six wide column&quot;&gt;&lt;img src=&quot;images/homer.png&quot; class=&quot;ui medium image&quot; /&gt;&lt;/aside&gt;
+          &lt;article class=&quot;ten wide column&quot;&gt;
+            &lt;header class=&quot;ui  header&quot;&gt;Help Me Run Springfield&lt;/header&gt;
+            &lt;p&gt;Donate what you can now - No Bitcoins accepted!&lt;/p&gt;
+          &lt;/article&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/section&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Finally, this existing routes file will need to be replaced with this version:</p>
+<h2>routes.js</h2>
+<pre><code>const Donations = require(&#39;./app/controllers/donations&#39;);
+
+module.exports = [{ method: &#39;GET&#39;, path: &#39;/&#39;, config: Donations.index }];</code></pre>
+<p>Your project should now be structured like this:</p>
+<p><img src="img/14.png" alt=""></p>
+<p>Rerun the project, and browse to:</p>
+<ul>
+<li><a href="http://localhost:3000">http://localhost:3000</a></li>
+</ul>
+<p>You should see something like this:</p>
+<p><img src="img/15.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>Introduce and Serve Static Assets</h1>
+<p>Note that although we have a link to an image in our view:</p>
+<pre><code>          &lt;aside class=&quot;six wide column&quot;&gt;
+            &lt;img src=&quot;images/homer.png&quot; class=&quot;ui medium image&quot;&gt;
+          &lt;/aside&gt;</code></pre>
+<p>.. we are not serving any actual image:</p>
+<p><img src="img/15.png" alt=""></p>
+<p>We need to create a <code>public</code> folder in our project to store static assets like images.</p>
+<p><img src="img/17.png" alt=""></p>
+<p>Note we create <code>public/images</code> in the project as shown above.</p>
+<p>Here an image to put into this folder:</p>
+<h2>homer.png</h2>
+<p><img src="img/homer.png" alt=""></p>
+<p>Now modify the route to make the public folder available:</p>
+<h2>routes.js</h2>
+<pre><code>const Donations = require(&#39;./app/controllers/donations&#39;);
+
+module.exports = [
+  { method: &#39;GET&#39;, path: &#39;/&#39;, config: Donations.index },
+  {
+    method: &#39;GET&#39;,
+    path: &#39;/{param*}&#39;,
+    handler: {
+      directory: {
+        path: &#39;./public&#39;
+      }
+    }
+  }
+];</code></pre>
+<p>Lastly - we need to change the order in which we include the routes in index.js:</p>
+<pre><code>&#39;use strict&#39;;
+
+const Hapi = require(&#39;hapi&#39;);
+
+const server = Hapi.server({
+  port: 3000,
+  host: &#39;localhost&#39;
+});
+
+async function init() {
+  await server.register(require(&#39;inert&#39;));
+  server.route(require(&#39;./routes&#39;));
+  await server.start();
+  console.log(`Server running at: ${server.info.uri}`);
+}
+
+process.on(&#39;unhandledRejection&#39;, err =&gt; {
+  console.log(err);
+  process.exit(1);
+});
+
+init();</code></pre>
+<p><img src="img/16.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercise: Additional Routes + Static Views for Login and Signup</h1>
+<p>Archive of the project so far:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.01.end">https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.01.end</a></li>
+</ul>
+<h2>Exercises:</h2>
+<p>Below is how we would like the app to look:</p>
+<p><img src="img/18.png" alt="">
+<img src="img/19.png" alt="">
+<img src="img/20.png" alt=""></p>
+<p>And below are all of the views and assets you will need to implement the above. To implement these new views, you will need to:</p>
+<ul>
+<li>Introduce 2 additional routes like these:</li>
+</ul>
+<pre><code>  { method: &#39;GET&#39;, path: &#39;/signup&#39;, config: Donations.signup },
+  { method: &#39;GET&#39;, path: &#39;/login&#39;, config: Donations.login },</code></pre>
+<ul>
+<li>Extend the donations controller with additional handlers to support the above routes:</li>
+</ul>
+<pre><code>&#39;use strict&#39;;
+
+const Donations = {
+  index: {
+    handler: function(request, h) {
+      return h.file(&#39;./app/views/main.html&#39;);
+    }
+  },
+  signup: {
+    handler: function(request, h) {
+      return h.file(&#39;./app/views/signup.html&#39;);
+    }
+  },
+  login: {
+    handler: function(request, h) {
+      return h.file(&#39;./app/views/login.html&#39;);
+    }
+  }
+};
+
+module.exports = Donations;</code></pre>
+<p>Try to implement the new routes, controllers and views now. These are the views + images you will need:</p>
+<h2>main.html</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Welcome to Donations&lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section class=&quot;ui container&quot;&gt;
+      &lt;nav class=&quot;ui inverted menu&quot;&gt;
+        &lt;header class=&quot;header item&quot;&gt;&lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt;&lt;/header&gt;
+        &lt;div class=&quot;right menu&quot;&gt;
+          &lt;a class=&quot;item&quot; href=&quot;/signup&quot;&gt; Signup&lt;/a&gt; &lt;a class=&quot;item&quot; href=&quot;/login&quot;&gt; Login&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/nav&gt;
+      &lt;section class=&quot;ui stacked segment&quot;&gt;
+        &lt;div class=&quot;ui grid&quot;&gt;
+          &lt;aside class=&quot;six wide column&quot;&gt;&lt;img src=&quot;images/homer.png&quot; class=&quot;ui medium image&quot; /&gt;&lt;/aside&gt;
+          &lt;article class=&quot;ten wide column&quot;&gt;
+            &lt;header class=&quot;ui  header&quot;&gt;Help Me Run Springfield&lt;/header&gt;
+            &lt;p&gt;Donate what you can now - No Bitcoins accepted!&lt;/p&gt;
+          &lt;/article&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/section&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>signup.html</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Sign up for Donations&lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section class=&quot;ui container&quot;&gt;
+      &lt;nav class=&quot;ui inverted menu&quot;&gt;
+        &lt;header class=&quot;header item&quot;&gt;&lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt;&lt;/header&gt;
+        &lt;div class=&quot;right menu&quot;&gt;
+          &lt;a class=&quot;item&quot; href=&quot;/signup&quot;&gt; Signup&lt;/a&gt; &lt;a class=&quot;item&quot; href=&quot;/login&quot;&gt; Login&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/nav&gt;
+      &lt;section class=&quot;ui raised segment&quot;&gt;
+        &lt;div class=&quot;ui grid&quot;&gt;
+          &lt;div class=&quot;ui ten wide column&quot;&gt;
+            &lt;div class=&quot;ui stacked fluid form segment&quot;&gt;
+              &lt;form action=&quot;/signup&quot; method=&quot;POST&quot;&gt;
+                &lt;h3 class=&quot;ui header&quot;&gt;Register&lt;/h3&gt;
+                &lt;div class=&quot;two fields&quot;&gt;
+                  &lt;div class=&quot;field&quot;&gt;
+                    &lt;label&gt;First Name&lt;/label&gt; &lt;input placeholder=&quot;First Name&quot; type=&quot;text&quot; name=&quot;firstName&quot; /&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;field&quot;&gt;
+                    &lt;label&gt;Last Name&lt;/label&gt; &lt;input placeholder=&quot;Last Name&quot; type=&quot;text&quot; name=&quot;lastName&quot; /&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;field&quot;&gt;&lt;label&gt;Email&lt;/label&gt; &lt;input placeholder=&quot;Email&quot; type=&quot;text&quot; name=&quot;email&quot; /&gt;&lt;/div&gt;
+                &lt;div class=&quot;field&quot;&gt;&lt;label&gt;Password&lt;/label&gt; &lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;&lt;/div&gt;
+                &lt;button class=&quot;ui blue submit button&quot;&gt;Submit&lt;/button&gt;
+              &lt;/form&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;aside class=&quot;ui five wide column&quot;&gt;&lt;img src=&quot;images/homer3.png&quot; class=&quot;ui medium image&quot; /&gt;&lt;/aside&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/section&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>login.html</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Login to Donations&lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section class=&quot;ui container&quot;&gt;
+      &lt;nav class=&quot;ui inverted menu&quot;&gt;
+        &lt;header class=&quot;header item&quot;&gt;&lt;a href=&quot;/&quot;&gt; Donation &lt;/a&gt;&lt;/header&gt;
+        &lt;div class=&quot;right menu&quot;&gt;
+          &lt;a class=&quot;item&quot; href=&quot;/signup&quot;&gt; Signup&lt;/a&gt; &lt;a class=&quot;item&quot; href=&quot;/login&quot;&gt; Login&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/nav&gt;
+      &lt;section class=&quot;ui raised segment&quot;&gt;
+        &lt;div class=&quot;ui grid&quot;&gt;
+          &lt;aside class=&quot;ui six wide column&quot;&gt;&lt;img src=&quot;images/homer2.png&quot; class=&quot;ui medium image&quot; /&gt;&lt;/aside&gt;
+          &lt;div class=&quot;ui ten wide column fluid form&quot;&gt;
+            &lt;div class=&quot;ui stacked segment&quot;&gt;
+              &lt;form action=&quot;/login&quot; method=&quot;POST&quot;&gt;
+                &lt;h3 class=&quot;ui header&quot;&gt;Log-in&lt;/h3&gt;
+                &lt;div class=&quot;field&quot;&gt;&lt;label&gt;Email&lt;/label&gt; &lt;input placeholder=&quot;Email&quot; type=&quot;text&quot; name=&quot;email&quot; /&gt;&lt;/div&gt;
+                &lt;div class=&quot;field&quot;&gt;&lt;label&gt;Password&lt;/label&gt; &lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;&lt;/div&gt;
+                &lt;button class=&quot;ui blue submit button&quot;&gt;Login&lt;/button&gt;
+              &lt;/form&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/section&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>homer2.png</h2>
+<p><img src="img/homer2.png" alt=""></p>
+<h2>homer3.png</h2>
+<p><img src="img/homer3.png" alt=""></p>
+<h2>homer4.png</h2>
+<p><img src="img/homer4.jpeg" alt=""></p>
+<h2>homer5.png</h2>
+<p><img src="img/homer5.jpg" alt=""></p>
+<p>If you get this working, it will not really do anything yet, apart from the main views displaying.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

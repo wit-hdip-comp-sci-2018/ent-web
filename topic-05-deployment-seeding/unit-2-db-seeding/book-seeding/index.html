@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Model Seeding  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 05c Seeding">
+          Lab 05c Seeding
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 05c Seeding">
+            <h1>Objectives</h1>
+<p>Include a mongoose seeder component in the application. Use this to validate a new Candidate model, preloading it with a json specified object graph.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Mongoose Seeder Utility</h1>
+<p>During development it can often aid productivity if we can devise some mechanism for populating our database easily. In particular, this will enable is to pre-load the database on startup, so we can proceed to explore various scenarios without having manually enter a range of sample data.</p>
+<p>This component here is a useful approach to this:</p>
+<ul>
+<li><a href="https://github.com/ermaxnet/mais-mongoose-seeder">https://github.com/ermaxnet/mais-mongoose-seeder</a></li>
+</ul>
+<p>Install the component into your app now:</p>
+<pre><code>npm install mais-mongoose-seeder</code></pre>
+<pre><code>{
+  &quot;name&quot;: &quot;donation-web&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node index.js&quot;,
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;boom&quot;: &quot;^7.3.0&quot;,
+    &quot;dotenv&quot;: &quot;^6.2.0&quot;,
+    &quot;handlebars&quot;: &quot;^4.0.12&quot;,
+    &quot;hapi&quot;: &quot;^18.0.0&quot;,
+    &quot;hapi-auth-cookie&quot;: &quot;^9.1.0&quot;,
+    &quot;inert&quot;: &quot;^5.1.2&quot;,
+    &quot;joi&quot;: &quot;^14.3.1&quot;,
+    &quot;mais-mongoose-seeder&quot;: &quot;^1.0.7&quot;,
+    &quot;mongoose&quot;: &quot;^5.4.7&quot;,
+    &quot;vision&quot;: &quot;^5.4.4&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;prettier&quot;: &quot;^1.16.0&quot;
+  },
+  &quot;prettier&quot;: {
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 120
+  }
+}</code></pre>
+<p>Starting with a sample user + a donation:</p>
+<h2>app/models/initdata.json</h2>
+<pre><code>{
+  &quot;users&quot;: {
+    &quot;_model&quot;: &quot;User&quot;,
+    &quot;homer&quot;: {
+      &quot;firstName&quot;: &quot;Homer&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;homer@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    }
+  },
+  &quot;donations&quot;: {
+    &quot;_model&quot;: &quot;Donation&quot;,
+    &quot;one&quot;: {
+      &quot;amount&quot;: 40,
+      &quot;method&quot;: &quot;paypal&quot;,
+      &quot;donor&quot;: &quot;-&gt;users.homer&quot;
+    }
+  }
+}</code></pre>
+<p>Note how the relationship between a user and a donation is represented as <code>-&gt;users.homer</code> in this example.</p>
+<p>We can load this is <code>db.js</code> by first introducting a new function to seed the database:</p>
+<h2>app/models/db.js</h2>
+<pre><code>async function seed() {
+  var seeder = require(&#39;mais-mongoose-seeder&#39;)(Mongoose);
+  const data = require(&#39;./initdata.json&#39;);
+  const Donation = require(&#39;./donation&#39;);
+  const User = require(&#39;./user&#39;);
+  const dbData = await seeder.seed(data, { dropDatabase: false, dropCollections: true });
+  console.log(dbData);
+}</code></pre>
+<p>Then we can call the seeder when the database is first opened successfully:</p>
+<pre><code>db.once(&#39;open&#39;, function() {
+  console.log(`database connected to ${this.name} on ${this.host}`);
+  seed();
+})</code></pre>
+<p>Try this now. When you restart the app it will delete the contents of the database and then populate with the two objects. Verify that the users and donations collections are as specified in the json file above.</p>
+<p>We are logging the preloaded objects in the console:</p>
+<pre><code>preloading Test Data
+{ users: 
+   { homer: 
+      { __v: 0,
+        firstName: &#39;Homer&#39;,
+        lastName: &#39;Simpson&#39;,
+        email: &#39;homer@simpson.com&#39;,
+        password: &#39;secret&#39;,
+        _id: 57a738e1edbdf4a41777d25b } },
+  donations: 
+   { one: 
+      { __v: 0,
+        amount: 40,
+        method: &#39;paypal&#39;,
+        donor: 57a738e1edbdf4a41777d25b,
+        _id: 57a738e1edbdf4a41777d25c } } }</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>More Preloaded Objects</h1>
+<p>A more extensive set of objects:</p>
+<h2>app/models/data.json</h2>
+<pre><code>{
+  &quot;users&quot;: {
+    &quot;_model&quot;: &quot;User&quot;,
+    &quot;homer&quot;: {
+      &quot;firstName&quot;: &quot;Homer&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;homer@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    },
+    &quot;marge&quot;: {
+      &quot;firstName&quot;: &quot;Marge&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;marge@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    },
+    &quot;bart&quot;: {
+      &quot;firstName&quot;: &quot;Bart&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;bart@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    }
+  },
+  &quot;donations&quot;: {
+    &quot;_model&quot;: &quot;Donation&quot;,
+    &quot;one&quot;: {
+      &quot;amount&quot;: 40,
+      &quot;method&quot;: &quot;paypal&quot;,
+      &quot;donor&quot;: &quot;-&gt;users.bart&quot;
+    },
+    &quot;two&quot;: {
+      &quot;amount&quot;: 90,
+      &quot;method&quot;: &quot;direct&quot;,
+      &quot;donor&quot;: &quot;-&gt;users.marge&quot;
+    },
+    &quot;three&quot;: {
+      &quot;amount&quot;: 430,
+      &quot;method&quot;: &quot;paypal&quot;,
+      &quot;donor&quot;: &quot;-&gt;users.homer&quot;
+    }
+  }
+}</code></pre>
+<p>The position of the commas is very important here - as they are separators, not terminators. Try adding an extra comma after the last user object to get a feel for how the app will respond.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Introduce and Seed Candidate Model</h1>
+<p>With this seeding infrastructure in place, we can extend the application model more easily. First, we will introduce a new schema to represent a <code>Candidate</code> in our app:</p>
+<h2>app/models/candidate.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const Mongoose = require(&#39;mongoose&#39;);
+const Schema = Mongoose.Schema;
+
+const candidateSchema = Schema({
+  firstName: String,
+  lastName: String,
+  office: String,
+});
+
+module.exports = Mongoose.model(&#39;Candidate&#39;, candidateSchema);</code></pre>
+<p>Donations must reference the candidate the donation is intended for. We already reference the donor, so we extend the schema to refer to the candidate:</p>
+<h2>app/models/donation.js</h2>
+<pre><code>const donationSchema = new Schema({
+  amount: Number,
+  method: String,
+  donor: {
+    type: Schema.Types.ObjectId,
+    ref: &#39;User&#39;
+  },
+  candidate:  {
+    type: Schema.Types.ObjectId,
+    ref: &#39;Candidate&#39;,
+  },
+});</code></pre>
+<p>When we define a new model, we must load it before attempting to seed the database. Here is a revised seed function with one additinoal require (of candidate.js):</p>
+<h2>app/models/db.js</h2>
+<pre><code>async function seed() {
+  var seeder = require(&#39;mais-mongoose-seeder&#39;)(Mongoose);
+  const data = require(&#39;./initdata.json&#39;);
+  const Donation = require(&#39;./donation&#39;);
+  const Candidate = require(&#39;./candidate.js&#39;);
+  const User = require(&#39;./user&#39;);
+  const dbData = await seeder.seed(data, { dropDatabase: false, dropCollections: true });
+  console.log(dbData);
+}</code></pre>
+<p>We can now try out this extended model (replacing the existing one):</p>
+<h2>app/models/data.json</h2>
+<pre><code>{
+  &quot;users&quot;: {
+    &quot;_model&quot;: &quot;User&quot;,
+    &quot;homer&quot;: {
+      &quot;firstName&quot;: &quot;Homer&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;homer@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    },
+    &quot;marge&quot;: {
+      &quot;firstName&quot;: &quot;Marge&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;marge@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    },
+    &quot;bart&quot;: {
+      &quot;firstName&quot;: &quot;Bart&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;bart@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    }
+  },
+  &quot;candidates&quot;: {
+    &quot;_model&quot;: &quot;Candidate&quot;,
+    &quot;lisa&quot;: {
+      &quot;firstName&quot;: &quot;Lisa&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;office&quot;: &quot;President&quot;
+    },
+    &quot;donald&quot;: {
+      &quot;firstName&quot;: &quot;Donald&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;office&quot;: &quot;President&quot;
+    }
+  },
+  &quot;donations&quot;: {
+    &quot;_model&quot;: &quot;Donation&quot;,
+    &quot;one&quot;: {
+      &quot;amount&quot;: 40,
+      &quot;method&quot;: &quot;paypal&quot;,
+      &quot;donor&quot;: &quot;-&gt;users.bart&quot;,
+      &quot;candidate&quot;: &quot;-&gt;candidates.lisa&quot;
+    },
+    &quot;two&quot;: {
+      &quot;amount&quot;: 90,
+      &quot;method&quot;: &quot;direct&quot;,
+      &quot;donor&quot;: &quot;-&gt;users.marge&quot;,
+      &quot;candidate&quot;: &quot;-&gt;candidates.lisa&quot;
+    },
+    &quot;three&quot;: {
+      &quot;amount&quot;: 430,
+      &quot;method&quot;: &quot;paypal&quot;,
+      &quot;donor&quot;: &quot;-&gt;users.homer&quot;,
+      &quot;candidate&quot;: &quot;-&gt;candidates.donald&quot;
+    }
+  }
+}</code></pre>
+<p>Restart the app now. It should work as before - but we are not using the extended model yet.</p>
+<p>However, we can use Robo 3T to see if the database was populated as expected with a new &#39;Candidates&#39; collection:</p>
+<p><img src="img/04.png" alt=""></p>
+<p>As there is a new collection generated, you may need to reconnect to the database in Robo 3T for it to show up.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Create Candidate Reference in Donation Object</h1>
+<p>In the home view, we should pass the list of candidates to the view to enable the user to select which candidate to make a donation to:</p>
+<h2>app/controllers/donations.js</h2>
+<pre><code>const Candidate = require(&#39;../models/candidate&#39;);
+...</code></pre>
+<pre><code>  home: {
+    handler: async function(request, h) {
+      const candidates = await Candidate.find();
+      return h.view(&#39;home&#39;, { title: &#39;Make a Donation&#39;, candidates: candidates });
+    }
+  },</code></pre>
+<p>Notice that the function has had to be marked <code>async</code> as we are calling an async function.</p>
+<p>In the donate partial - we can present the candidate list as a radio button sequence:</p>
+<h2>app/views/partials/donate.hbs</h2>
+<pre><code>&lt;div class=&quot;grouped inline fields&quot;&gt;
+  &lt;h3&gt; Select Candidate &lt;/h3&gt;
+  {{#each candidates }}
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;div class=&quot;ui radio checkbox&quot;&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;candidate&quot; value=&quot;{{lastName}},{{firstName}}&quot;&gt;
+        &lt;label&gt;{{lastName}}, {{firstName}}&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  {{/each}}
+&lt;/div&gt;
+&lt;button class=&quot;ui blue submit button&quot;&gt;Donate&lt;/button&gt;</code></pre>
+<p>Restart the app now - and we should see the list of candidates in the donation form:</p>
+<p><img src="img/05.png" alt=""></p>
+<p>This is a revision of donate handler to locate the candidate object and include in donation:</p>
+<pre><code>donate: {
+    handler: async function(request, h) {
+      try {
+        const id = request.auth.credentials.id;
+        const user = await User.findById(id);
+        const data = request.payload;
+
+        const rawCandidate = request.payload.candidate.split(&#39;,&#39;);
+        const candidate = await Candidate.findOne({
+          lastName: rawCandidate[0],
+          firstName: rawCandidate[1]
+        });
+
+        const newDonation = new Donation({
+          amount: data.amount,
+          method: data.method,
+          donor: user._id,
+          candidate: candidate._id
+        });
+        await newDonation.save();
+        return h.redirect(&#39;/report&#39;);
+      } catch (err) {
+        return h.view(&#39;main&#39;, { errors: [{ message: err.message }] });
+      }
+    }
+  }</code></pre>
+<p>Try this now and verify that it works as expected. Although we are not showing candidates in report yet.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Render Candidates in Report View</h1>
+<p>The donationList partial will need an extra column to hold the candidate:</p>
+<h2>app/views/partials/donationlist.hbs</h2>
+<pre><code>&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Amount&lt;/th&gt;
+    &lt;th&gt;Method donated&lt;/th&gt;
+    &lt;th&gt;Donor&lt;/th&gt;
+    &lt;th&gt;Candidate&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  {{#each donations}}
+    &lt;tr&gt;
+      &lt;td&gt; {{amount}} &lt;/td&gt;
+      &lt;td&gt; {{method}} &lt;/td&gt;
+      &lt;td&gt; {{donor.firstName}} {{donor.lastName}} &lt;/td&gt;
+      &lt;td&gt; {{candidate.lastName}}, {{candidate.firstName}} &lt;/td&gt;
+    &lt;/tr&gt;
+  {{/each}}</code></pre>
+<p>Run the app again - any sign of the candidates in the report?</p>
+<p><img src="img/06.png" alt=""></p>
+<p>Not yet - we need to engage the <code>populate</code> method to load the candidate (as well as the user):</p>
+<h2>app/controllers/donation.js</h2>
+<pre><code>  ...
+        const donations = await Donation.find().populate(&#39;donor&#39;).populate(&#39;candidate&#39;);
+  ...</code></pre>
+<p>This should work now as expected.</p>
+<p><img src="img/07.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercises</h1>
+<p>Archive of the project so far:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.08.end">https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.08.end</a></li>
+</ul>
+<h2>Exercise 1:</h2>
+<p>Change the donate screen such that users can donate any amount and not just 50, 100, 1000 multiples. For example:</p>
+<p><img src="img/01.png" alt=""></p>
+<h2>Exercise 2:</h2>
+<p>Modify the report view to display total donated so far:</p>
+<p><img src="img/02.png" alt=""></p>
+<h2>Exercise 3:</h2>
+<p>Incorporate validation into the donate view:</p>
+<p><img src="img/03.png" alt=""></p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

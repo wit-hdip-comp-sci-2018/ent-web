@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Maps & Aurelia Deployment  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-12d Map View">
+          Lab-12d Map View
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-12d Map View">
+            <h1>Objectives</h1>
+<p>Introduce a Map Component with layers</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Map View Component</h1>
+<p>We have a map that appears as a custom element on an existing view component (donate). Lets try a completely new view component that only contains a map.</p>
+<h2>src/views/map.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;ui stacked segment&quot;&gt;
+    &lt;div id=&quot;${mapId}&quot; class=&quot;ui embed&quot; style=&quot;height:${mapHeight}px; z-index: 0&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<h2>src/views/map.ts</h2>
+<pre><code>import { LeafletMap } from &#39;../services/leaflet-map&#39;;
+import { DonationService } from &#39;../services/donation-service&#39;;
+import { inject } from &#39;aurelia-framework&#39;;
+
+@inject(DonationService)
+export class Map {
+  mapId = &#39;main-map&#39;;
+  mapHeight = 600;
+  map: LeafletMap;
+
+  constructor(private ds: DonationService) {}
+
+  attached() {
+    const mapConfig = {
+      location: { lat: 53.2734, lng: -7.7783203 },
+      zoom: 8,
+      minZoom: 1
+    };
+    this.map = new LeafletMap(this.mapId, mapConfig, &#39;Terrain&#39;);
+    this.map.showZoomControl();
+  }
+}</code></pre>
+<p>This is similar to the map component devised for Lab 12c. However, we can now make it a standalone view. This is achieved by creating a new route in app.ts:</p>
+<h2>src/app.ts</h2>
+<pre><code>  ...
+      {
+        route: &#39;map&#39;,
+        name: &#39;map&#39;,
+        moduleId: PLATFORM.moduleName(&#39;views/map&#39;),
+        nav: true,
+        title: &#39;Map&#39;
+      },
+  ...</code></pre>
+<p>This entry will ensure that the map appears as a new menu item - and the map will appear when selected:</p>
+<p><img src="img/01.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Layers</h1>
+<p>Leaflet is designed around the concept of Layers:</p>
+<ul>
+<li><a href="https://leafletjs.com/examples/layers-control/">https://leafletjs.com/examples/layers-control/</a></li>
+</ul>
+<p>This is easily enabled:</p>
+<h2>src/views/maps.ts</h2>
+<pre><code>  ...
+    this.map = new LeafletMap(this.mapId, mapConfig, &#39;Terrain&#39;);
+    this.map.showZoomControl();
+    this.map.showLayerControl();
+  }
+  ...</code></pre>
+<p>This change will make available a new control on the top right:</p>
+<p><img src="img/02.png" alt=""></p>
+<p>Hovering over it will reveal a list:</p>
+<p><img src="img/03.png" alt=""></p>
+<p>Only one layer - &#39;Terrain&#39; for the moment.</p>
+<p>This layer is defined in the <code>baseLayers</code> field in leaflet-map.ts</p>
+<h2>src/services/leaflet-map.ts</h2>
+<pre><code>  baseLayers = {
+    Terrain: L.tileLayer(&#39;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
+      maxZoom: 17,
+      attribution:
+        &#39;Map data: &amp;copy; &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href=&quot;http://viewfinderpanoramas.org&quot;&gt;SRTM&lt;/a&gt; | Map style: &amp;copy; &lt;a href=&quot;https://opentopomap.org&quot;&gt;OpenTopoMap&lt;/a&gt; (&lt;a href=&quot;https://creativecommons.org/licenses/by-sa/3.0/&quot;&gt;CC-BY-SA&lt;/a&gt;)&#39;
+    })
+  };</code></pre>
+<p>We are using the Open Street Map tiles:</p>
+<ul>
+<li><a href="https://www.openstreetmap.org">https://www.openstreetmap.org</a></li>
+</ul>
+<p>There are a large range for free layers available for Leaflet showcased here:</p>
+<ul>
+<li><a href="https://leaflet-extras.github.io/leaflet-providers/preview/">https://leaflet-extras.github.io/leaflet-providers/preview/</a></li>
+</ul>
+<p>If you scroll down in the above showcase, and locate &#39;Esri.WorldImagety&#39; - then you will be presented with this layer definition:</p>
+<pre><code>var Esri_WorldImagery = L.tileLayer(&#39;https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}&#39;, {
+  attribution: &#39;Tiles &amp;copy; Esri &amp;mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community&#39;
+});</code></pre>
+<p>Adjust this to match our baseLayers object:</p>
+<pre><code>    Satellite: L.tileLayer(
+      &#39;https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}&#39;,
+      {
+        attribution:
+          &#39;Tiles &amp;copy; Esri &amp;mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community&#39;
+      })</code></pre>
+<p>And place it into leaflet-map.ts. Here is the complete revised baseLayers:</p>
+<pre><code class="lang-js">  baseLayers = {
+    Terrain: L.tileLayer(&#39;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&#39;, {
+      maxZoom: 17,
+      attribution:
+        &#39;Map data: &amp;copy; &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href=&quot;http://viewfinderpanoramas.org&quot;&gt;SRTM&lt;/a&gt; | Map style: &amp;copy; &lt;a href=&quot;https://opentopomap.org&quot;&gt;OpenTopoMap&lt;/a&gt; (&lt;a href=&quot;https://creativecommons.org/licenses/by-sa/3.0/&quot;&gt;CC-BY-SA&lt;/a&gt;)&#39;
+    }),
+    Satellite: L.tileLayer(
+      &#39;https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}&#39;,
+      {
+        attribution:
+          &#39;Tiles &amp;copy; Esri &amp;mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community&#39;
+      })
+  };</code></pre>
+<p>This gives us a new layer :</p>
+<p><img src="img/04.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Donation Markers</h1>
+<p>Adjust the map component to display all donations:</p>
+<h2>src/views/map.ts</h2>
+<pre><code>import { LeafletMap } from &#39;../services/leaflet-map&#39;;
+import { DonationService } from &#39;../services/donation-service&#39;;
+import { inject } from &#39;aurelia-framework&#39;;
+
+@inject(DonationService)
+export class Map {
+  mapId = &#39;main-map&#39;;
+  mapHeight = 600;
+  map: LeafletMap;
+
+  constructor(private ds: DonationService) {}
+
+  renderDonations() {
+    for (let donation of this.ds.donations) {
+      const donationStr = `${donation.candidate.firstName} ${donation.candidate.lastName} €${donation.amount.toString()}`;
+      this.map.addMarker(donation.location, donationStr);
+    }
+  }
+
+  attached() {
+    const mapConfig = {
+      location: { lat: 53.2734, lng: -7.7783203 },
+      zoom: 8,
+      minZoom: 1
+    };
+    this.map = new LeafletMap(this.mapId, mapConfig, &#39;Terrain&#39;);
+    this.map.showZoomControl();
+    this.map.showLayerControl();
+    this.renderDonations();
+  }
+}</code></pre>
+<p>Adding some donations they should appear on the map, including pop ups if the markers are selected:</p>
+<p><img src="img/05.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Layer Groups</h1>
+<p>Leaflet also allows us to define custom layers - and have different sets of markers associated with these layers.</p>
+<p>This has been incorporated into the leaflet-map wrapper already. To engage, we can first add a new layer group to appear in the layer control:</p>
+<h2>src/views/map.ts</h2>
+<pre><code>    this.map.addLayerGroup(&#39;Donations&#39;);</code></pre>
+<p>Then, when adding a marker, include the layer group name as the last (optional) parameter:</p>
+<pre><code>      this.map.addMarker(donation.location, donationStr, &#39;Donations&#39;);</code></pre>
+<p>This the complete class:</p>
+<pre><code>import { LeafletMap } from &#39;../services/leaflet-map&#39;;
+import { DonationService } from &#39;../services/donation-service&#39;;
+import { inject } from &#39;aurelia-framework&#39;;
+
+@inject(DonationService)
+export class Map {
+  mapId = &#39;main-map&#39;;
+  mapHeight = 600;
+  map: LeafletMap;
+
+  constructor(private ds: DonationService) {}
+
+  renderDonations() {
+    for (let donation of this.ds.donations) {
+      const donationStr = `${donation.candidate.firstName} ${donation.candidate.lastName} €${donation.amount.toString()}`;
+      this.map.addMarker(donation.location, donationStr, &#39;Donations&#39;);
+    }
+  }
+
+  attached() {
+    const mapConfig = {
+      location: { lat: 53.2734, lng: -7.7783203 },
+      zoom: 8,
+      minZoom: 1
+    };
+    this.map = new LeafletMap(this.mapId, mapConfig, &#39;Terrain&#39;);
+    this.map.showZoomControl();
+    this.map.addLayerGroup(&#39;Donations&#39;);
+    this.map.showLayerControl();
+    this.renderDonations();
+  }
+}</code></pre>
+<p>All markers will now belong to a &#39;Donations&#39; group - and can be shown/hidden via the layer control:</p>
+<p><img src="img/06.png" alt=""></p>
+<p>We can also set our default layer to be satellite if we like:</p>
+<pre><code>    this.map = new LeafletMap(this.mapId, mapConfig, &#39;Satellite&#39;);</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Weather Maps</h1>
+<p>Looking further into this showcase:</p>
+<ul>
+<li><a href="https://leafletjs.com/examples/layers-control">https://leafletjs.com/examples/layers-control</a></li>
+</ul>
+<p>There are three layers that display current weather information:</p>
+<ul>
+<li>OpenWeatherMap.Clouds</li>
+<li>OpenWeatherMap.Pressure</li>
+<li>OpenWeatherMap.Wind</li>
+</ul>
+<p>For instance this is wind:</p>
+<pre><code>var OpenWeatherMap_Wind = L.tileLayer(&#39;http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png?appid={apiKey}&#39;, {
+  maxZoom: 19,
+  attribution: &#39;Map data &amp;copy; &lt;a href=&quot;http://openweathermap.org&quot;&gt;OpenWeatherMap&lt;/a&gt;&#39;,
+  apiKey: &#39;&lt;insert your api key here&gt;&#39;,
+  opacity: 0.5
+});</code></pre>
+<p>Notice that it requires an API key. This can be secured by signing up with this service:</p>
+<ul>
+<li><a href="https://openweathermap.org/">https://openweathermap.org/</a></li>
+</ul>
+<p>In leaflet-map, these layers must be introduced as overlays (as opposed to base layers) and also have an opacity setting:</p>
+<pre><code>  overlays = {
+    Wind : L.tileLayer(&#39;http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png?appid={apiKey}&#39;, {
+      maxZoom: 19,
+      attribution: &#39;Map data &amp;copy; &lt;a href=&quot;http://openweathermap.org&quot;&gt;OpenWeatherMap&lt;/a&gt;&#39;,
+      apiKey: &#39;YOURKEYHERE&#39;,
+      opacity: 0.5
+    }),
+    Clouds : L.tileLayer(&#39;http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png?appid={apiKey}&#39;, {
+      maxZoom: 19,
+      attribution: &#39;Map data &amp;copy; &lt;a href=&quot;http://openweathermap.org&quot;&gt;OpenWeatherMap&lt;/a&gt;&#39;,
+      apiKey: &#39;YOURKEYHERE&#39;,
+      opacity: 0.5
+    }),
+    Pressure : L.tileLayer(&#39;http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png?appid={apiKey}&#39;, {
+      maxZoom: 19,
+      attribution: &#39;Map data &amp;copy; &lt;a href=&quot;http://openweathermap.org&quot;&gt;OpenWeatherMap&lt;/a&gt;&#39;,
+      apiKey: &#39;YOURKEYHERE&#39;,
+      opacity: 0.5
+    })
+  }</code></pre>
+<p>These can then be enabled/disabled from the layer control:</p>
+<p><img src="img/07.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Solution</h1>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-au/releases/tag/donation.10.end">https://github.com/wit-hdip-comp-sci-2018/donation-au/releases/tag/donation.10.end</a></li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

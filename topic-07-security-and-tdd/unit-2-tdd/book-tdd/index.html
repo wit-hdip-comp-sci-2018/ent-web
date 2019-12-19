@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Test Driven Development  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 07b Tdd">
+          Lab 07b Tdd
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 07b Tdd">
+            <h1>Objectives</h1>
+<p>Develop more comprehensive suit of tests, exercising the candidate api in depth.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>DonationService</h1>
+<p>Starting from last weeks solution:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.09.end">https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.09.end</a></li>
+</ul>
+<p>Or your own application.</p>
+<h2>DonationService class</h2>
+<p>The tests we have written so far are somewhat verbose and repetitive. For tests to be effective, they must remain concise and easy to maintain and evolve. </p>
+<p>To facilitate this, we attempt to encapsulate both the http requests and the donation service access a class This class should simplify our tests and enable us to more easily devise more tests as the API evolves.</p>
+<p>The class assumes we are always dealing with JSON payloads.</p>
+<p>This is the first example of an ES6 Class in our labs so far. We will be making more use of these modern features in forthcoming labs.</p>
+<h2>donation-service.js</h2>
+<p>This class encapsulates the client side of the donation api. It is layered on top of the SyncHttpClient class, and delivers a simplified interface to the unit tests.</p>
+<pre><code>&#39;use strict&#39;;
+
+const axios = require(&#39;axios&#39;);
+const baseUrl = &#39;http://localhost:3000&#39;;
+
+class DonationService {
+  constructor(baseUrl) {
+    this.baseUrl = baseUrl;
+  }
+
+  async getCandidates() {
+    const response = await axios.get(this.baseUrl + &#39;/api/candidates&#39;);
+    return response.data;
+  }
+
+  async getCandidate(id) {
+    try {
+      const response = await axios.get(this.baseUrl + &#39;/api/candidates/&#39; + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async createCandidate(newCandidate) {
+    const response = await axios.post(this.baseUrl + &#39;/api/candidates&#39;, newCandidate);
+    return response.data;
+  }
+
+  async deleteAllCandidates() {
+    const response = await axios.delete(this.baseUrl + &#39;/api/candidates&#39;);
+    return response.data;
+  }
+
+  async deleteOneCandidate(id) {
+    const response = await axios.delete(this.baseUrl + &#39;/api/candidates/&#39; + id);
+    return response.data;
+  }
+
+  async getUsers() {
+    const response = await axios.get(this.baseUrl + &#39;/api/users&#39;);
+    return response.data;
+  }
+
+  async getUser(id) {
+    try {
+      const response = await axios.get(this.baseUrl + &#39;/api/user/&#39; + id);
+      return response.data;
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async createUser(newUser) {
+    const response = await axios.post(this.baseUrl + &#39;/api/users&#39;, newUser);
+    return response.data;
+  }
+}
+
+module.exports = DonationService;</code></pre>
+<p>Place this class in the test folder. </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Test Fixture + Simple Test</h1>
+<p>With these utility classes in place, we can proceed to a simpler, more robust unit tests. </p>
+<p>We start by factoring out our test data into a separate JSON file:</p>
+<h2>fixtures.json</h2>
+<pre><code>{
+  &quot;candidates&quot;: [
+    {
+      &quot;firstName&quot;: &quot;Lisa&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;office&quot;: &quot;President&quot;
+    },
+    {
+      &quot;firstName&quot;: &quot;Donald&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;office&quot;: &quot;President&quot;
+    }
+  ],
+  &quot;newCandidate&quot;:
+  {
+    &quot;firstName&quot;: &quot;Barnie&quot;,
+    &quot;lastName&quot;: &quot;Grumble&quot;,
+    &quot;office&quot;: &quot;President&quot;
+  }
+}</code></pre>
+<p>Keeping our test data - termed fixtures - in a separate file will keep the tests themselves more concise.</p>
+<p>Replace the current <code>candidatesapitest.js</code> with the following version:</p>
+<h2>candidateteapitet.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const assert = require(&#39;chai&#39;).assert;
+const DonationService = require(&#39;./donation-service&#39;);
+const fixtures = require(&#39;./fixtures.json&#39;);
+
+suite(&#39;Candidate API tests&#39;, function () {
+
+  let candidates = fixtures.candidates;
+  let newCandidate = fixtures.newCandidate;
+
+  const donationService = new DonationService(&#39;http://localhost:3000&#39;);
+
+  test(&#39;create a candidate&#39;, async function () {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    assert.equal(returnedCandidate.firstName, newCandidate.firstName);
+    assert.equal(returnedCandidate.lastName, newCandidate.lastName);
+    assert.equal(returnedCandidate.office, newCandidate.office);
+    assert.isDefined(returnedCandidate._id);
+  });
+});</code></pre>
+<p> Run this test now - it should pass. </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Equals Superset Test using lodash</h1>
+<p>Looking at the test again:</p>
+<pre><code>  test(&#39;create a candidate&#39;, async function () {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    assert.equal(returnedCandidate.firstName, newCandidate.firstName);
+    assert.equal(returnedCandidate.lastName, newCandidate.lastName);
+    assert.equal(returnedCandidate.office, newCandidate.office);
+    assert.isDefined(returnedCandidate._id);
+  });</code></pre>
+<p>..perhaps we can simplify further, deploying the assert,equal method:</p>
+<pre><code>  test(&#39;create a candidate&#39;, async function () {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    assert.equal(returnedCandidate, newCandidate);
+    assert.isDefined(returnedCandidate._id);
+  });</code></pre>
+<p>This looks reasonable, however when we run it the test if fails. The test runner in WebStorm can show us why:</p>
+<p><img src="img/02.png" alt=""></p>
+<p>The returned object contains the fields as expected, but also additional, legitimate, fields that cause the equals test to fail. We need a comparison that will test to see if the returnedCandidate is a superset of the newCandidate object. Some solutions are discussed here:</p>
+<ul>
+<li><p><a href="http://stackoverflow.com/questions/26092819/how-to-check-if-an-objects-properties-represent-a-super-set-of-another-object">http://stackoverflow.com/questions/26092819/how-to-check-if-an-objects-properties-represent-a-super-set-of-another-object</a></p>
+<p>The simplest involves including the <code>lodash</code> library</p>
+</li>
+</ul>
+<ul>
+<li><a href="https://lodash.com/">https://lodash.com/</a></li>
+</ul>
+<p>This provides many useful utilities functions, including :</p>
+<ul>
+<li><a href="https://lodash.com/docs#some">https://lodash.com/docs#some</a></li>
+</ul>
+<p>First we install lodash:</p>
+<pre><code>npm install lodash</code></pre>
+<p>Require is at the top of our test:</p>
+<pre><code>const _ = require(&#39;lodash&#39;);</code></pre>
+<p>And now we can try this version of the test:</p>
+<pre><code>  test(&#39;create a candidate&#39;, async function () {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    assert(_.some([returnedCandidate], newCandidate),  &#39;returnedCandidate must be a superset of newCandidate&#39;);
+    assert.isDefined(returnedCandidate._id);
+  });</code></pre>
+<p>This should pass now.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Comprehensive Candidate Tests</h1>
+<p>With fixtures and an simplified comparison capability mow in place, we can proceed to evolve a more comprehensive set of tests.</p>
+<p>First we need to provide support for the <code>delete</code> operations in our service class:</p>
+<h2>donation-service.js</h2>
+<pre><code>  async deleteAllCandidates() {
+    const response = await axios.delete(this.baseUrl + &#39;/api/candidates&#39;);
+    return response.data;
+  }
+
+  async deleteOneCandidate(id) {
+    const response = await axios.delete(this.baseUrl + &#39;/api/candidates/&#39; + id);
+    return response.data;
+  }</code></pre>
+<p>Now we write a new test to verify delete:</p>
+<pre><code>  test(&#39;delete a candidate&#39;, async function () {
+    let c = await donationService.createCandidate(newCandidate);
+    assert(c._id != null);
+    await donationService.deleteOneCandidate(c._id);
+    c = await donationService.getCandidate(c._id);
+    assert(c == null);
+  });</code></pre>
+<p>This test should succeed. However if you inspect the log from the server, we see this message:</p>
+<pre><code>(node:72991) DeprecationWarning: collection.remove is deprecated. Use deleteOne, deleteMany, or bulkWrite instead.</code></pre>
+<p>This is flagging an issue with our deleteOne endpoint implementation:</p>
+<pre><code>  deleteOne: {
+    auth: false,
+    handler: async function(request, h) {
+      const candidate = await Candidate.remove({ _id: request.params.id });
+      if (candidate) {
+        return { success: true };
+      }
+      return Boom.notFound(&#39;id not found&#39;);
+    }
+  }</code></pre>
+<p>We can replace this with a revised implementation:</p>
+<pre><code>  deleteOne: {
+    auth: false,
+    handler: async function(request, h) {
+      const response = await Candidate.deleteOne({ _id: request.params.id });
+      if (response.deletedCount == 1) {
+        return { success: true };
+      }
+      return Boom.notFound(&#39;id not found&#39;);
+    }
+  }</code></pre>
+<p>The tests should run now.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>candidatesapi Comprehensive Tests</h1>
+<p>Here is a more comprehensive set of tests - which all should pass at this stage:</p>
+<h2>test/candidatestest.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const assert = require(&#39;chai&#39;).assert;
+const DonationService = require(&#39;./donation-service&#39;);
+const fixtures = require(&#39;./fixtures.json&#39;);
+const _ = require(&#39;lodash&#39;);
+
+suite(&#39;Candidate API tests&#39;, function () {
+
+  let candidates = fixtures.candidates;
+  let newCandidate = fixtures.newCandidate;
+
+  const donationService = new DonationService(&#39;http://localhost:3000&#39;);
+
+  setup(async function () {
+    await donationService.deleteAllCandidates();
+  });
+
+  teardown(async function () {
+    await donationService.deleteAllCandidates();
+  });
+
+  test(&#39;create a candidate&#39;, async function () {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    assert(_.some([returnedCandidate], newCandidate), &#39;returnedCandidate must be a superset of newCandidate&#39;);
+    assert.isDefined(returnedCandidate._id);
+  });
+
+  test(&#39;get candidate&#39;, async function () {
+    const c1 = await donationService.createCandidate(newCandidate);
+    const c2 = await donationService.getCandidate(c1._id);
+    assert.deepEqual(c1, c2);
+  });
+
+  test(&#39;get invalid candidate&#39;, async function () {
+    const c1 = await donationService.getCandidate(&#39;1234&#39;);
+    assert.isNull(c1);
+    const c2 = await donationService.getCandidate(&#39;012345678901234567890123&#39;);
+    assert.isNull(c2);
+  });
+
+
+  test(&#39;delete a candidate&#39;, async function () {
+    let c = await donationService.createCandidate(newCandidate);
+    assert(c._id != null);
+    await donationService.deleteOneCandidate(c._id);
+    c = await donationService.getCandidate(c._id);
+    assert(c == null);
+  });
+
+  test(&#39;get all candidates&#39;, async function () {
+    for (let c of candidates) {
+      await donationService.createCandidate(c);
+    }
+
+    const allCandidates = await donationService.getCandidates();
+    assert.equal(allCandidates.length, candidates.length);
+  });
+
+  test(&#39;get candidates detail&#39;, async function () {
+    for (let c of candidates) {
+      await donationService.createCandidate(c);
+    }
+
+    const allCandidates = await donationService.getCandidates();
+    for (var i = 0; i &lt; candidates.length; i++) {
+      assert(_.some([allCandidates[i]], candidates[i]), &#39;returnedCandidate must be a superset of newCandidate&#39;);
+    }
+  });
+
+  test(&#39;get all candidates empty&#39;, async function () {
+    const allCandidates = await donationService.getCandidates();
+    assert.equal(allCandidates.length, 0);
+  });
+
+});</code></pre>
+<p>Note the extra methods at the start:</p>
+<pre><code>  setup(async function () {
+    await donationService.deleteAllCandidates();
+  });
+
+  teardown(async function () {
+    await donationService.deleteAllCandidates();
+  });</code></pre>
+<p>These are run before and after each test - clearing our the candidates model so that each test can be considered completely independently.</p>
+<p>Read the tests carefully - they should be self explanatory.</p>
+<p>See the use of <code>deepEqual</code>:</p>
+<ul>
+<li><a href="http://chaijs.com/api/assert/#method_deepequal">http://chaijs.com/api/assert/#method_deepequal</a></li>
+</ul>
+<p>Experiment with <code>equal</code> and <code>deepEqual</code> assertions.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercises</h1>
+<p>Archive of the project so far:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.10.end">https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.10.end</a></li>
+</ul>
+<h2>Exercise 2: Deployment</h2>
+<p>Reconfigure the candidateapitest to read the server address from the above <code>fixtures.json</code>. Deploy the application and insert the deployed app address into the <code>fixtures.json</code>. Run the tests against the deployed app.</p>
+<h2>Exercise 2: Users Endpoint</h2>
+<p>Here is a revised fixture including test user data:</p>
+<h2>test/fixtures.json</h2>
+<pre><code>{
+  &quot;donationService&quot;: &quot;https://wit-hdip-comp-sci-2018-donation-web-3.glitch.me&quot;,
+  &quot;users&quot;: [
+    {
+      &quot;firstName&quot;: &quot;Homer&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;homer@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    },
+    {
+      &quot;firstName&quot;: &quot;Marge&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;marge@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    },
+    {
+      &quot;firstName&quot;: &quot;Bart&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;email&quot;: &quot;bart@simpson.com&quot;,
+      &quot;password&quot;: &quot;secret&quot;
+    }
+  ],
+  &quot;candidates&quot;: [
+    {
+      &quot;firstName&quot;: &quot;Lisa&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;office&quot;: &quot;President&quot;
+    },
+    {
+      &quot;firstName&quot;: &quot;Donald&quot;,
+      &quot;lastName&quot;: &quot;Simpson&quot;,
+      &quot;office&quot;: &quot;President&quot;
+    }
+  ],
+  &quot;newCandidate&quot;: {
+    &quot;firstName&quot;: &quot;Barnie&quot;,
+    &quot;lastName&quot;: &quot;Grumble&quot;,
+    &quot;office&quot;: &quot;President&quot;
+  },
+  &quot;newUser&quot;: {
+    &quot;firstName&quot;: &quot;Maggie&quot;,
+    &quot;lastName&quot;: &quot;Simpson&quot;,
+    &quot;email&quot;: &quot;maggie@simpson.com&quot;,
+    &quot;password&quot;: &quot;secret&quot;
+  }
+}</code></pre>
+<p>Using the Candidates Endpoint implementation as an example - implement a new Users Endpoint + a set of tests to verify its successful implementation</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

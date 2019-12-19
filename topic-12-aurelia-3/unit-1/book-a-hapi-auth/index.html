@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> JWT  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab 12a Hapi-JWT">
+          Lab 12a Hapi-JWT
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="Solution">
+          Solution
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab 12a Hapi-JWT">
+            <h1>Objectives</h1>
+<p>Incorporate JWT security strategy into the application, securing the api routes. Rework the test infrastructure to fully exercises the secure API.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h2>Delete Donations for a Candidate</h2>
+<p>This is a new endpoint in Donation-Web to support deletion of candidates:</p>
+<h2>routesapi.js</h2>
+<pre><code>  { method: &#39;DELETE&#39;, path: &#39;/api/candidates/{id}/donations&#39;, config: Donations.deleteDonations },</code></pre>
+<h2>app/api/donations.js</h2>
+<pre><code>  deleteDonations: {
+    auth: false,
+    handler: async function(request, h) {
+      await Donation.deleteMany({candidate: request.params.id });
+      return { success: true };
+    }
+  }</code></pre>
+<p>And then a test, also in donation-web:</p>
+<h2>test/donationsapitest.js</h2>
+<pre><code>  test(&#39;delete donations&#39;, async function () {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    for (var i = 0; i &lt; donations.length; i++) {
+      await donationService.makeDonation(returnedCandidate._id, donations[i]);
+    }
+
+    donationService.deleteDonations(returnedCandidate._id);
+    const d = await donationService.getDonations(returnedCandidate._id);
+    console.log(d);
+    assert.equal(d.length, 0);
+  });</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>JWT Libraries</h1>
+<p>Currently our API is completely open - as we have disabled any authentication strategy on each of these routes:</p>
+<pre><code>...
+  auth: false,
+...</code></pre>
+<p>This is deliberate, as the authentication strategy we have install in the app is unsuitable:</p>
+<pre><code>  server.auth.strategy(&#39;standard&#39;, &#39;cookie&#39;, {
+    password: process.env.cookie_password,
+    cookie: process.env.cookie_name,
+    isSecure: false,
+    ttl: 24 * 60 * 60 * 1000,
+    redirectTo: &#39;/&#39;
+  });</code></pre>
+<p>This strategy utilities the browser cookie facility - is not appropriate for an API (where there may be no browser). We need an alternative strategy to secure the API.</p>
+<p>One of the most common approaches is called <code>JSON Web Tokens</code>:</p>
+<ul>
+<li><a href="https://jwt.io/">https://jwt.io/</a></li>
+</ul>
+<p>and we will employ a simple version of it now. These are two libraries we will use:</p>
+<ul>
+<li><a href="https://github.com/dwyl/hapi-auth-jwt2">https://github.com/dwyl/hapi-auth-jwt2</a></li>
+<li><a href="https://github.com/auth0/node-jsonwebtoken">https://github.com/auth0/node-jsonwebtoken</a></li>
+</ul>
+<p>Install both a part of our application:</p>
+<pre><code>npm install hapi-auth-jwt2 
+npm install jsonwebtoken</code></pre>
+<h2>package.json</h2>
+<pre><code>{
+  &quot;name&quot;: &quot;donation-web&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node index.js&quot;,
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;boom&quot;: &quot;^7.3.0&quot;,
+    &quot;dotenv&quot;: &quot;^6.2.0&quot;,
+    &quot;handlebars&quot;: &quot;^4.0.12&quot;,
+    &quot;hapi&quot;: &quot;^18.0.0&quot;,
+    &quot;hapi-auth-cookie&quot;: &quot;^9.1.0&quot;,
+    &quot;hapi-auth-jwt2&quot;: &quot;^8.3.0&quot;,
+    &quot;inert&quot;: &quot;^5.1.2&quot;,
+    &quot;joi&quot;: &quot;^14.3.1&quot;,
+    &quot;jsonwebtoken&quot;: &quot;^8.5.0&quot;,
+    &quot;lodash&quot;: &quot;^4.17.11&quot;,
+    &quot;mais-mongoose-seeder&quot;: &quot;^1.0.7&quot;,
+    &quot;mongoose&quot;: &quot;^5.4.7&quot;,
+    &quot;vision&quot;: &quot;^5.4.4&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;axios&quot;: &quot;^0.18.0&quot;,
+    &quot;chai&quot;: &quot;^4.2.0&quot;,
+    &quot;mocha&quot;: &quot;^6.0.1&quot;,
+    &quot;prettier&quot;: &quot;^1.16.0&quot;
+  },
+  &quot;prettier&quot;: {
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 120
+  }
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Authentication Route</h1>
+<p>Our objective is to protect key routes so that they are only accessible to authenticated users. These users must bear a valid token, which serves to validate the user and enable their identity to be confirmed.</p>
+<p>Before we create the routes + handlers to support this, we need some utility functions to generate and manipulate the tokens</p>
+<h2>app/api/utils.js</h2>
+<pre><code>const jwt = require(&#39;jsonwebtoken&#39;);
+
+exports.createToken = function (user) {
+  return jwt.sign({ id: user._id, email: user.email }, &#39;secretpasswordnotrevealedtoanyone&#39;, {
+    algorithm: &#39;HS256&#39;,
+    expiresIn: &#39;1h&#39;,
+  });
+};
+
+exports.decodeToken = function (token) {
+  var userInfo = {};
+  try {
+    var decoded = jwt.verify(token, &#39;secretpasswordnotrevealedtoanyone&#39;);
+    userInfo.userId = decoded.id;
+    userInfo.email = decoded.email;
+  } catch (e) {
+  }
+
+  return userInfo;
+};</code></pre>
+<p>These use one of the libraries we have installed. The first method generates a token, and the second decodes an existing token, recovering the encrypted fields. In our case, we are basing the token on the User ID + email.</p>
+<p>We now need a way to authenticate the users, using email+password which, if correct, will lead us to generate a token.</p>
+<p>Here is a new route for this purpose:</p>
+<h2>routesapi.js</h2>
+<pre><code>  { method: &#39;POST&#39;, path: &#39;/api/users/authenticate&#39;, config: Users.authenticate },</code></pre>
+<p>The implementation:</p>
+<pre><code>...
+const utils = require(&#39;./utils.js&#39;);
+...
+
+  authenticate: {
+    auth: false,
+    handler: async function(request, h) {
+      try {
+        const user = await User.findOne({ email: request.payload.email });
+        if (!user) {
+          return Boom.notFound(&#39;Authentication failed. User not found&#39;);
+        }
+        const token = utils.createToken(user);
+        return h.response({ success: true, token: token }).code(201);
+      } catch (err) {
+        return Boom.notFound(&#39;internal db failure&#39;);
+      }
+    }
+  },</code></pre>
+<p>We will test this route in the next step.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Testing Authenticate</h1>
+<p>This is a skeleton to test the authentication routes:</p>
+<h2>test/authapitest.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const assert = require(&#39;chai&#39;).assert;
+const DonationService = require(&#39;./donation-service&#39;);
+const fixtures = require(&#39;./fixtures.json&#39;);
+const utils = require(&#39;../app/api/utils.js&#39;);
+
+suite(&#39;Candidate API tests&#39;, function () {
+
+  let users = fixtures.users;
+  let newUser = fixtures.newUser;
+
+  const donationService = new DonationService(fixtures.donationService);
+
+  setup(async function () {
+    await donationService.deleteAllUsers();
+  });
+
+  test(&#39;authenticate&#39;, async function () {
+  });
+});</code></pre>
+<p>Note that we are including the <code>utils</code> functions from the main application. These will help us validate the token (for test purposes), but they are not exposed as part of the api.</p>
+<p>In the test folder, we can extend the <code>DonationService</code> to support authenticate:</p>
+<pre><code>  async authenticate(user) {
+    try {
+      const response = await axios.post(&#39;/api/users/authenticate&#39;, user);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }</code></pre>
+<p>Here is a first simple test to verify that the route is wired up correctly:</p>
+<pre><code>  test(&#39;authenticate&#39;, async function () {
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
+    assert(response.success);
+    assert.isDefined(response.token);
+  });</code></pre>
+<p>This should run successfully.</p>
+<p>We could go one step further and verify that the token is correctly encoded:</p>
+<pre><code>  test(&#39;verify Token&#39;, async function () {
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
+
+    const userInfo = utils.decodeToken(response.token);
+    assert.equal(userInfo.email, returnedUser.email);
+    assert.equal(userInfo.userId, returnedUser._id);
+  });</code></pre>
+<p>Here we see if the userId and email can be successfully recovered from the token. We will not need to do this on the client, but this test helps firm up our understanding of how the tokens work.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Securing Candidates API Routes</h1>
+<p>Now that we have established the basic mechanism, we can incorporate jwt auth into the app itself.</p>
+<h2>app/api/utils.js</h2>
+<p>We first need a validation function:</p>
+<pre><code>...
+const User = require(&#39;../models/user&#39;);
+...
+
+exports.validate = async function(decoded, request) {
+  const user = await User.findOne({ _id: decoded.id });
+  if (!user) {
+    return { isValid: false };
+  } else {
+    return { isValid: true };
+  }
+};</code></pre>
+<p>This function is required by the jwt validation strategy we are going to introduce. It will be passed the decoded token and will attempt to validate it. For our purposes, it is valid if it contains and ID for user in our database.</p>
+<h2>index.js</h2>
+<p>Now we can register the plugin:</p>
+<pre><code>...
+  await server.register(require(&#39;hapi-auth-jwt2&#39;));
+...</code></pre>
+<p>Then we define a new strategy, which will be in addition to the strategy already in place:</p>
+<pre><code>...
+const utils = require(&#39;./app/api/utils.js&#39;);
+...
+
+  server.auth.strategy(&#39;jwt&#39;, &#39;jwt&#39;, {
+    key: &#39;secretpasswordnotrevealedtoanyone&#39;,
+    validate: utils.validate,
+    verifyOptions: { algorithms: [&#39;HS256&#39;] },
+  });</code></pre>
+<p><code>validate</code> is specified here as part of the strategy.</p>
+<h2>app/api/candidates.js</h2>
+<p>We now mark all of our candidates routes with the jwt strategy, replacing:</p>
+<pre><code>  auth: false,</code></pre>
+<p>with</p>
+<pre><code>  auth: {
+    strategy: &#39;jwt&#39;,
+  },</code></pre>
+<p>We will leave the users api open for the moment.</p>
+<p>(Otherwise users could not attempt to authenticate!).</p>
+<p>Try running candidates tests now:</p>
+<p><img src="img/05.png" alt=""></p>
+<p>As we have guarded the candidates endpoint, all tests fail as our tests do not attempt any authentication (yet).</p>
+<p>If you try to access the api from a browser we see similar problems:</p>
+<p><img src="img/01.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Testing Candidates API Routes</h1>
+<p>All of our api routes are not reporting a missing authentication error:</p>
+<p><img src="img/01.png" alt=""></p>
+<p>This is because we are not providing the jwt token upon access. As we have already encapsulate http access in our tests, we can introduce jwt auth into the tests reasonably cleanly.</p>
+<h2>test/donation-service.ts</h2>
+<p>These is a revised <code>authenticate</code> method:</p>
+<pre><code>  async authenticate(user) {
+    try {
+      const response = await axios.post(this.baseUrl + &#39;/api/users/authenticate&#39;, user);
+      axios.defaults.headers.common[&#39;Authorization&#39;] = &#39;Bearer &#39; + response.data.token;
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }</code></pre>
+<p>In the above, we are setting an <code>Authorization</code> header, containing the token we have just recieved. This will be used on all subsequent requests.</p>
+<p>We also introruce a method to clear the token:</p>
+<pre><code>  async clearAuth(user) {
+    axios.defaults.headers.common[&#39;Authorization&#39;] = &#39;&#39;;
+  }</code></pre>
+<h2>test/candidateapitest.js</h2>
+<p>To get the candidateapi test to work, we introuce new <code>suiteSetup</code> and <code>suiteTeardown</code> methods:</p>
+<pre><code>  suiteSetup(async function() {
+    await donationService.deleteAllUsers();
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function() {
+    await donationService.deleteAllUsers();
+    donationService.clearAuth();
+  });</code></pre>
+<p>in <code>suiteSetup</code> we will delete all users, then create a new user and then authenticate. This token will be retained for all subsequent requests.</p>
+<p>In the <code>suiteTeardown</code> we clear the token.</p>
+<p>These candidatapitests should work now. This is the comlete test class:</p>
+<h2>src/candidatesapitest.js</h2>
+<pre><code>&#39;use strict&#39;;
+
+const assert = require(&#39;chai&#39;).assert;
+const DonationService = require(&#39;./donation-service&#39;);
+const fixtures = require(&#39;./fixtures.json&#39;);
+const _ = require(&#39;lodash&#39;);
+
+suite(&#39;Candidate API tests&#39;, function() {
+  let candidates = fixtures.candidates;
+  let newCandidate = fixtures.newCandidate;
+  let newUser = fixtures.newUser;
+
+  const donationService = new DonationService(fixtures.donationService);
+
+  suiteSetup(async function() {
+    await donationService.deleteAllUsers();
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function() {
+    await donationService.deleteAllUsers();
+    donationService.clearAuth();
+  });
+
+  setup(async function() {
+    await donationService.deleteAllCandidates();
+  });
+
+  teardown(async function() {
+    await donationService.deleteAllCandidates();
+  });
+
+  test(&#39;create a candidate&#39;, async function() {
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    assert(_.some([returnedCandidate], newCandidate), &#39;returnedCandidate must be a superset of newCandidate&#39;);
+    assert.isDefined(returnedCandidate._id);
+  });
+
+  test(&#39;get candidate&#39;, async function() {
+    const c1 = await donationService.createCandidate(newCandidate);
+    const c2 = await donationService.getCandidate(c1._id);
+    assert.deepEqual(c1, c2);
+  });
+
+  test(&#39;get invalid candidate&#39;, async function() {
+    const c1 = await donationService.getCandidate(&#39;1234&#39;);
+    assert.isNull(c1);
+    const c2 = await donationService.getCandidate(&#39;012345678901234567890123&#39;);
+    assert.isNull(c2);
+  });
+
+  test(&#39;delete a candidate&#39;, async function() {
+    let c = await donationService.createCandidate(newCandidate);
+    assert(c._id != null);
+    await donationService.deleteOneCandidate(c._id);
+    c = await donationService.getCandidate(c._id);
+    assert(c == null);
+  });
+
+  test(&#39;get all candidates&#39;, async function() {
+    for (let c of candidates) {
+      await donationService.createCandidate(c);
+    }
+
+    const allCandidates = await donationService.getCandidates();
+    assert.equal(allCandidates.length, candidates.length);
+  });
+
+  test(&#39;get candidates detail&#39;, async function() {
+    for (let c of candidates) {
+      await donationService.createCandidate(c);
+    }
+
+    const allCandidates = await donationService.getCandidates();
+    for (var i = 0; i &lt; candidates.length; i++) {
+      assert(_.some([allCandidates[i]], candidates[i]), &#39;returnedCandidate must be a superset of newCandidate&#39;);
+    }
+  });
+
+  test(&#39;get all candidates empty&#39;, async function() {
+    const allCandidates = await donationService.getCandidates();
+    assert.equal(allCandidates.length, 0);
+  });
+});</code></pre>
+<p>And this is the donation-service.js</p>
+<pre><code>&#39;use strict&#39;;
+
+const axios = require(&#39;axios&#39;);
+
+class DonationService {
+  constructor(baseUrl) {
+    this.baseUrl = baseUrl;
+  }
+
+  async authenticate(user) {
+    try {
+      const response = await axios.post(this.baseUrl + &#39;/api/users/authenticate&#39;, user);
+      axios.defaults.headers.common[&#39;Authorization&#39;] = &#39;Bearer &#39; + response.data.token;
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async clearAuth(user) {
+    axios.defaults.headers.common[&#39;Authorization&#39;] = &#39;&#39;;
+  }
+
+  async getUsers() {
+    try {
+      const response = await axios.get(this.baseUrl + &#39;/api/users&#39;);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async getUser(id) {
+    try {
+      const response = await axios.get(this.baseUrl + &#39;/api/users/&#39; + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async createUser(newUser) {
+    try {
+      const response = await axios.post(this.baseUrl + &#39;/api/users&#39;, newUser);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteAllUsers() {
+    try {
+      const response = await axios.delete(this.baseUrl + &#39;/api/users&#39;);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteOneUser(id) {
+    try {
+      const response = await axios.delete(this.baseUrl + &#39;/api/users/&#39; + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async getCandidates() {
+    try {
+      const response = await axios.get(this.baseUrl + &#39;/api/candidates&#39;);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async getCandidate(id) {
+    try {
+      const response = await axios.get(this.baseUrl + &#39;/api/candidates/&#39; + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async createCandidate(newCandidate) {
+    try {
+      const response = await axios.post(this.baseUrl + &#39;/api/candidates&#39;, newCandidate);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteAllCandidates() {
+    try {
+      const response = await axios.delete(this.baseUrl + &#39;/api/candidates&#39;);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteOneCandidate(id) {
+    try {
+      const response = await axios.delete(this.baseUrl + &#39;/api/candidates/&#39; + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async makeDonation(id, donation) {
+    try {
+      const repsonse = await axios.post(this.baseUrl + &#39;/api/candidates/&#39; + id + &#39;/donations&#39;, donation);
+      return repsonse.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async getDonations(id) {
+    try {
+      const response = await axios.get(this.baseUrl + &#39;/api/candidates/&#39; + id + &#39;/donations&#39;);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteAllDonations() {
+    try {
+      const response = await axios.delete(this.baseUrl + &#39;/api/donations&#39;);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteDonations(candidateId) {
+    try {
+      const response = await axios.delete(this.baseUrl + &#39;/api/candidates/&#39; + candidateId + &#39;/donations&#39;);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+}
+
+module.exports = DonationService;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solution">
+            <h1>Solution</h1>
+<p>The project so far:</p>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.12.end">https://github.com/wit-hdip-comp-sci-2018/donation-web/releases/tag/donation.12.end</a></li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

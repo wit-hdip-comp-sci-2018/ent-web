@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/highlightjs@9.16.2,npm/jquery@3.4.1,npm/jquery-address@1.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/railscasts.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Aurelia Introduction  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-10d Aurelia Components">
+          Lab-10d Aurelia Components
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-1/book-3-jquery/index.html">Lab 01a JQuery </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-js-client/unit-2/book-1-ajax-1/index.html">Lab 01b Github API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-1/index.html">Lab 02a FoureSquare API </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-1/book-2/index.html">Lab 02b FoureSquare JS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-introducing-node/unit-2/book-applications/index.html">Lab 02b Applications </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-1-views/book-views/index.html">Lab 03a Views </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-hapi-apps/unit-2-sessions/book-sessions/index.html">Lab 03b Sessions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-1/book-models/index.html">Lab 04a Models I </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-mongo-db/unit-2/book-1/index.html">Lab-04b Models II </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-0-validation/book-1-validation/index.html">Lab 05a Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-1-deployment/book-2-deployment/index.html">Lab 05b Deployment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-deployment-seeding/unit-2-db-seeding/book-seeding/index.html">Lab 05c Seeding </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-1-security-introduction/book-1-pgp-gpg/index.html">Lab 06a GPG </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-security-and-apis/unit-2-api/book-api/index.html">Lab 06b Apis </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-1-security-foundations/book-1-openssl/index.html">Lab 07a OpenSSL and Certificates </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-security-and-tdd/unit-2-tdd/book-tdd/index.html">Lab 07b Tdd </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-1-certificates+tls/book-1-tls-configuration/index.html">Lab 08a TLS </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-tls-threats/unit-2-webapp-threats+vulnerabilities/book-1-misuse-cases/index.html">Lab 08b Threat Modelling </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-1-web-app-authentication/book-1-web-authentication/index.html">Lab 09a Authentication techniques </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-authentication-rest/unit-2-rest/book-rest/index.html">Lab 09b Rest </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-1-burp-proxy/index.html">Lab 10a Burp-Proxy </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-2-regex/index.html">Lab 10b Regular Expressions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-1-pentesting/book-3-xss/index.html">Lab 10c XSS tips </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-a/book-au-1/index.html">Lab-10d Aurelia Components </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-pen-testing-aurelia-1/unit-2-aurelia-b/book-au-2/index.html">Lab 10e Aurelia Custom Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-0-routers/book-au-3/index.html">Lab 11a Aurelia Router </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-1-services/book-au-4/index.html">Lab 11b Aurelia Services </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-2-events/book-au-5/index.html">Lab 11c Aurelia Event Aggregator </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-6/index.html">Lab 11d User Models </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-aurelia-2/unit-3-aurelia-authentication-1/book-au-7/index.html">Lab 11e donation-client:donation-web </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-a-hapi-auth/index.html">Lab 12a Hapi-JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-1/book-b-aurelia-jwt/index.html">Lab-12b Aurelia JWT </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-1-maps/index.html">Lab-12c Map Panel </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-2-maps-2/index.html">Lab-12d Map View </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-aurelia-3/unit-2/book-3-deployment/index.html">Lab-12e Deployment </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-10d Aurelia Components">
+            <h1>Objectives</h1>
+<p>Build a first Aurelia application - introducing ViewModels and Binding</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Setup</h1>
+<h2>Yarn</h2>
+<p>For this project, we will use an alternative to npm called yarn:</p>
+<ul>
+<li><a href="https://yarnpkg.com/en">https://yarnpkg.com/en</a></li>
+</ul>
+<p>It is functionally equivalent to npm - so we can in fact use either without difficulty. Install it now on your workstation. This cheat sheet here is a useful quick start comparing npm &amp; yarn:</p>
+<ul>
+<li><a href="https://gist.github.com/jonlabelle/c082700c1c249d986faecbd5abf7d65b">https://gist.github.com/jonlabelle/c082700c1c249d986faecbd5abf7d65b</a></li>
+</ul>
+<h2>Aurelia Cli</h2>
+<p>Most front end frameworks provide a Command Line Interface application to assist in project set up, configuration, build and execution: </p>
+<ul>
+<li><a href="https://aurelia.io/docs/tutorials/creating-a-contact-manager#setting-up-your-machine">https://aurelia.io/docs/tutorials/creating-a-contact-manager#setting-up-your-machine</a></li>
+</ul>
+<p>However, we just need one command (using yarn):</p>
+<pre><code>yarn global add aurelia-cli</code></pre>
+<p>Or - using npm:</p>
+<pre><code>npm install aurelia-cli -g</code></pre>
+<h2>Project Setup:</h2>
+<p>Creating a project is carried out via the <code>au new</code> command:</p>
+<pre><code>au new donation-client</code></pre>
+<p>You will be asked a few initialisation questions:</p>
+<pre><code class="lang-html">Global aurelia-cli v1.0.0-beta.14
+                      _ _          ____ _     ___
+  __ _ _   _ _ __ ___| (_) __ _   / ___| |   |_ _|
+ / _` | | | | &#39;__/ _ \ | |/ _` | | |   | |    | |
+| (_| | |_| | | |  __/ | | (_| | | |___| |___ | |
+ \__,_|\__,_|_|  \___|_|_|\__,_|  \____|_____|___|
+
+? Would you like to use the default setup or customize your choices? …
+❯ Default ESNext App
+  A basic app with Babel and Webpack.
+  Default TypeScript App
+  A basic app with TypeScript and Webpack.
+  Custom App
+  Select bundler, loader, transpiler, CSS pre-processor and more.</code></pre>
+<p>Using the keyboard arrow keys - select <code>Default Typescript App</code></p>
+<pre><code class="lang-html"> __ _ _   _ _ __ ___| (_) __ _   / ___| |   |_ _|
+ / _` | | | | &#39;__/ _ \ | |/ _` | | |   | |    | |
+| (_| | |_| | | |  __/ | | (_| | | |___| |___ | |
+ \__,_|\__,_|_|  \___|_|_|\__,_|  \____|_____|___|
+
+✔ Would you like to use the default setup or customize your choices? · Default TypeScript App
+
+ Project Summary
+This project was bootstrapped based on following selected features:
+webpack http1 web typescript jest vscode scaffold-minimum
+Next time, you can generate a new project faster in unattended mode with the same features:
+ au new donation-client --unattended --select typescript,jest,vscode
+Or use the shorter form:
+ au new donation-client -u -s typescript,jest,vscode
+Note the command might not supply all the selected features, as some features get installed by default, so those were omitted from the command.
+
+ Project Dependencies
+INFO [install-deps] Lock files are not cross compatible between package managers. Choose Yarn here only if you intend to use Yarn for future package installs. Alternatively, remove either yarn.lock or package-lock.json from the project directory before installing new packages.
+
+? Would you like to install all the npm dependencies? …
+❯ Yes, use Yarn
+  Installs all server, client and tooling dependencies needed to build the project using Yarn.
+  Yes, use NPM
+  Installs all server, client and tooling dependencies needed to build the project using NPM.
+  No
+  Completes the new project wizard without installing dependencies.</code></pre>
+<p>This should now run to completion:</p>
+<pre><code class="lang-html">Global aurelia-cli v1.0.0-beta.14
+                      _ _          ____ _     ___
+  __ _ _   _ _ __ ___| (_) __ _   / ___| |   |_ _|
+ / _` | | | | &#39;__/ _ \ | |/ _` | | |   | |    | |
+| (_| | |_| | | |  __/ | | (_| | | |___| |___ | |
+ \__,_|\__,_|_|  \___|_|_|\__,_|  \____|_____|___|
+
+✔ Would you like to use the default setup or customize your choices? · Default TypeScript App
+
+ Project Summary
+This project was bootstrapped based on following selected features:
+webpack http1 web typescript jest vscode scaffold-minimum
+Next time, you can generate a new project faster in unattended mode with the same features:
+ au new donation-client --unattended --select typescript,jest,vscode
+Or use the shorter form:
+ au new donation-client -u -s typescript,jest,vscode
+Note the command might not supply all the selected features, as some features get installed by default, so those were omitted from the command.
+
+ Project Dependencies
+INFO [install-deps] Lock files are not cross compatible between package managers. Choose Yarn here only if you intend to use Yarn for future package installs. Alternatively, remove either yarn.lock or package-lock.json from the project directory before installing new packages.
+
+✔ Would you like to install all the npm dependencies? · Yes, use Yarn
+Installing project dependencies...
+
+yarn install v1.15.2
+info No lockfile found.
+[1/5] 🔍  Validating package.json...
+[2/5] 🔍  Resolving packages...
+[3/5] 🚚  Fetching packages...
+[4/5] 🔗  Linking dependencies...
+warning &quot; &gt; aurelia-tools@2.0.0&quot; has unmet peer dependency &quot;babel-eslint@^7.2.3&quot;.
+warning &quot; &gt; aurelia-tools@2.0.0&quot; has unmet peer dependency &quot;eslint@^4.0.0&quot;.
+warning &quot;aurelia-webpack-plugin &gt; aurelia-loader-webpack &gt; aurelia-hot-module-reload@0.2.1&quot; has unmet peer dependency &quot;aurelia-templating@&gt;=1.1.4&quot;.
+warning &quot;aurelia-webpack-plugin &gt; aurelia-loader-webpack &gt; aurelia-hot-module-reload@0.2.1&quot; has unmet peer dependency &quot;aurelia-dependency-injection@&gt;=1.2.0&quot;.
+warning &quot;aurelia-webpack-plugin &gt; aurelia-loader-webpack &gt; aurelia-hot-module-reload@0.2.1&quot; has unmet peer dependency &quot;aurelia-path@&gt;=1.1.1&quot;.
+warning &quot;jest &gt; jest-cli &gt; @jest/core &gt; jest-resolve-dependencies@24.5.0&quot; has unmet peer dependency &quot;jest-resolve@^24.1.0&quot;.
+warning &quot;jest &gt; jest-cli &gt; jest-config &gt; jest-resolve@24.5.0&quot; has unmet peer dependency &quot;jest-haste-map@^24.0.0&quot;.
+warning &quot; &gt; aurelia-pal-nodejs@1.2.0&quot; has unmet peer dependency &quot;jsdom@~11.5.1&quot;.
+[5/5] 🔨  Building fresh packages...
+success Saved lockfile.
+✨  Done in 27.97s.
+Project dependencies were installed.
+
+ Congratulations!
+Your Project &quot;donation-client&quot; Has Been Created!
+
+ Getting started
+Now it&#39;s time to get started. It&#39;s easy.
+First, change directory into your new project&#39;s folder. You can use  cd donation-client  to get there.
+If dependencies were not installed, use  npm i  or  yarn  to install dependencies first.
+Then run your new app in dev mode with  au run .
+If you want to build your app for production, run  au build --env prod .
+If you need help, simply run  au help .
+
+
+ Happy Coding!</code></pre>
+<p>You will need a .giignore file. This one should suffice:</p>
+<h2>.gitignore:</h2>
+<pre><code class="lang-html"># You may want to customise this file depending on your Operating System
+# and the editor that you use.
+#
+# We recommend that you use a Global Gitignore for files that are not related
+# to the project. (https://help.github.com/articles/ignoring-files/#create-a-global-gitignore)
+
+# OS
+#
+# Ref: https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
+# Ref: https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
+# Ref: https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
+.DS_STORE
+Thumbs.db
+
+# Editors
+#
+# Ref: https://github.com/github/gitignore/blob/master/Global
+# Ref: https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
+# Ref: https://github.com/github/gitignore/blob/master/Global/VisualStudioCode.gitignore
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Dependencies
+node_modules
+
+# Compiled files
+/scripts
+/src/environment.js
+/src/environment.ts</code></pre>
+<p>You can now open the project in Webstorm:</p>
+<p><img src="img/01.png" alt=""></p>
+<p>Or, if you prefer, Visual Studio Code</p>
+<p><img src="img/04.png" alt=""></p>
+<p>Finally, to run the application, enter this command from a terminal in the application:</p>
+<pre><code> au run --watch</code></pre>
+<p>This will respond with (eventually):</p>
+<pre><code class="lang-html">  ...
+  ...
+    index.html  1.36 MiB       0  
+    Entrypoint undefined = index.html
+    [8XHo] ./node_modules/html-webpack-plugin/lib/loader.js!./index.ejs 627 bytes {0} [built]
+    [LvDl] ./node_modules/lodash/lodash.js 527 KiB {0} [built]
+    [YuTi] (webpack)/buildin/module.js 497 bytes {0} [built]
+    [yLpj] (webpack)/buildin/global.js 472 bytes {0} [built]
+ℹ ｢wdm｣: Compiled successfully.</code></pre>
+<p>A &#39;Hello World&#39; app is now being served here:</p>
+<ul>
+<li><a href="http://localhost:8080/">http://localhost:8080/</a></li>
+</ul>
+<p><img src="img/02.png" alt=""></p>
+<h2>Code Formatter</h2>
+<p>If using the Prettier code formatter, insert this into package.json:</p>
+<pre><code>  &quot;prettier&quot;: {
+    &quot;singleQuote&quot;: true,
+    &quot;printWidth&quot;: 120
+  },</code></pre>
+<p>(anywhere towards the end will do)</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>View</h1>
+<p>We will try a first view. First we will bring in our usual semantic libraries. These can be inserted into the main page for the app:</p>
+<h2>index.ejs</h2>
+<pre><code>    &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css&quot; type=&quot;text/css&quot;&gt;</code></pre>
+<p>Now replace the contents of the src/app.html as follows:</p>
+<h2>src/app.htnl</h2>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;ui container&quot;&gt;
+    &lt;section class=&quot;ui raised segment&quot;&gt;
+      &lt;h3 class=&quot;ui headder&quot;&gt; Donation &lt;/h3&gt;
+    &lt;/section&gt;
+    &lt;div class=&quot;ui basic segment&quot;&gt;
+      &lt;div class=&quot;ui stackable two column grid&quot;&gt;
+        &lt;div class=&quot;column&quot;&gt;
+          &lt;form class=&quot;ui form stacked segment&quot;&gt;
+            &lt;h3 class=&quot;ui dividing header&quot;&gt; Add a Candidate &lt;/h3&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;First Name &lt;/label&gt; &lt;input&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Last Name &lt;/label&gt; &lt;input&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Office &lt;/label&gt; &lt;input&gt;
+            &lt;/div&gt;
+            &lt;button class=&quot;ui blue submit button&quot;&gt;Add&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;column&quot;&gt;
+          &lt;h4 class=&quot;ui dividing header&quot;&gt; Candidates &lt;/h4&gt;
+          &lt;table class=&quot;ui celled table segment&quot;&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th&gt;Last Name&lt;/th&gt;
+                &lt;th&gt;First Name&lt;/th&gt;
+                &lt;th&gt;Office&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;&lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>Because we have changes the start page, we will need to comment out some default tests from the generated application:</p>
+<h2>test/unit/app.spec.ts</h2>
+<pre><code>import {App} from &#39;../../src/app&#39;;
+
+describe(&#39;the app&#39;, () =&gt; {
+  // it(&#39;says hello&#39;, () =&gt; {
+  //   expect(new App().message).toBe(&#39;Hello World!&#39;);
+  // });
+});</code></pre>
+<p>If we have been running the app from a terminal:</p>
+<pre><code> au run --watch</code></pre>
+<p>Then the changes above will be automatically visible in the runnng app:</p>
+<p><img src="img/05.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>View Model</h1>
+<p>At the moment our view is passive, we expand the <code>View Model</code> with the view to look like this:</p>
+<h2>src/app.ts</h2>
+<pre><code>export class App {
+  firstName: string;
+  lastName: string;
+  office: string;
+  candidates: any[] = [];
+
+  addCandidate() {
+    const candidate = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      office: this.office
+    };
+    this.candidates.push(candidate);
+    console.log(candidate);
+  }
+}</code></pre>
+<p>This is a typescript class - very close in syntax to Java/Javascript classes. Like Java, when introducing fields or variables we also define their types:</p>
+<pre><code>  firstName: string;
+  lastName: string;
+  office: string;</code></pre>
+<p>Simple strings in the above. This is an array:</p>
+<pre><code>  candidates: any[] = [];</code></pre>
+<p>It is an array of &#39;any&#39;, as in any type whatsoever. This use if <code>any</code> is common in typescript when you are starting out. Generally we try to gradually replace the <code>any</code> usage with more specific types as we gain confidence in the language.</p>
+<p>Now lets revise the view model as follows:</p>
+<h2>src/app.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;ui container&quot;&gt;
+    &lt;section class=&quot;ui raised segment&quot;&gt;
+      &lt;h3 class=&quot;ui headder&quot;&gt; Donation &lt;/h3&gt;
+    &lt;/section&gt;
+    &lt;div class=&quot;ui basic segment&quot;&gt;
+      &lt;div class=&quot;ui stackable two column grid&quot;&gt;
+        &lt;div class=&quot;column&quot;&gt;
+          &lt;form submit.trigger=&quot;addCandidate()&quot; class=&quot;ui form stacked segment&quot;&gt;
+            &lt;h3 class=&quot;ui dividing header&quot;&gt; Add a Candidate &lt;/h3&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;First Name &lt;/label&gt; &lt;input value.bind=&quot;firstName&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Last Name &lt;/label&gt; &lt;input value.bind=&quot;lastName&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Office &lt;/label&gt; &lt;input value.bind=&quot;office&quot;&gt;
+            &lt;/div&gt;
+            &lt;button class=&quot;ui blue submit button&quot;&gt;Add&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;column&quot;&gt;
+          &lt;h4 class=&quot;ui dividing header&quot;&gt; Candidates &lt;/h4&gt;
+          &lt;table class=&quot;ui celled table segment&quot;&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th&gt;Last Name&lt;/th&gt;
+                &lt;th&gt;First Name&lt;/th&gt;
+                &lt;th&gt;Office&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>This is almost the same, but the form has changed:</p>
+<pre><code>          &lt;form submit.trigger=&quot;addCandidate()&quot; class=&quot;ui form stacked segment&quot;&gt;
+            &lt;h3 class=&quot;ui dividing header&quot;&gt; Add a Candidate &lt;/h3&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;First Name &lt;/label&gt; &lt;input value.bind=&quot;firstName&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Last Name &lt;/label&gt; &lt;input value.bind=&quot;lastName&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Office &lt;/label&gt; &lt;input value.bind=&quot;office&quot;&gt;
+            &lt;/div&gt;
+            &lt;button class=&quot;ui blue submit button&quot;&gt;Add&lt;/button&gt;
+          &lt;/form&gt;</code></pre>
+<p>Notice the new way of introducing the form:</p>
+<pre><code>          &lt;form submit.trigger=&quot;addCandidate()&quot; class=&quot;ui form stacked segment&quot;&gt;</code></pre>
+<p>and also the new <code>value.bind</code> attribute with each input element:</p>
+<pre><code>              &lt;label&gt;Office &lt;/label&gt; &lt;input value.bind=&quot;office&quot;&gt;</code></pre>
+<p>In the above changes, we are directly referencing the View class - via the <code>addCandidate()</code> and <code>office</code> references. Look at the class again to identify these.</p>
+<p>Finally, in the table, extend it to iterate through the candidates array in the model and populate the table:</p>
+<pre><code>            &lt;tbody&gt;
+              &lt;tr repeat.for=&quot;candidate of candidates&quot;&gt;
+                &lt;td&gt;
+                  ${candidate.lastName}
+                &lt;td&gt;
+                  ${candidate.firstName}
+                &lt;/td&gt;
+                &lt;td&gt;
+                  ${candidate.office}
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/tbody&gt;</code></pre>
+<p>This is the complete view model:</p>
+<h2>src/app.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;ui container&quot;&gt;
+    &lt;section class=&quot;ui raised segment&quot;&gt;
+      &lt;h3 class=&quot;ui headder&quot;&gt; Donation &lt;/h3&gt;
+    &lt;/section&gt;
+    &lt;div class=&quot;ui basic segment&quot;&gt;
+      &lt;div class=&quot;ui stackable two column grid&quot;&gt;
+        &lt;div class=&quot;column&quot;&gt;
+          &lt;form submit.trigger=&quot;addCandidate()&quot; class=&quot;ui form stacked segment&quot;&gt;
+            &lt;h3 class=&quot;ui dividing header&quot;&gt; Add a Candidate &lt;/h3&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;First Name &lt;/label&gt; &lt;input value.bind=&quot;firstName&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Last Name &lt;/label&gt; &lt;input value.bind=&quot;lastName&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;field&quot;&gt;
+              &lt;label&gt;Office &lt;/label&gt; &lt;input value.bind=&quot;office&quot;&gt;
+            &lt;/div&gt;
+            &lt;button class=&quot;ui blue submit button&quot;&gt;Add&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;column&quot;&gt;
+          &lt;h4 class=&quot;ui dividing header&quot;&gt; Candidates &lt;/h4&gt;
+          &lt;table class=&quot;ui celled table segment&quot;&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th&gt;Last Name&lt;/th&gt;
+                &lt;th&gt;First Name&lt;/th&gt;
+                &lt;th&gt;Office&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+              &lt;tr repeat.for=&quot;candidate of candidates&quot;&gt;
+                &lt;td&gt;
+                  ${candidate.lastName}
+                &lt;td&gt;
+                  ${candidate.firstName}
+                &lt;/td&gt;
+                &lt;td&gt;
+                  ${candidate.office}
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>Running the app now, as you enter values in the form the candidates will immediately display in the table:</p>
+<p><img src="img/06.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Types</h1>
+<h2>src/app.ts</h2>
+<p>It now makes sense to define a Candidate type in our application:</p>
+<pre><code>export interface Candidate {
+  firstName: string;
+  lastName: string;
+  office: string;
+}
+
+export class App {
+  firstName: string;
+  lastName: string;
+  office: string;
+  candidates: Candidate[] = [];
+
+  addCandidate() {
+    const candidate = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      office: this.office
+    };
+    this.candidates.push(candidate);
+    console.log(candidate);
+  }
+}</code></pre>
+<p>This is expressed in Typescript as an <code>Interface</code></p>
+<pre><code>export interface Candidate {
+  firstName: string;
+  lastName: string;
+  office: string;
+}</code></pre>
+<p>This is not a class, but a class may choose to implement or realise an interface. This is very similar to equivalent features in Java.</p>
+<p>Notice we have removed the <code>any</code> usage above, defining the array more robustly:</p>
+<pre><code>  candidates: Candidate[] = [];</code></pre>
+<p>We can move the Candidate interface in a file <code>donation-types.ts</code> - and in a subdirectory <code>src/services</code>:</p>
+<h2>src/services/donation-types</h2>
+<pre><code>export interface Candidate {
+  firstName: string;
+  lastName: string;
+  office: string;
+}</code></pre>
+<p>We can then import this is app:</p>
+<h2>src/app.ts</h2>
+<pre><code>import {Candidate} from &quot;./services/donation-types&quot;;
+
+export class App {
+  firstName: string;
+  lastName: string;
+  office: string;
+  candidates: Candidate[] = [];
+
+  addCandidate() {
+    const candidate = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      office: this.office
+    };
+    this.candidates.push(candidate);
+    console.log(candidate);
+  }
+}</code></pre>
+<p>Make these changes - the app will probably keep running and behave as before.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Components</h1>
+<p>We can now factor our the candidate experiments into its own reusable component. We will chose to place these components in a new <code>src/views</code> folder:</p>
+<h2>src/views/candidates.ts</h2>
+<pre><code>import { Candidate } from &#39;../services/donation-types&#39;;
+
+export class Candidates {
+  firstName: string;
+  lastName: string;
+  office: string;
+  candidates: Candidate[] = [];
+
+  addCandidate() {
+    const candidate = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      office: this.office
+    };
+    this.candidates.push(candidate);
+    console.log(candidate);
+  }
+}</code></pre>
+<h2>srs/views/candidates.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;ui stackable two column grid&quot;&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;form submit.trigger=&quot;addCandidate()&quot; class=&quot;ui form stacked segment&quot;&gt;
+        &lt;h3 class=&quot;ui dividing header&quot;&gt; Add a Candidate &lt;/h3&gt;
+        &lt;div class=&quot;field&quot;&gt;
+          &lt;label&gt;First Name &lt;/label&gt; &lt;input value.bind=&quot;firstName&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field&quot;&gt;
+          &lt;label&gt;Last Name &lt;/label&gt; &lt;input value.bind=&quot;lastName&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field&quot;&gt;
+          &lt;label&gt;Office &lt;/label&gt; &lt;input value.bind=&quot;office&quot;&gt;
+        &lt;/div&gt;
+        &lt;button class=&quot;ui blue submit button&quot;&gt;Add&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;h4 class=&quot;ui dividing header&quot;&gt; Candidates &lt;/h4&gt;
+      &lt;table class=&quot;ui celled table segment&quot;&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Last Name&lt;/th&gt;
+            &lt;th&gt;First Name&lt;/th&gt;
+            &lt;th&gt;Office&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr repeat.for=&quot;candidate of candidates&quot;&gt;
+            &lt;td&gt;
+              ${candidate.lastName}
+            &lt;td&gt;
+              ${candidate.firstName}
+            &lt;/td&gt;
+            &lt;td&gt;
+              ${candidate.office}
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>These are more or less the contents of app.ts and app.html.</p>
+<p>We simplify these now:</p>
+<h2>src/app.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;require from=&quot;views/candidates&quot;&gt;&lt;/require&gt;
+
+  &lt;div class=&quot;ui container&quot;&gt;
+    &lt;section class=&quot;ui raised segment&quot;&gt;
+      &lt;h3 class=&quot;ui headder&quot;&gt; Donation &lt;/h3&gt;
+    &lt;/section&gt;
+    &lt;div class=&quot;ui basic segment&quot;&gt;
+      &lt;candidates&gt;&lt;/candidates&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>Notice in the above how we <code>import</code> the candidates view:</p>
+<pre><code>  &lt;require from=&quot;views/candidates&quot;&gt;&lt;/require&gt;</code></pre>
+<p>And this is app.ts now:</p>
+<h2>src/app.ts</h2>
+<pre><code>export class App {
+}</code></pre>
+<p>Again, the application should still be running. As you make the above changes it may show errors in the console occasionally. However, as you complete the refactoring it should correct itself again.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Custom Elements</h1>
+<p>We have a view - candidates - in the view folder. This consists of a ViewModel:</p>
+<h2>src/views/candidates.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;ui stackable two column grid&quot;&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;form submit.trigger=&quot;addCandidate()&quot; class=&quot;ui form stacked segment&quot;&gt;
+        &lt;h3 class=&quot;ui dividing header&quot;&gt; Add a Candidate &lt;/h3&gt;
+        &lt;div class=&quot;field&quot;&gt;
+          &lt;label&gt;First Name &lt;/label&gt; &lt;input value.bind=&quot;firstName&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field&quot;&gt;
+          &lt;label&gt;Last Name &lt;/label&gt; &lt;input value.bind=&quot;lastName&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field&quot;&gt;
+          &lt;label&gt;Office &lt;/label&gt; &lt;input value.bind=&quot;office&quot;&gt;
+        &lt;/div&gt;
+        &lt;button class=&quot;ui blue submit button&quot;&gt;Add&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;h4 class=&quot;ui dividing header&quot;&gt; Candidates &lt;/h4&gt;
+      &lt;table class=&quot;ui celled table segment&quot;&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Last Name&lt;/th&gt;
+            &lt;th&gt;First Name&lt;/th&gt;
+            &lt;th&gt;Office&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr repeat.for=&quot;candidate of candidates&quot;&gt;
+            &lt;td&gt;
+              ${candidate.lastName}
+            &lt;td&gt;
+              ${candidate.firstName}
+            &lt;/td&gt;
+            &lt;td&gt;
+              ${candidate.office}
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>.. and a View:</p>
+<h2>src/views/candidates.ts</h2>
+<pre><code>import { Candidate } from &#39;../services/donation-types&#39;;
+
+export class Candidates {
+  firstName: string;
+  lastName: string;
+  office: string;
+  candidates: Candidate[] = [];
+
+  addCandidate() {
+    const candidate = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      office: this.office
+    };
+    this.candidates.push(candidate);
+    console.log(candidate);
+  }
+}</code></pre>
+<p>We can call this a <code>Component</code></p>
+<p>As well as the above construct, we can also introduce a similar construct called a <code>Custom Element</code></p>
+<p>Create this new file in the <code>src/resources/elements</code> folder:</p>
+<h2>src/resources/elements/candidate-list.ts</h2>
+<pre><code>import { bindable } from &#39;aurelia-framework&#39;;
+import { Candidate } from &#39;../../services/donation-types&#39;;
+
+export class CandidateList {
+  @bindable
+  candidates: Candidate[];
+}</code></pre>
+<p>In the same folder, this companion file:</p>
+<h2>src/resources/elements/candidate-list.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;h4 class=&quot;ui dividing header&quot;&gt; Candidates &lt;/h4&gt;
+  &lt;table class=&quot;ui celled table segment&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;last Name&lt;/th&gt;
+        &lt;th&gt;First Name&lt;/th&gt;
+        &lt;th&gt;Office&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr repeat.for=&quot;candidate of candidates&quot;&gt;
+        &lt;td&gt;
+          ${candidate.lastName}
+        &lt;td&gt;
+          ${candidate.firstName}
+        &lt;/td&gt;
+        &lt;td&gt;
+          ${candidate.office}
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/template&gt;</code></pre>
+<p>This is a complete Custom Element. Its task is to create a table of candidates. We can now refactor the candidates component to use this element:</p>
+<h2>src/views/candidates.html</h2>
+<pre><code>&lt;template&gt;
+  &lt;require from=&quot;../resources/elements/candidate-list&quot;&gt;&lt;/require&gt;
+
+  &lt;div class=&quot;ui stackable two column grid&quot;&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;form submit.trigger=&quot;addCandidate()&quot; class=&quot;ui form stacked segment&quot;&gt;
+        &lt;h3 class=&quot;ui dividing header&quot;&gt; Add a Candidate &lt;/h3&gt;
+        &lt;div class=&quot;field&quot;&gt;
+          &lt;label&gt;First Name &lt;/label&gt; &lt;input value.bind=&quot;firstName&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field&quot;&gt;
+          &lt;label&gt;Last Name &lt;/label&gt; &lt;input value.bind=&quot;lastName&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;field&quot;&gt;
+          &lt;label&gt;Office &lt;/label&gt; &lt;input value.bind=&quot;office&quot;&gt;
+        &lt;/div&gt;
+        &lt;button class=&quot;ui blue submit button&quot;&gt;Add&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;candidate-list candidates.bind=&quot;candidates&quot;&gt;&lt;/candidate-list&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+<p>The key features to note here are the importing of the custom element:</p>
+<pre><code>  &lt;require from=&quot;../resources/elements/candidate-list&quot;&gt;&lt;/require&gt;</code></pre>
+<p>and then placing the element on the second column:</p>
+<pre><code>    &lt;div class=&quot;column&quot;&gt;
+      &lt;candidate-list candidates.bind=&quot;candidates&quot;&gt;&lt;/candidate-list&gt;
+    &lt;/div&gt;</code></pre>
+<p>Try this now - it should work as before. </p>
+<p>Notice, how the candidates array defined in the candidates component:</p>
+<h2>src/views/candidates.ts</h2>
+<pre><code>..
+  candidates: Candidate[] = [];
+...
+}</code></pre>
+<p>.. is &#39;bound&#39; to the candidates array in the candidates-list custom element:</p>
+<pre><code>...
+  @bindable
+  candidates: Candidate[];
+...</code></pre>
+<p>This binding is carried out by the bind statement when placing the custom element into the view model:</p>
+<h2>src/views/candidates.html</h2>
+<pre><code>...
+      &lt;candidate-list candidates.bind=&quot;candidates&quot;&gt;&lt;/candidate-list&gt;
+...</code></pre>
+<p>Take some time to follow this binding mechanism. Consider what we can now do. We can add candidate objects in one class:</p>
+<h2>src/views/candidates.ts</h2>
+<pre><code>..
+export class Candidates {
+  ...
+  candidates: Candidate[] = [];
+
+  addCandidate() {
+    const candidate = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      office: this.office
+    };
+    this.candidates.push(candidate);
+    console.log(candidate);
+  }
+}</code></pre>
+<p>... and the same candidates will be immediately present in the &#39;bound&#39; array in another class:</p>
+<h2>src/resources/elements/candidate-list.ts</h2>
+<pre><code>...
+
+export class CandidateList {
+  @bindable
+  candidates: Candidate[];
+}</code></pre>
+<p>This enables the update to be immediately visible in the browser.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Solution</h1>
+<ul>
+<li><a href="https://github.com/wit-hdip-comp-sci-2018/donation-au/releases/tag/donation.au.01.end">https://github.com/wit-hdip-comp-sci-2018/donation-au/releases/tag/donation.au.01.end</a></li>
+</ul>
+<h2>Exercises</h2>
+<p>Create a new <code>Custom Element</code> to encapsulate the Candidate From:</p>
+<p><img src="img/07.png" alt=""></p>
+<p>This will be view two files:</p>
+<ul>
+<li>/src/resources/elements/candidate-form.ts</li>
+<li>/src/resources/elements/candidate-form.html</li>
+</ul>
+<p>These can contain factored out aspects of the candidates component - and then that component can simplified to use the new element.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>
